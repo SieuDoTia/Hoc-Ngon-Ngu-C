@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="../Styles/PhongCach0001.css" rel="stylesheet" type="text/css" />
+
+  <title></title>
+</head>
+
+<body>
+  <h2>Chương 2: Giới Thiệu Nhôn Ngữ C</h2>
+
+  <p>Trong chương này bạn sẽ bát đầu học về ngôn ngữ C. Đầu tiên là những từ giành và ký tự xàu để viết chương trình C, tiếp chương trình C đầu tiên, hàm đưa thôn gtin trên màn, phép toá của C, và cuối học về lý thuyết hệ số dùng phổ biến trong nghệp lập trình. &nbsp;</p>
+
+  <h4>2.1 Từ giành</h4>
+
+  <p>Chúng là các từ chúng tôi được dùng để 'nói chuyện' với vi tính và để khai báo biến, tạo câu lệnh, điều khiển, v.v. chương trình của mình. Khác với ngôn ngữ con người, ngôn ngữ có rất ít từ song vẫn được mô tả giải thuật rất phong phú. Danh sách của từ giành của ngôn ngữ C:</p>
+
+  <p><code>auto &nbsp; &nbsp; break &nbsp; &nbsp; case &nbsp; &nbsp; char &nbsp; &nbsp; const</code></p>
+
+  <p><code>continue &nbsp; &nbsp; default &nbsp; &nbsp;do&nbsp; &nbsp; double &nbsp; &nbsp; else</code></p>
+
+  <p><code>entry &nbsp; &nbsp; enum &nbsp; &nbsp; extern &nbsp; &nbsp;float &nbsp;for &nbsp;goto &nbsp;if</code></p>
+
+  <p><code>int &nbsp; &nbsp; long &nbsp; &nbsp; register &nbsp; &nbsp; return &nbsp; &nbsp; short</code></p>
+
+  <p><code>signed &nbsp; &nbsp; sizeof &nbsp; &nbsp; static &nbsp; &nbsp; struct &nbsp; &nbsp; switch</code></p>
+
+  <p><code>typedef &nbsp; &nbsp;union &nbsp; &nbsp; &nbsp;unsigned &nbsp; &nbsp; void &nbsp; &nbsp; volatile &nbsp; &nbsp; while</code></p>
+
+  <p><br /></p>
+
+  <p>Bạn được nhìn thấy tất cả từ giành dùng chữ thường.&nbsp;Vì sao chúng được gọi là từ giành? Vì bạn không được sử dụng các từ này cho tên hằng, biến, hàm, v.v. bởi bị ngôn ngữ lập trình chỉ định rồi.</p>
+
+  <h4>2.2 Từ Ký</h4>
+
+  <p>Các chương trình C được viết bằng các lớp ký tự này:</p>
+
+  <p>Chữ Latinh: <code>a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z</code></p>
+
+  <p>Chữ cái Latinh hoa: <code>A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z</code></p>
+
+  <p>Số cái: <code>0, 1, 2, 3, 4, 5, 6, 7, 8, 9</code></p>
+
+  <p>Ký hiệu: <code>!, @, #, %, ^, &amp;, *, (, ), ' &nbsp;', -, +, ;, :, ?, &lt;, &gt;, = _, /, \, {, }, [, ], ', "</code></p>
+
+  <p><br /></p>
+
+  <p>Chú dẫn và xâu không bị hạn chế như vậy và có thể xài nhiều ký tự hơn.</p>
+
+  <h4>2.3: Chương trình đơn giản</h4>
+
+  <p>Ở dưới là chương trình đầu tiên ưa viết khi học ngôn ngử C. Gõ vào máy và chạy nó.</p>
+
+  <ol>
+    <li><code>#include&nbsp;&lt;stdio.h&gt; &nbsp;/* xài hàm tử thư viện stdio */</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>int main( int argc, char **argv ) {</code></li>
+
+    <li><code>&nbsp; &nbsp;/* phát lời */</code></li>
+
+    <li><code>&nbsp; &nbsp;printf( "Xin Chào Thế Giới\n" );</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp;return 1;</code></li>
+
+    <li><code>}</code></li>
+  </ol>
+
+  <p>Từ chương trình đơn giản này bạn được thấy khác bộ phần quan trọn. Tuốt ở trên có <code>#include</code> cho các thứ viện chứa hàm không chỉ định trong tệp này. Ngôn ngử C có vài số thư viện sẵn để giúp bạn làm cộng việc phổ bến như phạt chơữ trên màn, nhập dữ liệu từ bàn phím, tệp lưu trữ tệp từ ổ cứng, hàm toán, v.v. Chương này đang áp dụng thư viện <code>stdio.h</code> (nhập xuất chuẩn) được dùng hàm <code>printf()</code>. Gõ nó vào máy, lưu nó xài tên <code>xin_chao.c</code>, biến địch nó:</p>
+
+  <p><code>&nbsp; &nbsp;clang xin_chao.c -o xin_chao</code></p>
+
+  <p><br /></p>
+
+  <p>và chạy nó&nbsp;</p>
+
+  <p><code>&nbsp; &nbsp;./xin_chao</code></p>
+
+  <p><br /></p>
+
+  <p>Bạn nên thấy trên màn lời này</p>
+
+  <p><code>&nbsp; &nbsp;Xin Chào Thế Giới &nbsp;</code></p>
+
+  <p>&nbsp;</p>
+
+  <p>Tiếp bạn được nhìn thấy cọ một hàm tên <code>main()</code>. Chương trình C nào phải có chỉ một hàm <code>main()</code>. Nó từ chổ máy vi tính sẽ bắt đầu thực hành chương trình. Nó có nhận hai tham trị:</p>
+
+  <p>1. <code>argc</code> - số lượng tham số</p>
+
+  <p>2. <code>argv</code> - mảng xâu của tham số nhập</p>
+
+  <p><br /></p>
+
+  <p>Khi chạy chương trình bạn bạn có thể nhập tham số nhưng chương trình ở trên không xài tham số. Vị dụ cho chương trình khác có xài tham trị:&nbsp;</p>
+
+  <p><code>./doTia -p 4096 2160 -c 0.0015</code></p>
+
+  <p><br /></p>
+
+  <p>Lệnh nay nhập 6 tham số cho chương trình tên <code>doTia</code>. Trường hợp này:</p>
+
+  <p><code>&nbsp; &nbsp;argc = 6</code></p>
+
+  <p><code>&nbsp; &nbsp;argv = {"./doTia", "-p", "4096", "2160", "-c", "0.0015" }</code></p>
+
+  <h4>2.4 Hàm <code>printf()</code></h4>
+
+  <p>Chúng tôi sẽ cần phươp pháp cho đưa thông tin trên màn để xem hoạt động của chương trình mình. Nó ở trong thư viện <code>&lt;stdio.h&gt;</code> cho nên khi muốn nó cần kèm thư diện này trên tệp mã nguồn. Chúng tôi sẽ xài hàm <code>printf()</code> (hàm in) cho việc này. Mẫu cho nó</p>
+
+  <p><code>&nbsp; &nbsp;printf( "&lt;Xâu&gt;" ); &nbsp; /* đơn giản nhất, chỉ đưa xâu trên màn */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "&lt;Xâu và mã điều khiển&gt;", &lt;các biến&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>Bây giờ bạn chỉ cần biết rằng xâu là dãy ký tự (tôi sẽ mô tả về xâu trong chương 2). Các mã điều khiển của hàm <code>printf()</code> có khả năng quản lý dạng dữ liệu đưa trên màn. Xem danh sách ở dưới:</p>
+
+  <p><code>&nbsp; mã &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;dạng &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ví dụ</code></p>
+
+  <p><code>&nbsp; %c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ký tự &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;q</code></p>
+
+  <p><code>&nbsp; %d &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;số nguyên &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -3345</code></p>
+
+  <p><code>&nbsp; %e ký hiệu khoa học &lt;định trị&gt;e&lt;mũ&gt; (&lt;định trị&gt; × 10<sup>&lt;mũ&gt;</sup>) &nbsp; &nbsp; 1.2e+56</code></p>
+
+  <p><code>&nbsp; %E ký hiệu khoa học &lt;định trị&gt;E&lt;mũ&gt; (&lt;định trị&gt; × 10<sup>&lt;mũ&gt;</sup>) &nbsp; &nbsp; 1.2E+56</code></p>
+
+  <p><code>&nbsp; %f &nbsp; &nbsp; &nbsp; &nbsp; số thực dấu động phẫy &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2.78</code></p>
+
+  <p><code>&nbsp; %g &nbsp; &nbsp; &nbsp; &nbsp; nhỏ nhất của %e hay %f</code></p>
+
+  <p><code>&nbsp; %G &nbsp; &nbsp; &nbsp; &nbsp; nh</code><span style="font-family: monospace;">ỏ nhất của %E hay %f</span></p>
+
+  <p><code>&nbsp; %i &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;số nguyên &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -3345</code></p>
+
+  <p><code>&nbsp; %ld &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; số nguyên (kiểu long) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -488750966487</code></p>
+
+  <p><code>&nbsp; %o &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;số hệ bát &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0564</code></p>
+
+  <p><code>&nbsp; %p &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; địa chỉ con trỏ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0x7fff6c084bab</code></p>
+
+  <p><code>&nbsp; %s &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;xâu &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;xin chào các bạn</code></p>
+
+  <p><code>&nbsp; %u &nbsp; &nbsp; &nbsp; &nbsp;số nguyôên không dấu &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 254</code></p>
+
+  <p><code>&nbsp; %x &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; số thập lục &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;effc9</code></p>
+
+  <p><br /></p>
+
+  <p>Dạng <code>%f</code>&nbsp;có hai tham số:</p>
+
+  <p><code>&nbsp; &nbsp;%&lt;tổng số lượng số cái&gt;.&lt;số lượng số cái &gt;f</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "%7.3f\n", 3.4f ); &nbsp; /* &nbsp; 3.400 (hai dấu cách trước) */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "%.3f\n", 3.4f ); &nbsp; &nbsp;/* 3.400 */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "%3.f\n", 3.4f ); &nbsp; &nbsp;/* 3 (hai dấu cách trước) */</code></p>
+
+  <p><br /></p>
+
+  <p>Dạng <code>%e</code> và <code>%E</code> gần giống</p>
+
+  <p><code>&nbsp; &nbsp;printf( "%7.3e\n", 370.0f ); &nbsp; /* 3.720e+02 */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "%.3e\n", 370.0f ); &nbsp; &nbsp;/* 3.720e+02 */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "%3.e\n", 370.0f ); &nbsp; &nbsp;/* 4e0e+2 */</code></p>
+
+  <p>&nbsp; &nbsp;</p>
+
+  <p>Dạng <code>%d %i %u</code> chỉ có một tham số</p>
+
+  <p><code>&nbsp; &nbsp;printf( "%7d\n", 1881 ); &nbsp; &nbsp;/* &nbsp; &nbsp;1881 (ba dấu cách trước)</code>*/</p>
+
+  <p><code>&nbsp; &nbsp;printf( "%07d\n", 1881 ); &nbsp; /* 0001881 */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "%d\n", 1881 ); &nbsp; &nbsp; /* 1881 */</code></p>
+
+  <p><code><br /></code></p>
+
+  <p>Dạng <code>%c</code> chỉ có một tham số</p>
+
+  <p><code>&nbsp; &nbsp;printf( "%7c\n", 89 ); &nbsp; /* Y (sáu dấu cách trước) */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "%c\n", 89 ); &nbsp; &nbsp;/* Y */</code></p>
+
+  <p>Dạng <code>%x %o</code>&nbsp;chỉ có một tham số</p>
+
+  <p><code>&nbsp; &nbsp;printf( "%7x\n", 0xfe34 ); &nbsp; &nbsp;/* &nbsp; &nbsp;fe34 (ba dấu cách trước)</code>*/</p>
+
+  <p><code>&nbsp; &nbsp;printf( "%07x\n", 0xfe34 ); &nbsp; /* 000fe34 */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "%x\n", 0xfe34 ); &nbsp; &nbsp; /* fe34 */</code></p>
+
+  <p><br /></p>
+
+  <p>Bạn được dùng nhiều dạng một lượt:</p>
+
+  <p><code>&nbsp; &nbsp;printf( "%d họ: %s &nbsp;giới: %c\n", 20, "Nguyễn", 'N' ); &nbsp; &nbsp;/* 20 họ: Nguyễn &nbsp;giới: N */</code></p>
+
+  <p><code><br /></code></p>
+
+  <p>Ký tự ghép đặc biết:</p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;ghép &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tên &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cộng việc</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;\n &nbsp; &nbsp; &nbsp; &nbsp;trở dòng &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; trở dòng trong xâu</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;\t &nbsp; &nbsp; &nbsp; &nbsp;tab &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bằng 5 dấu cách</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;\o &nbsp; &nbsp; &nbsp; &nbsp;không (0x00) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; kết thúc xâu</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;\" &nbsp; &nbsp; &nbsp; &nbsp;răng chuột &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cho được dùng " trong</code></p>
+
+  <p><code><br /></code></p>
+
+  <p>Ví dụ xài chúng</p>
+
+  <p><code>&nbsp; &nbsp;printf( "\"Chào Qúy Khách\"\n\n%c\t%c\t%c\n", 'C', 'Q', 'K');</code></p>
+
+  <p><br /></p>
+
+  <p>sẽ phát trên màn:</p>
+
+  <p><code>"Chào Qúy Khách"</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>C &nbsp; &nbsp; &nbsp; Q &nbsp; &nbsp; &nbsp;K</code></p>
+
+  <h4>2.5 Phép toán và pháp toán<br /></h4>
+
+  <p>Có rất nhiều pháp toán trong C.&nbsp;</p>
+
+  <p>• Phép toán cơ bản:</p>
+
+  <p><code>&nbsp; &nbsp;a + b &nbsp; &nbsp;cộng</code></p>
+
+  <p><code>&nbsp; &nbsp;a - b &nbsp; &nbsp;trừ</code></p>
+
+  <p><code>&nbsp; &nbsp;a * b &nbsp; &nbsp;nhân</code></p>
+
+  <p><code>&nbsp; &nbsp;a / b &nbsp; &nbsp;chia</code></p>
+
+  <p><code>&nbsp; &nbsp;a % b &nbsp; &nbsp;dư</code></p>
+
+  <p><br /></p>
+
+  <p>• Đặt giá tri</p>
+
+  <p><code>&nbsp; &nbsp;a = b &nbsp; &nbsp;đặt bằng</code></p>
+
+  <p><br /></p>
+
+  <p>• Phép lý luận</p>
+
+  <p><code>&nbsp; &nbsp;a &amp;&amp; b &nbsp; và</code></p>
+
+  <p><code>&nbsp; &nbsp;a || b &nbsp; hoặc</code></p>
+
+  <p><code>&nbsp; &nbsp;a! &nbsp; &nbsp; &nbsp; không</code></p>
+
+  <p><code><br /></code></p>
+
+  <p>• Thao tác so sánh</p>
+
+  <p><code>&nbsp; &nbsp;a == b &nbsp; bằng</code></p>
+
+  <p><code>&nbsp; &nbsp;a != b &nbsp; không bằng</code></p>
+
+  <p><code>&nbsp; &nbsp;a &lt; b &nbsp; &nbsp;nhỏ hơn</code></p>
+
+  <p><code>&nbsp; &nbsp;a &lt;= b &nbsp; nhỏ hơn hoặc bằng</code></p>
+
+  <p><code>&nbsp; &nbsp;a &gt; b &nbsp; &nbsp;lớn hơn</code></p>
+
+  <p><code>&nbsp; &nbsp;a &gt;= b &nbsp; lớn hơn hoặc bằng</code></p>
+
+  <p><br /></p>
+
+  <p>• Thao tác bit</p>
+
+  <p><code>&nbsp; &nbsp;a &amp; b &nbsp; &nbsp;và</code></p>
+
+  <p><code>&nbsp; &nbsp;a | b &nbsp; &nbsp;hoặc</code></p>
+
+  <p><code>&nbsp; &nbsp;~a &nbsp; &nbsp; &nbsp; lật bit</code></p>
+
+  <p><code>&nbsp; &nbsp;a ^ b &nbsp; &nbsp;không hoặc</code></p>
+
+  <p><code>&nbsp; &nbsp;a &gt;&gt; b &nbsp; dịch phải (chia 2<sup>b</sup>)</code></p>
+
+  <p><code>&nbsp; &nbsp;a &lt;&lt; b &nbsp; dịch trái (nhân 2<sup>b</sup>)</code></p>
+
+  <p><br /></p>
+
+  <p>• Cộng hay trừ một</p>
+
+  <p><code>&nbsp; &nbsp;a++ &nbsp; &nbsp;cộng một sau</code></p>
+
+  <p><code>&nbsp; &nbsp;++a &nbsp; &nbsp;cộng một trước</code></p>
+
+  <p><code>&nbsp; &nbsp;a-- &nbsp; &nbsp;trừ một sau</code></p>
+
+  <p><code>&nbsp; &nbsp;--a &nbsp; &nbsp;trừ một trước</code></p>
+
+  <p><br /></p>
+
+  <p>• Viết tắt phép toán với giá trị có sẵn</p>
+
+  <p><code>&nbsp; &nbsp;a += b &nbsp; (a = a + b)</code></p>
+
+  <p><code>&nbsp; &nbsp;a -= b &nbsp; (a = a - b)</code></p>
+
+  <p><code>&nbsp; &nbsp;a *= b &nbsp; (a = a * b)</code></p>
+
+  <p><code>&nbsp; &nbsp;a /= b &nbsp; (a = a / b)</code></p>
+
+  <p><code>&nbsp; &nbsp;a %= b &nbsp; (a = a % b) &nbsp;&nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp;a &amp;= b &nbsp; (a = a &amp; b)</code></p>
+
+  <p><code>&nbsp; &nbsp;a |= b &nbsp; (a = a | b)</code></p>
+
+  <p><code><code>&nbsp; &nbsp;a ^= b &nbsp; (a = a ^ b)</code></code></p>
+
+  <p><code><code>&nbsp; &nbsp;a &gt;&gt;= b &nbsp;(a = a &gt;&gt; b)</code></code></p>
+
+  <p><code>&nbsp; &nbsp;a &lt;&lt;= b &nbsp;(a = a &lt;&lt; b)</code></p>
+
+  <p><br /></p>
+
+  <p>Lưu ý: phép lý luận chỉ được phát hai giá trị 0 (sai) hay 1 (đúng).</p>
+
+  <h4>2.6.2 Thứ tự thao tác</h4>
+
+  <p>Các thao tác theo thứ tự toán bình thường:</p>
+
+  <p><code>a = a + b * 9 / 2 - c + (c + 1);</code></p>
+
+  <p><br /></p>
+
+  <p>Trong biểu thưc trên máy tinh sẽ tính những gì giữa '<code>(</code>' và '<code>)</code>' trước, tiếp nhân, chia dư, cuối cộng trừ. Những C có nhiều thao tác mới. Xem bảng cấp ở dưới:</p>
+
+  <p><code>Cấp &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;thao thác &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; hướng</code></p>
+
+  <p><code>&nbsp; 1: &nbsp; &nbsp;++&lt;biến&gt; &nbsp;--&lt;biến&gt; &nbsp;() &nbsp;[] &nbsp;. &nbsp;--&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;traí→phải</code></p>
+
+  <p><code>&nbsp; 2: &nbsp; &nbsp;&lt;biến&gt;++ &nbsp;&lt;biến&gt;-- &nbsp;! &nbsp;~ &nbsp;(loại) &nbsp;*&lt;biến&gt; &nbsp;&amp;&lt;biến&gt; &nbsp; &nbsp; &nbsp;phải→trái</code></p>
+
+  <p><code>&nbsp; 3: &nbsp; &nbsp;.*&lt;trường&gt; &nbsp;-&gt;*&lt;trường&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; trái→phải</code></p>
+
+  <p><code>&nbsp; 4: &nbsp; &nbsp;* &nbsp;/ &nbsp;% &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; trái→phải</code></p>
+
+  <p><code>&nbsp; 5: &nbsp; &nbsp;+ &nbsp;- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;trái→phải</code></p>
+
+  <p><code>&nbsp; 6: &nbsp; &nbsp;&lt;&lt; &nbsp;&gt;&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;trái→phải</code></p>
+
+  <p><code>&nbsp; 7: &nbsp; &nbsp;&lt; &nbsp;&lt;= &nbsp;&gt; &nbsp;=&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;trái→phải</code></p>
+
+  <p><code>&nbsp; 8: &nbsp; &nbsp;== &nbsp;!= &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;trái→phải</code></p>
+
+  <p><code>&nbsp; 9: &nbsp; &nbsp;&amp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; trái→phải</code></p>
+
+  <p><code>&nbsp;10: &nbsp; &nbsp;^ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; trái→phải</code></p>
+
+  <p><code>&nbsp;11: &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; trái→phải</code></p>
+
+  <p><code>&nbsp;12: &nbsp; &nbsp;&amp;&amp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;trái→phải</code></p>
+
+  <p><code>&nbsp;13: &nbsp; &nbsp;|| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</code><span style="font-family: monospace;">trái→phải</span></p>
+
+  <p><code>&nbsp;14: &nbsp; &nbsp;? : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; phải→trái</code></p>
+
+  <p><code>&nbsp;15: &nbsp; &nbsp; = &nbsp;+= &nbsp;-= &nbsp;*= &nbsp;/= &nbsp;%= &nbsp;&lt;&lt;= &nbsp;&gt;&gt;= &nbsp;&amp;= &nbsp;^= &nbsp;|= &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</code><span style="font-family: monospace;">phải→trái</span></p>
+
+  <p><code>&nbsp;16: &nbsp; &nbsp;, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; trái→phải</code></p>
+
+  <p><br /></p>
+
+  <p>Phép toán trong cấp trên trước tính trước các cấp ở dưới. Ví dụ xem biểu thức này:</p>
+
+  <p><code>&nbsp; a+b == c || d++ &amp; 0xf</code></p>
+
+  <p><code><br /></code></p>
+
+  <p>Thứ tự thực hành là '<code>++</code>', '<code>+</code>', '<code>==</code>', '<code>&amp;</code>'. Có lẻ này không theo ý định của bạn, có lẻ bạn muốn làm:</p>
+
+  <p><code>&nbsp; (a+b == c) || (d++ &amp; 0xf)</code></p>
+
+  <p><br /></p>
+
+  <p>Bài học từ này là ngôn ngữ C cho quyền và tự do nhiều nhưng kèm theo này có nhiều trạch niệm.</p>
+
+  <h4>2.6 Hệ Số</h4>
+
+  <p>Trong nghệ nhiệp tin học và lập trình bạn sẽ gặp nhiều hệ số khác nhau. Tất cả thông tin hay dữ liệu trong máy vi tính là số. Nó thật chỉ là máy tính thuyệt vời thôi. Còn tiếp các máy vi tính thời này dùng số nhị phân, không dùng số thập con người thường dùng. Vì sao dùng số nhị phần, tại thiết kế máy kiểu này vẽ hơn nhiều, có thể dùng cộng tắt bất và tắt cho hai số nhi phận. Nhưng cho lập trình viên viất số nhị phân hơi dài và lu bu cho nên họ thích xài hệ số có thể viết tắt số nhị phân. Xem danh sách dưới:</p>
+
+  <p>nhị phân: <sub><i>b</i></sub>{0; 1}</p>
+
+  <p>bát phân: <sub><i>o</i></sub>{0; 1; 2; 3; 4; 5; 6; 7}</p>
+
+  <p>thập phân: <sub><i>d</i></sub>{0; 1; 2; 3; 4; 5; 6; 7; 8; 9}</p>
+
+  <p>thập lục phân: <sub><i>x</i></sub>{0; 1; 2; 3; 4; 5; 6; 7; 8; 9; a; b; c; d; e; f}</p>
+
+  <p><br /></p>
+
+  <p>Hình dạng của một giá trị sẽ đổi tùy hệ số</p>
+
+  <p><sub><i>b</i></sub>10 = <sub><i>o</i></sub>2 = <sub><i>d</i></sub>2 = <sub><i>x</i></sub>2</p>
+
+  <p><sub><i>b</i></sub>1000 = <sub><i>o</i></sub>10 = <sub><i>d</i></sub>8 = <sub><i>x</i></sub>8</p>
+
+  <p><sub><i>b</i></sub>1010 = <sub><i>o</i></sub>12 = <sub><i>d</i></sub>10 = <sub><i>x</i></sub>a</p>
+
+  <p><sub><i>b</i></sub>1 0000 = <sub><i>o</i></sub>20 = <sub><i>d</i></sub>16 = <sub><i>x</i></sub>10</p>
+
+  <p><br /></p>
+
+  <p>Cộng thức cho đổi nhị, bát, thấp lục phân thành thập phân</p>
+
+  <p><sub><i>b</i></sub><i>n</i> … <sub><i>b</i></sub>3 <sub><i>b</i></sub>2 <sub><i>b</i></sub>1 <sub><i>b</i></sub>0 → (<sub><i>b</i></sub><i>n</i> × 2<sup><i>n</i></sup>) + … + (<sub><i>b</i></sub>3 × 2<sup>3</sup>) + (<sub><i>b</i></sub>2 × 2<sup>2</sup>) + (<sub><i>b</i></sub>1 × 2<sup>1</sup>) + (<sub><i>b</i></sub>0 × 2<sup>0</sup>) = số thập phân</p>
+
+  <p><sub><i>o</i></sub><i>n</i> … <sub><i>o</i></sub>3 <sub><i>o</i></sub>2 <sub><i>o</i></sub>1 <sub><i>o</i></sub>0 → (<sub><i>o</i></sub><i>n</i> × 8<sup><i>n</i></sup>) + … + (<sub><i>o</i></sub>3 × 8<sup>3</sup>) + (<sub><i>o</i></sub>2 × 8<sup>2</sup>) + (<i><sub>o</sub></i>1 × 8<sup>1</sup>) + (<sub><i>o</i></sub>0 × 8<sup>0</sup>) = số thập phân</p>
+
+  <p><sub><i>x</i></sub><i>n</i> … <sub><i>x</i></sub>3 <sub><i>x</i></sub>2 <sub><i>x</i></sub>1 <sub><i>x</i></sub>0 → (<sub><i>x</i></sub><i>n</i> × 16<sup><i>n</i></sup>) + … + (<sub><i>x</i></sub>3 × 16<sup>3</sup>) + (<sub><i>x</i></sub>2 × 16<sup>2</sup>) + (<sub><i>x</i></sub>1 × 16<sup>1</sup>) + (<sub><i>x</i></sub>0 × 16<sup>0</sup>) = số thập phân</p>
+
+  <p>Ví dụ:</p>
+
+  <p><i><sub>b</sub></i>10110 = (1 × 2<sup>4</sup>) + (0 × 2<sup>3</sup>) + (1 × 2<sup>2</sup>) + (1 × 2<sup>1</sup>) + (0 × 2<sup>0</sup>) = 16 + 4 + 2 = <sub><i>d</i></sub>22</p>
+
+  <p><i><sub>o</sub></i>770 = (7 × 8<sup>2</sup>) + (7 × 8<sup>1</sup>) + (0 × 2<sup>0</sup>) = 448 + 56 = <sub><i>d</i></sub>504</p>
+
+  <p><i><sub>x</sub></i>1b43 = &nbsp;(1 × 16<sup>3</sup>) + (11 × 16<sup>2</sup>) + (4 × 16<sup>1</sup>) + (3 × 2<sup>0</sup>) = 4096 + 2816 + 64 + 3 = <sub><i>d</i></sub>6979</p>
+
+  <p><br /></p>
+
+  <p>Ngôn ngữ C chỉ hỗ trợ viết trực tiếp số bát, thập, và thập lục phân.</p>
+
+  <p>• bát thập phân (gõ số không trước):</p>
+
+  <p><code>&nbsp; &nbsp;011</code></p>
+
+  <p><code>&nbsp; &nbsp;07623</code></p>
+
+  <p><code>&nbsp; &nbsp;0275</code></p>
+
+  <p><br /></p>
+
+  <p>• thập phân</p>
+
+  <p><code>&nbsp; &nbsp;12345</code></p>
+
+  <p><code>&nbsp; &nbsp;1000</code></p>
+
+  <p><code>&nbsp; &nbsp;88</code></p>
+
+  <p><br /></p>
+
+  <p>• thập lục phân (gõ '<code>0x</code>' trước):</p>
+
+  <p><code>&nbsp; &nbsp;0x12</code></p>
+
+  <p><code>&nbsp; &nbsp;0x3c00</code></p>
+
+  <p><code>&nbsp; &nbsp;0x7fff</code></p>
+
+  <p><br /></p>
+
+  <p><b>Học Thêm</b></p>
+
+  <p>Bạn có thể đặt biến có giá trị ký tự như vậy:</p>
+
+  <p><code>&nbsp; &nbsp;char kyTu0 = '#';</code></p>
+
+  <p><code>&nbsp; &nbsp;int kyTu1 = 'a';</code></p>
+
+  <p><code>&nbsp; &nbsp;short kyTu2 = 'C';</code></p>
+
+  <p>Giá trị được đặt bằg mã số Unicode 8 (UTF8) của ký tự. Cẩn thần giá trị mã số cái không số nó đại diện, tức là 0 ≠ '0', 1 ≠ '1', v.v.</p>
+
+  <h3>Bài thực hành</h3>
+
+  <p>B2.1 Đổi chương trình ví dụ cho phát lời khác.</p>
+
+  <p><br /></p>
+
+  <p>B2.2 Làm dạng cho phát số thập lục như</p>
+
+  <p><code>&nbsp; &nbsp;0x00 0xff 0x45 ...</code></p>
+
+  <p>cho dữ liệu <code>unsigned char</code>.</p>
+
+  <p><br /></p>
+
+  <p>B2.3 Giả sư <code>a = 5</code> và <code>b = 6</code>, <code>a</code> bằng bao nhiêu sau các thao tác này:</p>
+
+  <p><code>&nbsp; &nbsp;a = b;</code></p>
+
+  <p><code>&nbsp; &nbsp;a = a + a + a;</code></p>
+
+  <p><code>&nbsp; &nbsp;b *= a;</code></p>
+
+  <p><code>&nbsp; &nbsp;a -= b;</code></p>
+
+  <p><code>&nbsp; &nbsp;a = ++b;</code></p>
+
+  <p><code>&nbsp; &nbsp;a = b--;</code></p>
+
+  <p><br /></p>
+
+  <p>B2.4 Nếu <code>a = -1</code>, <code>b = 2</code>, <code>c = 3</code>, <code>d = 0</code> tính kết qủa của các biểu thức:</p>
+
+  <p>&nbsp; a. <code>b/a + b | 0xf</code></p>
+
+  <p><code><span style="font-family: 'Times New Roman', Times, serif;">&nbsp; b. (</span><code>a &lt;&lt; 2) | 7</code><br /></code></p>
+
+  <p>&nbsp; c. <code>c &gt;&gt; d++</code></p>
+
+  <p>&nbsp; d. <code>++aa + cc++ &gt;&gt; b</code></p>
+
+  <p>&nbsp; đ. <code>a+b == c || d++ &amp; 0xf</code></p>
+
+  <p>&nbsp; e.&nbsp;<code>c ^ c</code></p>
+
+  <p>&nbsp; g. <code>~c &amp; c</code></p>
+
+  <p><br /></p>
+
+  <p>B2.5 Đổi cộng thức toán thành biểu thức C</p>
+
+  <p>&nbsp; a. <code>a&nbsp;÷ 3 + b × (c + 2)</code></p>
+
+  <p>&nbsp; b. <code>x<sup>3</sup> + 45&nbsp;≥ 17</code></p>
+
+  <p>&nbsp; c. <code>1/z<sup>2 +</sup>&nbsp;1/y<sup>5</sup></code></p>
+
+  <p><br /></p>
+
+  <p>B2.6 Đổi <sub><i>d</i></sub>4096 sang thập lục phân</p>
+
+  <p><br /></p>
+
+  <p>B2.7 Đổi <sub><i>o</i></sub>2555 sang thập phân</p>
+
+  <p><br /></p>
+
+  <p>B2.8 Đổi <sub><i>b</i></sub>10 0110 0101 sang thập phân và thập lục phân</p>
+
+  <p><br /></p>
+
+  <p>B2.9 Làm bảng cho đổi số qua lại từ nhị phân sang bát phân</p>
+
+  <p><br /></p>
+
+  <p>B2.10 Làm bảng cho đổi số qua lại từ nhị phân sang thập lục phân</p>
+
+  <p><br /></p>
+
+  <p>B2.11 Làm bảng cho đổi số qua lại từ bát phân sang thập lục phân</p>
+
+  <p><br /></p>
+
+  <p>B2.12 Trong biểu thức ở dưới, <code>c</code> bằng ký tự nào?</p>
+
+  <p><code>&nbsp; &nbsp;c = 'A' + 0x20;</code></p>
+</body>
+</html>
