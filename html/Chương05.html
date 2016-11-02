@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="../Styles/PhongCach0001.css" rel="stylesheet" type="text/css" />
+
+  <title></title>
+</head>
+
+<body>
+  <h2>Chương 5: Kiểu dữ liệu có cấu trúc</h2>
+
+  <h4>5.1 <code>struct</code> và <code>union</code></h4>
+
+  <p><b>• <code>struct</code></b></p>
+
+  <p>Để giup tổ chức kiểu dữ liệu cơ bản có <code>struct</code> (cấu trúc). Xem mẫu chỉ định:</p>
+
+  <p><code>&nbsp; &nbsp;struct {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;kiểu biến 0&gt; &lt;tên biến 0&gt;; &nbsp; /* trường 0 */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;kiểu biến 1&gt; &lt;tên biến 2&gt;; &nbsp;&nbsp;</code><span style="font-family: monospace;">/* trường 1 */</span></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;} &lt;tên struct&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p>Khai báo <code>struct</code>:</p>
+
+  <p><code>&nbsp; &nbsp;struct &lt;tên struct&gt; &lt;tên biến&gt;;</code></p>
+
+  <p><code><br /></code></p>
+
+  <p>Và để đặt giá trị cho các trường dùng '<code>.</code>' giữa tên <code>struct</code> và tên trường:</p>
+
+  <p><code>&nbsp; &nbsp;&lt;tên struct&gt;.&lt;tên trường&gt; = &lt;giá trị&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p>Xem vài ví dụ màu sắc:</p>
+
+  <p><code>&nbsp; &nbsp;struct { &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* chỉ định struct màu */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char d; &nbsp; /* đỏ &nbsp; &nbsp; */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char l; &nbsp; /* lục &nbsp; &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char x; &nbsp; /* xanh &nbsp; */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char dd; &nbsp;/* độ đục */</code></p>
+
+  <p><code>&nbsp; &nbsp;} Mau;</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;struct Mau mauTroi; &nbsp;/* khai báo struct màu trời */</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* đặt giá trị khởi tạo cho các trường */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;mauTroi.d = 0x20;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;mauTroi.l = 0x20;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;mauTroi.x= 0xff;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;mauTroi.dd = 0xff;</code></p>
+
+  <p><br /></p>
+
+  <p>Cũng có thể dùng mảng và xâu nữa.<br /></p>
+
+  <p><code>&nbsp; &nbsp;struct { &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* chỉ định struct học sinh */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; char ho[255]; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* họ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; char ten[255]; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* tên &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char gioiTinh; &nbsp;/* xanh &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float vatLy; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* điểm vật lý &nbsp; &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float toan; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* điểm toán &nbsp; &nbsp; &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float van; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* điểm văn &nbsp; &nbsp; &nbsp; */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float ngoaiNgu; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* điểm ngoại ngữ */</code></p>
+
+  <p><code>&nbsp; &nbsp;} HocSinh;</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;struct HocSinh mangLop[30]; &nbsp;/* khai báo mảng struct cho 30 học sinh */</code></p>
+
+  <div>
+    <code><br /></code>
+  </div>
+
+  <p><b>• <code>union</code></b></p>
+
+  <p>&nbsp;Sử dụng union rất giống struct:</p>
+
+  <p><code>&nbsp; &nbsp;union {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;kiểu biến 0&gt; &lt;tên biến 0&gt;;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;kiểu biến 1&gt; &lt;tên biến 2&gt;;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;} &lt;tên&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p>Khai báo <code>union</code>:</p>
+
+  <p><code>&nbsp; &nbsp;union &lt;tên union&gt; &lt;tên biến&gt;;</code></p>
+
+  <p><code><br /></code></p>
+
+  <p>Và để đặt giá trị cho các trường dùng '<code>.</code>' giữa tên&nbsp;<code>union</code>&nbsp;và tên trường:</p>
+
+  <p><code>&nbsp; &nbsp;&lt;tên union&gt;.&lt;tên trường&gt; = &lt;giá trị&gt;;</code></p>
+
+  <p><code><br /></code></p>
+
+  <p>Nhưng <code>union</code> hoạt động khác struct, tất cả trường của union ở <i>một chỗ trong trí nhớ</i>. Ý niềm quan trọng là:</p>
+
+  <p>•&nbsp;<code>struct</code> dùng trí nhớ riêng cho mỗi trường trong nó</p>
+
+  <p>•&nbsp;<code>union</code> chỉ bằng kiểu dữ liệu lớn nhất rong nó</p>
+
+  <p><br /></p>
+
+  <p>Cử xử này có lời ích gì &nbsp;không? Đường nhiên có. Ví dụ tôi muốn kiểm tra bit của kiểu số thật dấu phẫy động như <code>float</code> hay <code>double</code>, tôi thử viết mã nguồn:</p>
+
+  <p><code>&nbsp; float soThat = 1.0f;</code></p>
+
+  <p><code>&nbsp; printf( "%x\n", soThat &amp; 0x7f800000 );</code></p>
+
+  <p><br /></p>
+
+  <p>Nhưng biến dịch sẽ phát sai lầm và báo thao tác bit không thể áp dụng với kiểu float. Nhưng có thể dùng <code>union</code> để giải duyết vận đề:</p>
+
+  <p><code>&nbsp; &nbsp;union { &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* chỉ định unon fl_int */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float f; &nbsp; &nbsp; &nbsp; &nbsp; /* số thật, giát trị muốn kiểm tra &nbsp; &nbsp; &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned int i; &nbsp;/* thao tác bit được dùng với số nguyên */</code></p>
+
+  <p><code>&nbsp; &nbsp;} fl_int;</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;union fl_int soKiemTra; &nbsp;/* khai báo union số kiểm tra */</code></p>
+
+  <p><code>&nbsp; &nbsp;soKiemTra.f = 1.0f; &nbsp; &nbsp; &nbsp;/* nhập giá tri muốn kiểm tra */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "%x\n", soKiemTra.i &amp; 0x7f800000 ); /* thao tác bit */</code></p>
+
+  <h4>5.2 <code>typedef</code></h4>
+
+  <p>Từ dành typedef cho bạn đặt tên kiểu dử liệu chỉ định sẳn:</p>
+
+  <p><code>&nbsp; &nbsp;typedef &lt;tên kiêu&gt; &lt;tên kiểu mới&gt;</code></p>
+
+  <p><br /></p>
+
+  <p>Xem vài ví dụ ở với:</p>
+
+  <p><code>&nbsp; &nbsp;typedef unsigned char Byte;</code></p>
+
+  <p><code>&nbsp; &nbsp;typedef int Int32;</code></p>
+
+  <p><code>&nbsp; &nbsp;typedef long int Int64;</code></p>
+
+  <p><br /></p>
+
+  <p>Lợi ích của <font face="monospace">typedef</font>&nbsp;là giúp tạo kiểu dữ liệu phức tạp tử struct:</p>
+
+  <p><code>&nbsp; &nbsp;typedef struct {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char d; &nbsp; /* đỏ &nbsp; &nbsp; */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char l; &nbsp; /* lục &nbsp; &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char x; &nbsp; /* xanh &nbsp; */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char dd; &nbsp;/* độ đục */</code></p>
+
+  <p><code>&nbsp; &nbsp;} Mau;</code></p>
+
+  <p><br /></p>
+
+  <p>Khi khai báo biến chỉ cần:</p>
+
+  <p><code>&nbsp; &nbsp;Mau mauTroi;</code></p>
+
+  <p><code>&nbsp; &nbsp;Mau xe;</code></p>
+
+  <p><br /></p>
+
+  <p>Làm <code>union</code>&nbsp;cũng thương dương:</p>
+
+  <p><code>&nbsp; &nbsp;typedef union {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float f; &nbsp; &nbsp; &nbsp; &nbsp; /* số thật &nbsp; */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned int i; &nbsp;/* số nguyên */</code></p>
+
+  <p><code>&nbsp; &nbsp;} fl_int;</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;fl_int soKiemTra; &nbsp;/* khai báo union số kiểm tra */</code></p>
+
+  <p><br /></p>
+
+  <p>Bạn được thấy sau dùng <code>typedef</code> không cẩn gõ <code>struct</code> hay <code>union</code>. Gần lần nào tôi làm vậy.</p>
+
+  <h4>5.3 <code>enum</code></h4>
+
+  <p>Dùng enum để 'đặt tên' cho các gía trị biến có thễ nhận và giúp làm mã nguồn dê đọc hơn. Chỉ định như</p>
+
+  <p><code>&nbsp; &nbsp;enum {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;tên riêng 0&gt;, &nbsp; /* tên riêng 0 */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;tên riêng 1&gt;, &nbsp;&nbsp;</code><span style="font-family: monospace;">/* tên riêng 1 */</span></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;} &lt;tên enum&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p>Khai báo:</p>
+
+  <p><code>&nbsp; &nbsp;enum &lt;tên enum&gt; &lt;biên&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p>Chú ý giữa mỗi phần dùng ký tự '<code>,</code>' không dùng '<code>;</code>'. Xem ví dụ</p>
+
+  <p><code>&nbsp; &nbsp;enum { &nbsp; /* chỉ định enum Hướng */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; TRAI, &nbsp; &nbsp;/* TRÁI */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; PHAI, &nbsp; &nbsp;/* PHẢI */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; DUOI, &nbsp; &nbsp;/* DƯỚI */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; TREN, &nbsp; &nbsp;/* TRÊN */</code></p>
+
+  <p><code>&nbsp; &nbsp;} Huong;</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;enum Huong huong_di = TRAI; /* khai báo */</code></p>
+
+  <p><br /></p>
+
+  <p>Thường người ta dùng chữ hoa cho phần tử <code>enum</code> giống hằng số. Bạn cũng có thể dùng gía trị trong <code>enum</code> trực tiếp cho biển khác. Xem ví dụ xài Hương chỉ định ở cho chủ nhật va chạm trong trờ chơi:</p>
+
+  <p><code>&nbsp; &nbsp;float chuNhatVaCham[4]; &nbsp; &nbsp; &nbsp; &nbsp;/* khai báo mảng chủ nhật va chạm */</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;chuNhatVaCham[TRAI] = -10.0f;</code></p>
+
+  <p><code>&nbsp; &nbsp;chuNhatVaCham[PHAI] = 10.0f;</code></p>
+
+  <p><code>&nbsp; &nbsp;chuNhatVaCham[DUOI] = 30.0f;</code></p>
+
+  <p><code>&nbsp; &nbsp;chuNhatVaCham[TREN] = 30.0f;</code></p>
+
+  <p><br /></p>
+
+  <p>Làm sao nó được làm vậy? Tại <code>enum</code> chỉ là danh sách số nguyen bắt đầu từ số không. Thử:</p>
+
+  <p><code>&nbsp; &nbsp;printf( "%d %d %d %d\n", TRAI, PHAI, DUOI, TREN );</code></p>
+
+  <p><br /></p>
+
+  <p><b>Bài thực hành</b></p>
+
+  <p>B5.1 struct và union khác nhau như thế nào?</p>
+
+  <p>B5.2&nbsp;<code>union</code>&nbsp;ở dưới cần bao nhiêu byte đê chứa nó?</p>
+
+  <p><code>&nbsp; &nbsp;union { /* chỉ định unon bản ghi */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;char ma[5];</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;double beDai;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;int soLuong;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; char xong;</code></p>
+
+  <p><code>&nbsp; &nbsp;} BanGhi;</code></p>
+
+  <p><br /></p>
+
+  <p>B5.3 Tại sao cho&nbsp;<code>union fl_int</code>&nbsp;tôi chọn <code>unsigned int</code> thay <code>char</code> như ở dưới?</p>
+
+  <p><code>&nbsp; &nbsp;union { &nbsp; &nbsp; /* chỉ định unon fl_ch */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float f; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char ch;</code></p>
+
+  <p><code>&nbsp; &nbsp;} fl_ch;</code></p>
+
+  <p><br /></p>
+
+  <p>B5.4 Chuẩn bị&nbsp;<code>union</code> như ở dưới. Xem và phần tích kết qủa</p>
+
+  <p><code>&nbsp; &nbsp;union { &nbsp; &nbsp; /* chỉ định unon i_mangCh */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; int i</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char ch[4];</code></p>
+
+  <p><code>&nbsp; &nbsp;} i_mangCh;</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;union i_mangCh thuNghiem; &nbsp;/* khai báo union thửNghiệm */</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;union i_mangCh thuNghiem.ch[0] = 0x76; &nbsp; &nbsp; &nbsp;/* đặt giá trị mảng */</code></p>
+
+  <p><code>&nbsp; &nbsp;union i_mangCh thuNghiem.ch[1] = 0x21;</code></p>
+
+  <p><code>&nbsp; &nbsp;union i_mangCh thuNghiem.ch[2] = 0x31;</code></p>
+
+  <p><code>&nbsp; &nbsp;union i_mangCh thuNghiem.ch[3] = 0x01;</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;printf( "%x\n", thuNghiem.i ); &nbsp; /* phát kết qủa */</code></p>
+
+  <p><br /></p>
+
+  <p>B5.5 Dùng <code>typedef</code> và <code>struct</code> để tạo kiểu <code>Vectơ</code> trong không gian ba chiều (có thành phần <i>x</i>; <i>y</i>; <i>z</i>). Tạo hàm tính:</p>
+
+  <p>a. độ dài vecto</p>
+
+  <p>b. tích vô hướng</p>
+
+  <p>c. tích có hướng</p>
+
+  <p>d. donViHoa</p>
+
+  <p><br /></p>
+
+  <p>B5.6 Dùng kiểu <code>Vecto</code> từ B4.5 để tạo kiểu <code>Tia</code> trong không gian ba chiều, nhớ một tia là đối tượng toán có điểm phát và hướng đi.</p>
+
+  <p><br /></p>
+
+  <p>B5.7 Chỉ định và khai báo một biến <code>enum</code> và dùng <code>sizeof()</code> để quan sát cần bao nhiêu bye chứa nó. Thử phần của nó nữa.</p>
+
+  <p><br /></p>
+</body>
+</html>
