@@ -10,7 +10,9 @@
 </head>
 
 <body>
-  <h2>Chương 3: Các thành phần của ngôn ngữ lập trình<br /></h2>
+  <h2>Chương 3: Cơ bản: cấu trúc, thư viện, biến, mảng<br /></h2>
+
+  <p>Để bắt đầu viết chương trình chúng tôi cần hiểu về cách xây. Mà để xây chúng tôi phải biết về những thành phần và 'chất liệu' được xây nó. Chươg trình được xây lên từ câu lệnh, hàm, hằng, biến, v.v. Bạn được bắt đầu học về nó ở với.</p>
 
   <h4>3.1: Cấu trúc chương trình</h4>
 
@@ -402,7 +404,7 @@
 
   <p><code>&nbsp; &nbsp;unsigned int chiSo; &nbsp;/* chỉ số &nbsp;*/</code></p>
 
-  <p><font face="monospace">&nbsp; &nbsp;short nam = 2120; &nbsp; &nbsp;/* năm &nbsp; &nbsp; */</font></p>
+  <p><code>&nbsp; &nbsp;short nam = 2120; &nbsp; &nbsp;/* năm &nbsp; &nbsp; */</code></p>
 
   <p><code>&nbsp; &nbsp;char chuCai = 's'; &nbsp; /* chữ cái */</code></p>
 
@@ -626,9 +628,9 @@
 
   <p><code>&nbsp; &nbsp;float nhietDo[365]; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* mảng float 365 phần tử */</code></p>
 
-  <p><code>&nbsp; &nbsp;unsigned char beCao[5] = {155, 148, 175, 166, 170};&nbsp;</code><span style="font-family: monospace;">/* mảng uint 5 phần tử, đặt giá trị */</span></p>
+  <p><code>&nbsp; &nbsp;unsigned char beCao[5] = {155, 148, 175, 166, 170};&nbsp;/* mảng uint 5 phần tử, đặt giá trị */</code></p>
 
-  <p><code>&nbsp; &nbsp;char ten[] = {'t', 'h', 'a', 'n', 'h', 0 }; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</code><span style="font-family: monospace;">/* cho biên địch đếm phần tử giùm &nbsp;*/</span></p>
+  <p><code>&nbsp; &nbsp;char ten[] = {'t', 'h', 'a', 'n', 'h', 0 }; &nbsp; &nbsp; &nbsp; &nbsp; /* cho biên địch đếm phần tử giùm */</code></p>
 
   <p><br /></p>
 
@@ -650,9 +652,9 @@
 
   <p>Các mảng ở trên đợi là mảng một chiều. Cũng có mảng dđa chiều:</p>
 
-  <p><span style="font-family: monospace;">&nbsp; &nbsp;&lt;kiểu dữ liệu&gt; &lt;tên mảng&gt; [&lt;bề dài 0&gt;]</span><span style="font-family: monospace;">[&lt;bề dài 1&gt;]...</span><br /></p>
+  <p><code>&nbsp; &nbsp;&lt;kiểu dữ liệu&gt; &lt;tên mảng&gt; [&lt;bề dài 0&gt;][&lt;bề dài 1&gt;]...</code></p>
 
-  <p><span style="font-family: monospace;">&nbsp; &nbsp;&lt;kiểu dữ liệu&gt; &lt;tên mảng&gt; [] = {{&lt;giá trị 00&gt;, &lt;giá trị 01&gt;, ...},&nbsp;</span><span style="font-family: monospace;">{&lt;giá trị 10&gt;, &lt;giá trị 11&gt;, ...}</span><span style="font-family: monospace;">&nbsp;};</span></p>
+  <p><code>&nbsp; &nbsp;&lt;kiểu dữ liệu&gt; &lt;tên mảng&gt; [] = {{&lt;giá trị 00&gt;, &lt;giá trị 01&gt;, ...}, {&lt;giá trị 10&gt;, &lt;giá trị 11&gt;, ...} };</code></p>
 
   <p><br /></p>
 
@@ -718,11 +720,11 @@
 
   <p><b>Học thêm</b></p>
 
-  <p>Cho xâu dùng ký tự như <code>"#dR^6"</code> có một mã số cho mỗi ký tự. Nhưng nếu có ký tự như <code>"ềดиす</code><span style="font-family: monospace;">ណ</span><code>"</code> không còn một mã số cho mỗi ký tự mà có hai tới bốn cái! Mã số hóa này gọi UTF8. Xem mã hóa cho hai xâu ở dưới: &nbsp;</p>
+  <p>Cho xâu dùng ký tự như <code>"#dR^6"</code> có một mã số cho mỗi ký tự. Nhưng nếu có ký tự như "<code>ềดиすណ</code>" không còn một mã số cho mỗi ký tự mà có hai tới bốn cái! Mã số hóa này gọi UTF8. Xem mã hóa cho hai xâu ở dưới:</p>
 
-  <p><code>"#dR^6"</code> → <code>0x23 &nbsp;0x64 &nbsp;0x52 &nbsp;0x5e &nbsp;0x36</code></p>
+  <p>"<code>#dR^6</code>" → <code>0x23 &nbsp;0x64 &nbsp;0x52 &nbsp;0x5e &nbsp;0x36</code></p>
 
-  <p><code>"ềดиすណ"</code> → <code>0xe1 0xbb 0x81 &nbsp;0xe0 0xb8 0x94 &nbsp;0xd0 0xb8 &nbsp;0xe3 0x81 0x99 &nbsp;0xe1 09e 0x8e</code></p>
+  <p>"<code>ềดиすណ</code>" → <code>0xe1 0xbb 0x81 &nbsp;0xe0 0xb8 0x94 &nbsp;0xd0 0xb8 &nbsp;0xe3 0x81 0x99 &nbsp;0xe1 09e 0x8e</code></p>
 
   <h4>3.7 Hàm <code>scanf()</code></h4>
 
@@ -912,7 +914,7 @@
 
   <p><code>&nbsp; &nbsp;unsigned char chuCai[][] = {{'a'}, {'e'}, {'i'}, 'o', 'u', 'y'};<br /></code></p>
 
-  <p><span style="font-family: monospace;">&nbsp; &nbsp;unsigned char chuCai[3][3] = {{'a'}, {'e'}, {'i'}}, {'o'}, {'u'}, {{'y'}, {x}, {z}};</span><br /></p>
+  <p><code>&nbsp; &nbsp;unsigned char chuCai[3][3] = {{'a'}, {'e'}, {'i'}}, {'o'}, {'u'}, {{'y'}, {x}, {z}};</code></p>
 
   <p><br /></p>
 
