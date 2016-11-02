@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="../Styles/PhongCach0001.css" rel="stylesheet" type="text/css" />
+
+  <title></title>
+</head>
+
+<body>
+  <h2>Chương 7: Tệp&nbsp;</h2>
+
+  <p>Tệp giúp chúng tôi lưu trữ thông tin và dữ liệu cho xài tiếp trong tương lại. Chắc máy của bạn có rất nhiều tệp chứa thôn tin bạn cần để làm cộng việc. Cho nên học làm sao thương tác với tệp rất quan trọn. Chương sẽ giới thiệu bạn các hàm tệp của ngôn ngữ C. Tất cả hàm tệp trong chương này ở trong thư viện <code>&lt;stdio.h&gt;</code>.&nbsp;</p>
+
+  <h4>7.1 Mở đọc, ghi, và đóng tệp</h4>
+
+  <p>Tệp được xem như một dòng byte. Chi tiết tổ chức của tệp trong ổ cứng không quan trọng trừ cần biết đường dẫn đến tệp. Để làm việc với tệp có con trỏ kiểu <code>FILE</code>, một struct chứa thông tin về tệp đang tiếp xúc. Khai báo biến con trỏ:</p>
+
+  <p><code>&nbsp; &nbsp;FILE *&lt;tên con trỏ tệp&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p>và hàm đê mở tệp&nbsp;<code>fopen()</code>. Xem ví dụ ở dưới:</p>
+
+  <p><code>&nbsp; &nbsp;FILE *&lt;tên con trỏ tệp&gt; = fopen( "&lt;tên tệp&gt;", &lt;chế độ&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>Nó các chế độ</p>
+
+  <p><code>&nbsp; &nbsp;r</code> &nbsp; đọc</p>
+
+  <p><code>&nbsp; &nbsp;r+</code> đọc/ghi</p>
+
+  <p><code>&nbsp; &nbsp;w</code>&nbsp; &nbsp;ghi</p>
+
+  <p><code>&nbsp; &nbsp;w+</code> ghi/đọc</p>
+
+  <p><code>&nbsp; &nbsp;a</code>&nbsp; &nbsp;ghi tiếp từ kết túc tệp</p>
+
+  <p><code>&nbsp; &nbsp;a+</code>&nbsp;ghi tiếp từ kết túc tệp /đọc tiếp</p>
+
+  <p><br /></p>
+
+  <p>Nếu tệp chư tồn tại chế độ '<code>w</code>' và '<code>a</code>' sẽ tạo tiếp mới.</p>
+
+  <p><b>Cẩn thận:</b> bạn nên xem con trỏ tệp <code>!= NULL</code>&nbsp;trước làm gì với nó và báo cáo sai lần cho người dùng. Có vài vấn đề như ổ cứng đầy, không có phép đọc hay lưu tệp, tệp không tồn tại (nếu đang đọc tệp).</p>
+
+  <p><br /></p>
+
+  <p>Ví dụ mở tệp cho lưu thông tin:</p>
+
+  <p><code>&nbsp; &nbsp;FILE *tepThongTin = fopen( "tệpLưuTrữ.dat", "w");</code></p>
+
+  <p><br /></p>
+
+  <p>và đọc thông tin:</p>
+
+  <p><code>&nbsp; &nbsp;FILE *tepThongTin = fopen( "tệpLưuTrữ.dat", "r");</code></p>
+
+  <p><br /></p>
+
+  <p>Còn để đóng tệp dùng hàm <code>fclose()</code>:</p>
+
+  <p><code>&nbsp; &nbsp;fclose( &lt;tên con trỏ tệp&gt; );</code></p>
+
+  <h4>7.2 Di chuyển trong tệp</h4>
+
+  <p>Để di chuển vị trí trong tệp có ba hàm tiện lắm:&nbsp;<code>ftell()</code>, <code>fseek()</code>, <code>frewind()</code>. Hết số lượng byte&nbsp;</p>
+
+  <p>• Xài <code>fell()</code> để biết vị trí trong tệp (số lượng byte từ đầu tệp)</p>
+
+  <p><code>&nbsp; &nbsp;long ftell( &lt;tên con trỏ tệp&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>• Để di chuyển trong tệp xài&nbsp;</p>
+
+  <p><code>&nbsp; &nbsp;fseek( &lt;tên con trỏ tệp&gt;, &lt;dịch&gt;, &lt;hằng hướng&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>Địch là khoảng cách di chuyển trong tệp bằng byte tương đối tùy tham trị hằng hướng:</p>
+
+  <p>&nbsp; 1. <code>SEEK_SET</code>&nbsp;(từ đầu tệp)</p>
+
+  <p>&nbsp; 2. <code>SEEK_CUR</code>&nbsp;(từ vị trí hiện tại trong tệp)</p>
+
+  <p>&nbsp; 3. <code>SEEK_END</code>&nbsp;(từ kết thúc tệp)</p>
+
+  <p><br /></p>
+
+  <p>Để biết khi đết kết thúc tệp có hằng <code>EOF</code>.</p>
+
+  <p><br /></p>
+
+  <p>• Trở lại đầu đầu tệp</p>
+
+  <p><code>&nbsp; &nbsp;frewind( &lt;tên con trỏ tệp&gt; );</code></p>
+
+  <h4>7.3 Đọc và ghi tệp</h4>
+
+  <p>Nảy giờ tôi chưa chỉ làm sao đọc và ghi trong trong tệp! Có hàm đọc một byte:&nbsp;</p>
+
+  <p><code>&nbsp; &nbsp;fgetc( &lt;tên con trỏ tệp&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>và hàm ghi một byte:</p>
+
+  <p><code>&nbsp; &nbsp;fputc( &lt;tên biến&gt;, &lt;tên con trỏ tệp&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>Để đọc và lưu thông tin nhiều hơn một lượt xài</p>
+
+  <p><code>&nbsp; &nbsp;fscanf( &lt;tên con trỏ tệp&gt;, "&lt;xâu điểu khiển&gt;", &lt;địa chỉ các biến&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>và</p>
+
+  <p><code>&nbsp; &nbsp;fprintf( &lt;tên con trỏ tệp&gt;, "&lt;xâu điểu khiển&gt;", &lt;địa chỉ các biến&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>Sử dụng rất giống <code>scanf()</code> và <code>printf()</code> chúng tôi đã gặp trong chương 2 và 3 trừ có tham trị cho tên con trỏ tệp ở phía trước. Bạn được mã điều khiển đê quản lý thông tin được lưu trong tệp bởi fprintf(). Nếu bạn làm (gaỉ sư đã mở tệp rồi):</p>
+
+  <p><code>&nbsp; &nbsp;char kyTu0 = 'v', kyTu = @;</code></p>
+
+  <p><code>&nbsp; &nbsp;char xau[] = "thanh cong";</code></p>
+
+  <p><code>&nbsp; &nbsp;int so = 345;</code></p>
+
+  <p><code>&nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;fprintf( ''%s - %c %c: %5d", xau, kyTu0, kyTu1, so );</code></p>
+
+  <p><br /></p>
+
+  <p>được lưu:</p>
+
+  <p><code>&nbsp; &nbsp; thanh cong - v @: &nbsp; 345</code></p>
+
+  <p><br /></p>
+
+  <p>Khi xài <code>fscanf()</code> cần cẩn thận làm theo tổ chức dữ liệu tron tệp. Ở dưới có một ví dụ lưu tệp:</p>
+
+  <ol>
+    <li><code>#include &lt;stdio.h&gt;</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>int main() {</code></li>
+
+    <li><code>&nbsp; &nbsp;char xau[] = "Tin nhẵn lưu trữ";</code></li>
+
+    <li><code>&nbsp; &nbsp;FILE *conTroTep = fopen( "TệpLưu.txt", "w" ); /* mở tệp */</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp;/* Xem tạo tệp thành công */</code></li>
+
+    <li><code>&nbsp; &nbsp;if( conTroTep != NULL ) {</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; fprintf( conTroTep, "%s%c", xau, 0x00 ); &nbsp;/* 0x00 cho kết thúc xâu */</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; fclose( conTroTep ); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* đóng con trỏ */</code></li>
+
+    <li><code>&nbsp; &nbsp;}</code></li>
+
+    <li><code>}</code></li>
+  </ol>
+
+  <p>Còn đọc tệp:</p>
+
+  <ol>
+    <li><code>#include &lt;stdio.h&gt;</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>int main() {</code></li>
+
+    <li><br /></li>
+
+    <li><code>&nbsp; &nbsp;FILE *conTroTep = fopen( "TệpLưu.txt", "r" ); /* mở tệp */</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp;/* Xem tạo tệp thành công */</code></li>
+
+    <li><code>&nbsp; &nbsp;if( conTroTep != NULL ) {</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; char xau[128];</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; unsigned char chiSo = 0, byte;</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; /* đọc dỡ liệu từ tệp */</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; do {</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;byte = fgetc( conTroTep );</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;xau[chiSo] = byte; /* lưu trữ trong xâu */</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;chiSo++;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; } while( (byte != EOF) &amp;&amp; (chiSo &lt; 128) );</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; fclose( conTroTep ); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* đóng con trỏ */</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; /* đưa lên màn */</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf( "%s\n", xau );</code></li>
+
+    <li><code>&nbsp; &nbsp;}</code></li>
+
+    <li><code>}</code></li>
+  </ol>
+
+  <h3><b>Bài thực hành</b></h3>
+
+  <p>B7.1 Trong ví dụ đọc tệp ở trên tôi biết trước tệp đang đọc không hơn 128 byte. Nhưng trong trường hợp thật, thường bạn sẽ không biết tệp dài bao nhiêu byte. Đổi chương trình cho được</p>
+
+  <p>•&nbsp;tìm bề dài tệp trước đọc</p>
+
+  <p>• dùng <code>malloc()</code> để tạo đệm chứa hết thông tin</p>
+
+  <p>(Có vài dạng tệp ghi bề dài trong tệp nhưng bạn phải biết kiểu của thông tin đó và nó ờ đâu trong tệp).<br /></p>
+
+  <p><br /></p>
+
+  <p>B7.2 Có trường hợp máy bạn đang chạy chương trình không thẻ đọc hết tệp bởi nó qúa lớn. Viết hàm có thể đọc 1024 byte vào một đệm, sau chương trình đã xử lý hết dữ liệu trong đệm, đọc 1024 thâm nữa. Coi chừng bề dài tệp không được chia 1024 byte, cho nên hàm cần phát số lượng byte đã đọc.&nbsp;</p>
+
+  <p><br /></p>
+
+</body>
+</html>
