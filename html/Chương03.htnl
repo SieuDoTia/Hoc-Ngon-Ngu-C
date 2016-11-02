@@ -912,7 +912,7 @@
 
   <p><code>&nbsp; &nbsp;unsigned char chuCai[][] = {'a', 'e', 'i', 'o', 'u', 'y'};</code></p>
 
-  <p><code>&nbsp; &nbsp;unsigned char chuCai[][] = {{'a'}, {'e'}, {'i'}, 'o', 'u', 'y'};<br /></code></p>
+  <p><code>&nbsp; &nbsp;unsigned char chuCai[][] = {{'a'}, {'e'}, {'i'}, 'o', 'u', 'y'};</code></p>
 
   <p><code>&nbsp; &nbsp;unsigned char chuCai[3][3] = {{'a'}, {'e'}, {'i'}}, {'o'}, {'u'}, {{'y'}, {x}, {z}};</code></p>
 
