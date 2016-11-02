@@ -16,7 +16,7 @@
 
   <p>Sơ đồ ở dưới chỉ cấu tạo của một chương ví dụ. Nó có hàm trong một tệp và những chia ra theo nhiệm vụ của họ. Chia một chương trình như vật giúp phát triển nó nhanh hơn, chỉ biên địch tệp đã đổi và ghép lại nhau. Mỗi chương trình C phải có một hàm tên <code>main()</code> mà một cái thôi. Nó báo biên địch điểm khởi hành chương trinh. Song không yêu cầu tệp có hàm <code>main()</code>&nbsp;phải có tên '<code>main.c</code>'.</p>
 
-  <h4 style="text-align: center;"><img alt="Sơ_Đồ_Cấu_Trúc_Chương_Trình" src="Images/So_Do_Cau_Truc_Chuong_Trinh.svg" />&nbsp;</h4>
+  <h4 style="text-align: center;"><img alt="Sơ_Đồ_Cấu_Trúc_Chương_Trình" src="../Images/So_Do_Cau_Truc_Chuong_Trinh.svg" />&nbsp;</h4>
 
   <p>Những gặp hai tệp gọi:</p>
 
@@ -139,6 +139,18 @@
   <p>Khi xài những thư viện này dùng mẫu:</p>
 
   <p><code>&nbsp; &nbsp;#include &lt;tên thư viện&gt;</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>stdlib.h</code></p>
+
+  <p>Có nhiều hàm có lợi ích trong <code>stdlib.h</code> nhưng bây giờ tôi chỉ kể về hàm <code>rand()</code>. Nó taọ số ngẫu nhiên và dùng cho mô phỏng những qúa trình ngẫu nhiên. Để khởi động hàm <code>rand()</code> dùng câu lệnh trước dùng <code>rand()</code>:</p>
+
+  <p><code>&nbsp; &nbsp;srand( time(0) );</code></p>
+
+  <p>làm khi bắt đầu chương trình. Nếu không khởi động, nó phát một dãy số ngẫu nhiên giống hệt mối lần bạn chạy chương trình. Hàm <code>time()</code> ở trong thư viện <code>time.h</code>.</p>
+
+  <p>&nbsp;<br /></p>
 
   <p><br /></p>
 
@@ -588,7 +600,7 @@
 
   <p>&nbsp;</p>
 
-  <p><img alt="Mang" src="Images/Mang.svg" /></p>
+  <p><img alt="Mang" src="../Images/Mang.svg" /></p>
 
   <p><br /></p>
 
