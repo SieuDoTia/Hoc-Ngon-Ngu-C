@@ -16,7 +16,7 @@
 
   <p>Sơ đồ ở dưới chỉ cấu tạo của một chương ví dụ. Nó có hàm trong một tệp và những chia ra theo nhiệm vụ của họ. Chia một chương trình như vật giúp phát triển nó nhanh hơn, chỉ biên địch tệp đã đổi và ghép lại nhau. Mỗi chương trình C phải có một hàm tên <code>main()</code> mà một cái thôi. Nó báo biên địch điểm khởi hành chương trinh. Song không yêu cầu tệp có hàm <code>main()</code>&nbsp;phải có tên '<code>main.c</code>'.</p>
 
-  <h4 style="text-align: center;"><img alt="Sơ_Đồ_Cấu_Trúc_Chương_Trình" src="../Images/So_Do_Cau_Truc_Chuong_Trinh.svg" />&nbsp;</h4>
+  <h4 style="text-align: center;"><img alt="Sơ_Đồ_Cấu_Trúc_Chương_Trình" src="Images/So_Do_Cau_Truc_Chuong_Trinh.svg" />&nbsp;</h4>
 
   <p>Những gặp hai tệp gọi:</p>
 
@@ -588,7 +588,7 @@
 
   <p>&nbsp;</p>
 
-  <p><img alt="Mang" src="../Images/Mang.svg" /></p>
+  <p><img alt="Mang" src="Images/Mang.svg" /></p>
 
   <p><br /></p>
 
