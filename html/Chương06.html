@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="../Styles/PhongCach0001.css" rel="stylesheet" type="text/css" />
+
+  <title></title>
+</head>
+
+<body>
+  <h2>Chương 6: Con Trỏ</h2>
+
+  <p>Con trỏ rất quan trọn trong ngôn ngữ C và dùng phổ biến. Có người có thể hiểu khái niềm này, có người không. Nó chia sẻ lập trình viên trưởng thành từ lập trình non. Thời tôi viết sách này cuối năm 2016, có không ít người bình luận ngôn ngữ lập trình mới nên có con trỏ. Nên có hay không chẳng quan trọn cho sách này, ngôn ngữ có con trỏ và bạn phải về nó.</p>
+
+  <h4>6.1 Con trỏ là cái gì?</h4>
+
+  <p>Đơn giản nhất nó là địa chỉ trong trí nhớ. Thay trực tiếp đối xử với biến, chúng ta có thể dùng địa chỉ của nó. Cách khai báo con trỏ là dùng ký tứ '<code>*</code>' trước tên:</p>
+
+  <p><code>&nbsp; &nbsp;&lt;kiểu dữ liệu&gt; *&lt;tên biến&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p>Ví dụ</p>
+
+  <p><code>&nbsp; &nbsp;float *thờiGian;</code></p>
+
+  <p><code>&nbsp; &nbsp;long *diaChiTrongTep;</code></p>
+
+  <p><br /></p>
+
+  <p>Cũng có thể dùng cho kiểu chúng tôi đã chỉ định</p>
+
+  <p><code>&nbsp; &nbsp;Vecto *phapTuyen;</code></p>
+
+  <p><code>&nbsp; &nbsp;HocSinh *hocSinhLop12;</code></p>
+
+  <p><br /></p>
+
+  <p>Làm sao lẫy địa chỉ của biến? Dùng thao tác "<code>&amp;</code>" trước tên biến (địa chỉ)</p>
+
+  <p><code>&nbsp; &nbsp;&amp;&lt;tên biến&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p>Vài ví dụ cho biến float beRong;</p>
+
+  <p><code>&nbsp; &nbsp;&amp;beRong;</code></p>
+
+  <p><br /></p>
+
+  <p>Nếu muốn lấy giá trị con trỏ đang chỉ dùng '*' trước biến (gợi <i>tham chiếu ngược</i>)</p>
+
+  <p><code>&nbsp; &nbsp;*&lt;tên biến&gt;</code></p>
+
+  <p><br /></p>
+
+  <p>Một ví dụ dùng con trỏ <code>thoiGian</code> ở trên</p>
+
+  <p><code>&nbsp; float tongThoiGian += *thoiGian;</code></p>
+
+  <p><br /></p>
+
+  <p>Tại sao dùng con trỏ? Có khi chúng tôi thể thiết kế chương trình mình không biết người dùng nó sẽ cần bao nhiêu trí nhới, bao nhiêu, phần tử trong dữ liệu, v.v. trước. Con trỏ cho mình giải duyết các vận đề này.</p>
+
+  <p><br /></p>
+
+  <p>Dùng con trỏ có thể hơi nguy hiểm nếu không cần thận. Quan sát hai phiên bản chương trình ở dưới.<br /></p>
+
+  <p>Phiên bản 1:</p>
+
+  <p><code>&nbsp; &nbsp;/* hàm tính điện tích chủ nhật */</code></p>
+
+  <p><code>&nbsp; &nbsp;float tinhDienTichChuNhat( float beRong, float beCao ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;beRong = 100.0f;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;return beRong*beCao;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* hàm main */</code></p>
+
+  <p><code>&nbsp; &nbsp;int main() {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float beRong = 5.0f, beCao = 10.0f; &nbsp;/* đặt giá trị cho bề rộng và bồ cao */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float dienTich = tinhDienTichChuNhat( beRong, beCao);</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf( "bềRộng %4.1f &nbsp;bềCao %4.1f &nbsp;diệnTích %4.1f\n", beRong, beCao, beRong*beCao );</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; return 1;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>Phiên bản 2 dùng con trỏ</p>
+
+  <p><code>&nbsp; &nbsp;float tinhDienTichChuNhat( float *beRong, float *beCao ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; *beRong = 100.0f;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; return *beRong * *beCao; &nbsp;/* '*' giữa là nhân, không phải tham chiếu ngược */</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* hàm main */</code></p>
+
+  <p><code>&nbsp; &nbsp;int main() {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float beRong = 5.0f, beCao = 10.0f; &nbsp;/* đặt giá trị cho bề rộng và bồ cao */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float dienTich = tinhDienTichChuNhat( &amp;beRong, &amp;beCao);</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf( "bềRộng %4.1f &nbsp;bềCao %4.1f &nbsp;diệnTích %4.1f\n", beRong, BeCao, beRong*beCao );</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; return 1;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>Bạn được thấy trong cả hai phiên bản, hàm <code>tinhDienTich()</code> đổi giá trị biến <code>beRong</code>. Trong phiên bản 1, sai lầm được bị hạn chế, xài biến <code>beRong</code> tính toạn tiếp không ảnh hưởng gì nữa. Ngược lại trong phiên bản 2, giá trị của <code>beRong</code> bị đổi luôn, làm cho tính sai tiếp.</p>
+
+  <p><br /></p>
+
+  <p>Vì sao? Trong phiên bản 1, khi chuẩn bị thực hành hàm&nbsp;<code>tinhDienTichChuNhat()</code> máy vi tính sẽ chép giá trị của <code>beRong</code> và <code>beCao</code> và gởi nó cho hàm dùng. Hàm chỉ được dùng giá trị chép, không thể đổi giá trị gốc trong <code>main()</code>. Ngược lại trong phiên bản 2, đưa hàm <code>tinhDienTichChuNhat()</code> con trỏ chỉ đến hai biến gốc cho nên có thể đổi giá trị của nó.<br /></p>
+
+  <p><br /></p>
+
+  <p>Tại sao làm này, nếu không an toàn cho hàm được đổi biến như vậy? Bạn nghĩ vì rất đúng nhưng có khi tốc độ hay tiếc kiệm trí nhớ quan trọn hơn an toàn, ví dụ dữ liệu muốn dùng là mảng mấy trăm ngàn phản tử dài hay một <code>struct</code> khổng lồ vài triệu byte. Chép dữ liệu cho hàm rất phí thời gian, cho nên gởi địa chỉ hay con trỏ chỉ đến dữ liệu này tiện hơn cho trừng hợp này. Nhưng bạn phải cẩn thận và lập trình C hơi đặc biệt. Đừng lo nếu bạn không hiểu này nhiều lần đầu tiên gặp nó, ở dưới sẽ luyện tập bạn. Khai thật, tôi cũng không hiểu này lần đầu gặp nó.</p>
+
+  <h4>6.2 Con trỏ và mảng</h4>
+
+  <p>Thật bạn đã thấy con trỏ rồi, mảng. Biến mảng là con trỏ đến phần từ chỉ số 0 trong mảng. Xem:</p>
+
+  <p><code>char ten[5] = {'d', 'u', 'y', 'e', 'n', 0x00};</code></p>
+
+  <p><br /></p>
+
+  <p><code>ten</code> là con trỏ đến đầu của mảng. Xem</p>
+
+  <p><code>&nbsp; &nbsp;printf( "%c%c%c%c%c\n", ten[0], ten[1], ten[2], ten[3], ten[4] );</code></p>
+
+  <p><br /></p>
+
+  <p>giống hệt</p>
+
+  <p><code>&nbsp; &nbsp;printf( "%c%c%c%c%c\n", *ten, *(ten+1), *(ten+2), *(ten+3), *(ten+4) );</code></p>
+
+  <p><br /></p>
+
+  <p>Bạn thấy không, chúng tôi có thể áp dụng phép toán với con trỏ. Hai lặp vòng ở dưới giống nhau nữa</p>
+
+  <p><code>&nbsp; &nbsp;/* Lặp phiên bản 1 */</code></p>
+
+  <p><code>&nbsp; &nbsp;float tongCongTrongMang( float *mangSo, unsigned int beDaiMang ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsiged char chiSo = 0;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float tongCong = 0.0f;</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; while( chiSo &lt; beDaiMang ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tongCong += mangSo[chiSo];</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;chiSo++;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; }</code></p>
+
+  <p><code>&nbsp; &nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; return tongCong;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;/* Lặp phiên bản 2 - xài phép toán con trỏ */</code></p>
+
+  <p><code>&nbsp; &nbsp;float tongCongTrongMang( float *mangSo, unsigned int beDaiMang ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float *ketThucMangSo = mangSo + beDaiMavg;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float tongCong = 0.0f;</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; while( mangSo &lt; keThucMangSo ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tongCong += *mangSo++;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; }</code></p>
+
+  <p><code>&nbsp; &nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; return tongCong;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>•&nbsp;Con trỏ và <code>struct</code></p>
+
+  <p>Nếu bạn cần đến trường của con trỏ struct dùng '<code>-&gt;</code>':</p>
+
+  <p><code>&nbsp; &nbsp;&lt;con trỏ struct&gt;-&gt;&lt;trường&gt;</code></p>
+
+  <p><br /></p>
+
+  <p>Giả sư tôi đã chỉ định kiểu và khai báo một biến&nbsp;<code>HocSinh</code>&nbsp;(giống trong chương 4) và dùng con trỏ trong hàm&nbsp;</p>
+
+  <p><code>&nbsp; &nbsp;void phatThongTinHocSinh( HocSinh *hocSinh ) {</code></p>
+
+  <p>&nbsp; &nbsp;</p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf( "Học Sinh: %s %s\n", hocSinh-&gt;ho, hocSinh-&gt;tên );</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf( "Vật Lý: %3.1\n", hocSinh-&gt;ho );</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf( "Toán: %3.1f\n", hocSinh-&gt;toan );</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf( "Văn: %3.1f\n", hocSinh-&gt;van );</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf( "Ngoại Ngữ: %3.1f\n", hocSinh-&gt;ngoaiNgu );</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <h4>6.3 Hàm <code>calloc</code> và <code>malloc</code></h4>
+
+  <p>Một trường hợp phổ biến không biết trước cần bao nhiêu trí nhớ, không mảng nân dài bao nhiêu phần tử. Có hai ham` giúp giải duyết vấn đề này <code>malloc</code> và <code>calloc</code>. Mẫu đề xài chúng:</p>
+
+  <p><code>&nbsp; &nbsp;&lt;tên con trỏ&gt; = malloc( &lt;số lượng byte&gt; );</code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;tên con trỏ&gt; = calloc( &lt;số lượng phần tử&gt;, &lt;số lượng byte một phần tử&gt;);</code></p>
+
+  <p><br /></p>
+
+  <p>Bạn được dùng sizeof() để giúp biết cỡ thước kiểu dữ liệu. Để thả trí nhớ từ hai hàm này xài hàm</p>
+
+  <p><code>&nbsp; &nbsp;free( &lt;tên con trỏ&gt;)</code></p>
+
+  <p><br /></p>
+
+  <p>Các hàm này ở trong thư viện <code>&lt;stdlib.h&gt;</code>. Hàm <code>malloc</code> chỉ giàng một niến trí nhớ mà không biết có gì ở trong no, còn <code>calloc</code> sẽ đặt toàn miến bằng số không. Xem ví dụ dùng hai hàm này ở dưới:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned int *mangSoNguyen = malloc( 128*sizeof( unsigned int) );</code></p>
+
+  <p><code>&nbsp; &nbsp;HocSinh *mangHocSinh = malloc( 128*sizeof( HocSinh ) );</code></p>
+
+  <p><code>&nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp;free( mangSoNguyen );</code></p>
+
+  <p><code>&nbsp; &nbsp;free( mangHocSinh );</code></p>
+
+  <p><br /></p>
+
+  <p><b>Cẩn thận:</b> rất quan trọn chương trình bạn thả trí nhớ sau xài xong, nếu không nó sẽ giành trí nhớ, có thể làm chương trìng chạy chậm (hay cả máy chạy chậm) hay làm hệ &nbsp;iều hành tắt chương trình của bạn.</p>
+
+  <p><br /></p>
+
+  <p><b>Học thêm:</b> Có hàm realloc( &nbsp;) để 'giàng lại' trí nhớ thêm.&nbsp;<br /></p>
+
+  <p>B6.1 Mô tả con trỏ là gì? Tại sao nó quan trọng?&nbsp;</p>
+
+  <p><br /></p>
+
+  <p>B6.2 Nếu trong mảng có giá trị</p>
+
+  <p><code>&nbsp; &nbsp;float so[2] = { 2.0f, 4.0f, 5.0f};</code></p>
+
+  <p>Cái này sẽ phát giá trị gi?</p>
+
+  <p><code>&nbsp; &nbsp;printf( "%3.1f\n", *so++ );</code></p>
+
+  <p><br /></p>
+
+  <p>B6.3 Trong cách nén ảnh phổ biến thập niên 1980 gợi RLE. Một dạng giải thuật này:</p>
+
+  <p>1. Xem có đoàn 3 tới 128 byte giống nhau, lưu số lượng byte – 1 của đoàn đó (kiểu <code>char</code>) và giá trị của các byte giống nhau.</p>
+
+  <p>2. Nếu có đoàn byte không giống nhau dài 127 byte trở xuống hay số lượng byte cùng giá trị ít hơn 3, lưu số âm của số lượng byte của đoàn này (kiểu <code>char</code>) và chép hết byte của đoàn này nguyên.</p>
+
+  <p>3. Làm lại tới hết dữ liệu.</p>
+
+  <p>Khi rã RLE, giá trị dương hay âm cho biết đoàn nào là có byte giống nhau và đoán nào byte không giống.</p>
+
+  <p><br /></p>
+
+  <p>B6.4 Để tăng hiệu qủa nén RLE, lấy sự khác giữa hai byte liên tiếp, xong rồi mới áp dụng nén RLE. Viết một hàm cho tính sự khác giữa hai byte lên tếp dùng biểu thức ở dưới cho một đếm byte dài <i>n</i> byte. Chú ý byte số 0 được giữ nguyên.</p>
+
+  <p><code>&nbsp; &nbsp;byte[s] = (int)(byte[s] - byte[s-1] + 128)</code></p>
+
+  <p>Xài biểu giải để giúp sửa sai lầm</p>
+
+  <p><code>&nbsp; &nbsp;byte[s] = (int)(byte[s-1] + byte[s] - 128)</code></p>
+
+  <p><br /></p>
+
+  <p>B6.5 Nâng cấp hàm RLE trong bài B6.3 và B6.4 cho được nén ảnh có kênh đỏ, lục, xanh, độ đục. Dữ liệu điểm ảnh có tổ chức:</p>
+
+  <p><code>&nbsp; byte độ đục | byte xanh | byte lục | byte đỏ | byte độ đục | byte xanh | byte lục | byte đỏ ...</code></p>
+
+  <p>Nên lấy sự khác giữa hai byte và nén RLE cùng kênh.</p>
+
+  <p><br /></p>
+
+  <p>B6.6 Nếu tôi cần làm mảng giữ 32 <code>float</code>, câu lệnh ở dưới đúng không? Nếu sai, làm sao sửa nó?</p>
+
+  <p><code>&nbsp; &nbsp;float *mangFloat = malloc( 32 );</code></p>
+
+  <p><br /></p>
+</body>
+</html>
