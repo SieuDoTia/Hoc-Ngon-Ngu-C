@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="../Styles/PhongCach0001.css" rel="stylesheet" type="text/css" />
+
+  <title></title>
+</head>
+
+<body>
+  <h2>Chương 4: Cấu trúc rẽ nhánh và lặp</h2>
+
+  <h4>4.1 Rẽ nhánh</h4>
+
+  <p>Có khi chương trình phải kiểm một giá trị nào và thực hành tùy giá trị đó. Ví dụ người dùng chương trình gõ giá trị sai và chương trình nên báo người dùng về sai lầm đó và đòi gõ lần tiếp. Hay tính tiền nước mà biết 10 m3 đầu tính 4000 đ/m<sup>3</sup> mà mỗi m<sup>3</sup> hơn 10 m<sup>3</sup> tính 5500 đ/m<sup>3</sup>. Quyết đình hành động của chương trình theo trường hợp gọi là rẽ nhánh.&nbsp;</p>
+
+  <h4>4.1.1 if</h4>
+
+  <p><code>if( &lt;điều kiện&gt; )</code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;lệnh&gt;</code></p>
+
+  <p><br /></p>
+
+  <p><code>if( &lt;điều kiện&gt; )</code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;lệnh&gt;</code></p>
+
+  <p><code>else&nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;lệnh&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p><code>if( &lt;điều kiện&gt; )</code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;lệnh&gt;;</code></p>
+
+  <p><code>else if( &lt;điều kiện&gt; )&nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;lệnh&gt;;</code></p>
+
+  <p><code>...</code></p>
+
+  <p><code>else</code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;lệnh&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p>Cho hơn một lệnh xài '<code>{</code>' &nbsp;và '<code>}</code>' kẹp lại các lệnh cho mỗi điều kiện&nbsp;</p>
+
+  <p><code>if( &lt;điều kiện&gt; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;các lệnh&gt;</code></p>
+
+  <p><code>}</code></p>
+
+  <p><br /></p>
+
+  <p><code>if( &lt;điều kiện&gt; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;các lệnh&gt;</code></p>
+
+  <p><code>}</code></p>
+
+  <p><code>else {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;các lệnh&gt;</code></p>
+
+  <p><code>}</code></p>
+
+  <p><code><br /></code></p>
+
+  <p>và.</p>
+
+  <p><code>if( &lt;điều kiện&gt; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;các lệnh&gt;</code></p>
+
+  <p><code>}</code></p>
+
+  <p><code>else if( &lt;điều kiện&gt; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;các lệnh&gt;</code></p>
+
+  <p><code>}</code></p>
+
+  <p><code>...</code></p>
+
+  <p><code>else {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;các lệnh&gt;</code></p>
+
+  <p><code>}</code></p>
+
+  <p>Nếu điều kiện đúng nó được = 1, sai = 0.</p>
+
+  <p><br /></p>
+
+  <p><code><br /></code></p>
+
+  <p>Ví dụ bạn muốn viết hàm cho biết nếu một điểm (<i>x</i>; <i>y</i>) ở trong một vòng tròn bán kính = 5,0.&nbsp;</p>
+
+  <p><br /></p>
+
+  <p style="text-align: center;"><img alt="Sơ Đồ Thể Hiện Cấu Trúc Rẽ Nhanh" src="../Images/So_Do_The_Hien_Cau_Truc_Re_Nhanh_Ban_Kinh.svg" /><br /></p>
+
+  <p><br /></p>
+
+  <p>Đổi sang hàm C:</p>
+
+  <ol>
+    <li><code>&nbsp;unsigned char trongVongTrong( float x, float y) {</code></li>
+
+    <li><code>&nbsp; &nbsp;&nbsp;</code></li>
+
+    <li><code>&nbsp; &nbsp; float binh = x*x + y*y; &nbsp;</code><span style="font-family: monospace;">/* tính bình */</span></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp; if( binh &lt;= 25.0f )</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp;return 1 ; &nbsp; /* đúng */</code></li>
+
+    <li><code>&nbsp; &nbsp; else</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp;return 0 ; &nbsp; /* sai */</code></li>
+
+    <li><code>&nbsp;}</code></li>
+  </ol>
+
+  <p>Cẩn thận ký từ ';' . Nếu bạn lở gõ&nbsp;</p>
+
+  <p><code>&nbsp; &nbsp;if( &lt;điền kiện&gt;); &nbsp;/* &lt;--- có ';' sau if() &nbsp; */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &lt;lệnh&gt;; &nbsp; &nbsp; &nbsp; &nbsp; /* lần nảo cũng thực hành */</code></p>
+
+  <p><br /></p>
+
+  <p>cũng như</p>
+
+  <p><code>&nbsp; &nbsp; if( &lt;điền kiện&gt;)</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; ; &nbsp; &nbsp; &nbsp;/* &lt;--- có ';' sau if() &nbsp; */</code></p>
+
+  <p><code>&nbsp; &nbsp; &lt;lệnh&gt;; &nbsp; &nbsp;/* lần nảo cũng thực hành */</code></p>
+
+  <p><br /></p>
+
+  <p>Một sai lầm khác tương đương:</p>
+
+  <p><code>&nbsp; &nbsp;if( &lt;điền kiện&gt;)&nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &lt;lệnh&gt;;</code></p>
+
+  <p><code>&nbsp; &nbsp;else; &nbsp; &nbsp; &nbsp; &nbsp; /* &lt;--- có ';' sau else &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &lt;lệnh&gt;; &nbsp; &nbsp;/* lần nảo cũng thực hành */</code></p>
+
+  <p><br /></p>
+
+  <p>Bạn cũng có thể viết if else nội if else khác:</p>
+
+  <p><code>&nbsp; &nbsp;if( &lt;điền kiện 1&gt;) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; if(&nbsp;</code><span style="font-family: monospace;">&lt;điền kiện 2&gt;&nbsp;</span>)&nbsp;</p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;lệnh&gt;;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; else&nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</code><span style="font-family: monospace;">&lt;lệnh&gt;;</span></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><code>&nbsp; &nbsp;else {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; if(&nbsp;</code><span style="font-family: monospace;">&lt;điền kiện 2&gt;&nbsp;</span>)&nbsp;</p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;lệnh&gt;;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; else&nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</code><span style="font-family: monospace;">&lt;lệnh&gt;;</span></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>Ví dụ cho tọa độ (<i>x</i>; <i>y</i>) và tính góc từ trục +<i>x</i>. Dùng hàm toán <code>atan()</code> từ thư viện <code>math.h</code> sẽ cho góc từ –π/2 ≤ góc ≤ π/2 nhưng nên được toàn phạm vi –π ≤ góc ≤ π.</p>
+
+  <p style="text-align: center;"><img alt="So_Do_The_Hien_Cau_Truc_Re_Nhanh_Goc" src="../Images/So_Do_The_Hien_Cau_Truc_Re_Nhanh_Goc.svg" /><br /></p>
+
+  <p><br /></p>
+
+  <p>Hàm C:</p>
+
+  <ol>
+    <li><code>&nbsp; &nbsp;const float PI 3.1415927f;</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp;float tinhGoc( float x, float y ) {</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; float goc = atan( y/x ); /* tính góc */</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; /* phạm vi –π ≤ góc ≤ π */</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; if( x &lt; 0.0f ) {</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if( y &lt; 0.0f )</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; goc -= PI;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;else</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; goc += PI;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; }</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; return goc;</code></li>
+
+    <li><code>&nbsp; &nbsp;}</code></li>
+  </ol>
+
+  <p><br /></p>
+
+  <p><b>Học thêm</b></p>
+
+  <p>Ngôn ngữ C cung cấp cách viết <code>if() else</code> trong một dòng</p>
+
+  <p><code>&nbsp; &lt;điều kiện&gt; ? &lt;lệnh nếu đúng&gt; : &lt;lệnh nếu sai&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p>Dòng số 5 đến 8 trong hàm <code>trongVongTrong()</code> ở trên được viết lại:</p>
+
+  <p><code>&nbsp; &nbsp;binh &lt;= 25.0f ? return 1 : return 0;</code></p>
+
+  <h4>4.1.2 <code>switch case</code></h4>
+
+  <p>Câu lệnh <code>switch case</code> rất tiện nếu cho nhiều trường hợp khác nhau.</p>
+
+  <p><code>switch ( &lt;điều kiển&gt; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp;case &lt;giá trị 0&gt;:</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &lt;lệnh&gt;;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; break;</code></p>
+
+  <p><code><code>&nbsp; &nbsp;case &lt;giá trị 1&gt;:</code></code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &lt;lệnh&gt;;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; break;</code></p>
+
+  <p><code>&nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;default:</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &lt;lệnh&gt;;</code></p>
+
+  <p><code>}</code></p>
+
+  <p><br /></p>
+
+  <p>Ví dụ một hàm phát tên ngày</p>
+
+  <ol>
+    <li><code>void phatTenNgay( unsigned char ngay ) {</code></li>
+
+    <li><br /></li>
+
+    <li><code>&nbsp; &nbsp;switch( ngay ) { /* tùy giá trị ngày */</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 1:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printf( "Chủ Nhật\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 2:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printf( "Thứ Hai\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 3:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printf( "Thứ Ba\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 4:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printf( "Thứ Tư\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 5:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printf( "Thứ Năm\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 6:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printf( "Thứ Sáu\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 7:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printf( "Thứ Bảy\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; default:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printf( "SAI LẦM: Không có ngày %d\n", ngay );</code></li>
+
+    <li><code>&nbsp; &nbsp;} /* kết thúc switch */</code></li>
+
+    <li><code>}</code></li>
+  </ol>
+
+  <p>Mã nguồn ở trên cũng tương đương như:</p>
+
+  <ol>
+    <li><code>void phatTenNgay( unsigned char ngay ) {</code></li>
+
+    <li><br /></li>
+
+    <li><code>&nbsp; &nbsp;if( ngay == 1 )</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf( "Chủ Nhật\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp;else if( nagy == 2 )</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf( "Thứ Hai\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp;else if( ngay == 3 )</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf( "Thứ Ba\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp;else if( ngay == 4 )</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf( "Thứ Tư\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp;else if( nagy == 5 )</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf( "Thứ Năm\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp;else if( ngay == 6 )</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf( "Thứ Sáu\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp;else if( nagy == 7 )</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf( "Thứ Bảy\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp;else</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf( "SAI LẦM: Không có ngày %d\n", ngay );</code></li>
+
+    <li><code>}</code></li>
+  </ol>
+
+  <p>Câu hỏi, nếu quên gõ từ danh <code>break</code>? Chương trình sẽ thực hành khác lệnh cho trường hợp tiếp ờ dưới. Có khi nà tiện lắm cho các trường hợp cần thực hành lệnh giống nhau. Xem hàm báo cho số ≤&nbsp;64 là số nguyên tố:</p>
+
+  <ol>
+    <li><code>unsigned char soNguyenSoToi64( unsigned char so ) {</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp;unsigned char soNguyenTo = 0; &nbsp;/* đặt mặc đính không &nbsp;*/</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp;switch( so ) {</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 2:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 3:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 5:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 7:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 11:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 13:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 17:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 19:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 23:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 29:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 31:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 37:<br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 41:<br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 43:<br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 47:<br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 53:<br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 59:<br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 61:<br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;soNguyenTo = &nbsp;1; &nbsp;/* đúng */</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; default:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;soNguyenTo = &nbsp;0; &nbsp;/* sai */</code></li>
+
+    <li><code>&nbsp; &nbsp;}</code></li>
+
+    <li><code>&nbsp; &nbsp;return soNguyenTo;</code></li>
+
+    <li><code>}</code></li>
+  </ol>
+
+  <p><b>Học thêm</b></p>
+
+  <p>Tôi gặp một trường hợp có thể dùng rẽ nhanh hai cách khác nhau cho xem nếu một điểm năm trong hình chữ nhật. Gỉải thuật này dùng trong trò chơi, ví dụ muốn biết đặn có trúng kẻ địch.&nbsp;</p>
+
+  <p style="text-align: center;"><img alt="Vi_Du_Re_Nhanh_Hoc_Them" src="../Images/Vi_Du_Re_Nhanh_Hoc_Them.svg" /><br /></p>
+
+  <p>Giải thuật ưa dạy trong sách làm trò chơi:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned char diemTrongChuNhat( float diem_x, diem_y, ch_trai, ch_phai, ch_duoi, ch_tren ) {</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; if( (diem_x &gt; ch_trai) &amp;&amp; (diem_x &lt; ch_phai)</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&amp;&amp; (diem_y &gt; ch_duoi) &amp;&amp; (diem_y &lt; ch_tren) )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return 1; &nbsp;/* trong chữ nhật */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; else</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return 0; &nbsp; /* không trong chữ nhật */</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>Cách hai xem nếu điểm không ở trong chữ nhật:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned char diemTrongChuNhat( float diem_x, diem_y, ch_trai, ch_phai, ch_duoi, ch_tren &nbsp;) {</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; if( diem_x &lt; ch_trai)</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return 0; /* không trong chữ nhật */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; else if( diem_x &gt; ch_phai)</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return 0; /* không trong chữ nhật */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; else if( diem_y &lt; ch_duoi )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return 0; /* không trong chữ nhật */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; else if (diem_y &gt; ch_tren )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return 0; &nbsp;/* không trong chữ nhật */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; else</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return 1; /* trong chữ nhật */</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>Đây dạy chúng tôi rằng ưa nhiều cách để làm một việc nào. Cái nào tốt nhất? Khó nói. Tùy trượng hợp và cách sử dụng sẽ rất ảnh hưởng hiệu qủa của qiải thuật. Nạn phải thử nó trong phần mềm làm và xem!</p>
+
+  <h4>4.2 Lặp</h4>
+
+  <p>Lặp là cấu trúc rất tiện khi muốn làm việc nhiều lần như cộng lên số lượng người trong lớp của trường, tìm kiếm, áp dụng biến đổi gíá trị trong mảng, v.v. Ngôn ngữ C có ba loại lặp ở dưới.&nbsp;</p>
+
+  <h4>•&nbsp;&nbsp;<code>while()</code></h4>
+
+  <p>Mẫu cho lặp này:</p>
+
+  <p><code>&nbsp; &nbsp;while( &lt;điều kiện&gt; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;&lt;các lệnh&gt;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>Nếu điều kiện không đúng trước <code>while()</code>, chương trình sẽ không thực hành các lệnh trong ký tự '<code>{</code>' và '<code>}</code>'.&nbsp;</p>
+
+  <h4>•&nbsp;&nbsp;<code>for( ; ; )</code></h4>
+
+  <p>Mẫu cho lặp này:<br /></p>
+
+  <p><code>&nbsp; &nbsp;for( &lt;khởi đầu biến&gt;; &lt;điều kiện&gt; ; &lt;nâng cấp biến&gt; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;&lt;các lệnh&gt;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>Lặp <code>for()</code>&nbsp;tốt cho khi bạn muốn xuyên từ một giá trị đế một giá trị khác. Nhớ nó chỉ yêu cầu điền kiện, bạn có thể dùng kiểu và biên dịch sẽ chấp nhận nó:</p>
+
+  <p><code>&nbsp; &nbsp;for( ; &lt;điều kiện&gt; ; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;&lt;các lệnh&gt;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <h4>•&nbsp;<code>do while()</code></h4>
+
+  <p>Mẫu cho lặp này:</p>
+
+  <p><code>&nbsp; &nbsp;do {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;&lt;các lệnh&gt;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp;} while ( &lt;điều kiện&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>Mới nhìn thấy nó hơi gống như <code>while()</code> chính tôi đã gặp trước đây nhưng nó có một đặc điêm khác, xem xét điều kiểm sau thực các câu lệnh ở trong ký tự '<code>{</code>' và '<code>}</code>', cho nên lần nào nó sẽ thực hành các lệnh lặp vòng ít nhất một lần. Dùng khi muốn bảo đạm được thực hành lặp một lần.</p>
+
+  <p><br /></p>
+
+  <p><b>Quy Tắc Lặp</b></p>
+
+  <p>• Cập Bất Lặp</p>
+
+  <p>Các kiểu lặp ở trên được nhập vào nhau. Một ví dụ phát gặp số:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned char x = 0;</code></p>
+
+  <p><code>&nbsp; &nbsp;while( y &lt; 10 ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char y = 0;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; while( x &lt; 20 ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;x++;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printf( "%d, %d\n", x, y );</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; }</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; y++;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>• Lặp không yêu cầu nâng cấp biến điển kiện một cách nào nhất định. Xem lặp <code>for()</code> để phát số mũ hai nhỏ hơn 70 000:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned int soMuHai;</code></p>
+
+  <p><code>&nbsp; &nbsp;for( soMuHai = 1; soMuHai &lt; 70000; soMuHai *= 2 )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf( "\n", soMuHai );</code></p>
+
+  <p><br /></p>
+
+  <p>• Nhiều khi lặp <code>while()</code> và <code>for( ; ; )</code> được thay thế nhau. Cho ví dụ số mũ hai ở trên, dạng lặp dùng lặp <code>while()</code>:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned int soMuHai = 1;</code></p>
+
+  <p><code>&nbsp; &nbsp;while( soMuHai &lt; 70000 ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;soMuHai *= 2;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <h4>• <code>break</code></h4>
+
+  <p>Dùng tự giành <code>break</code> để thoát một lặp.&nbsp;</p>
+
+  <p><code>&nbsp; &nbsp;while( &lt;</code><span style="font-family: monospace;">điều kiện</span>&gt; ) {</p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;if( &lt;</code><span style="font-family: monospace;">điều kiện</span>&gt; )</p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; break;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>Nó chỉ thoát được một bậc lặp:</code></p>
+
+  <p><code>&nbsp; &nbsp;for( &lt;khởi đầu biến&gt; ; &lt;điều kiện&gt; ; &lt;nâng cấp biến&gt; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; while( &lt;điều kiện&gt; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if( &lt;điều kiện&gt; )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; }</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; /* break sẽ đến đây */</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><code><br /></code></p>
+
+  <p>• <code>continue</code></p>
+
+  <p>Nếu bạn muốn nhảy qua phần cuối của lặp mà không thoát nó (nếu chưa hợp với điều kiện) dùng từ giành <code>continue</code>. &nbsp;&nbsp;</p>
+
+  <p><code>&nbsp; &nbsp;while( &lt;</code><span style="font-family: monospace;">điều kiện</span>&gt; ) {</p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; if( &lt;</code><span style="font-family: monospace;">điều kiện</span>&gt; )</p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;continue;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>Cũng giống <code>break</code>, nó sẽ nhảy trong cùng bậc và không</p>
+
+  <p><code>&nbsp; &nbsp;for( &lt;khởi đầu biến&gt; ; &lt;điều kiện&gt; ; &lt;nâng cấp biển&gt; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; for( &lt;khởi đầu biến&gt; ; &lt;điều kiện&gt; ; &lt;nâng cấp biến&gt; ) { &nbsp;&nbsp;/* continue sẽ đến đây */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if( &lt;điều kiện&gt; )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; continue;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; }</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><code><br /></code></p>
+
+  <p>Nếu dùng <code>do while()</code> nỏ nhảy đến điền kiện ở dưới</p>
+
+  <p><code>&nbsp; &nbsp;do {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; if( &lt;</code><span style="font-family: monospace;">điều kiện</span>&gt; )</p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; continue;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;} while( &lt;điều kiện&gt; ) &nbsp;/* continue sẽ đến đây và xem còn hợp điều kiện */</code></p>
+
+  <p><br /></p>
+
+  <p><b>Học thêm</b></p>
+
+  <p>Khi xài lập biến đích phải chuẩn bị mã máy để thực hành nó. Trong trường hợp tốt rất quan trọng như mô phỏng vật lý, trò chơi, v.v. nhiều khi ta không xài lặp mà <i>lăn ra&nbsp;lặp</i>. Ví dụ muốn cộng lên năm số:</p>
+
+  <p><code>&nbsp; &nbsp;int mangInt[] = {1, 2, 3, 4, 5};</code></p>
+
+  <p><code>&nbsp; &nbsp;int tongCong = 0;</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char chiSo = 0;</code></p>
+
+  <p><code>&nbsp; &nbsp;while( chiSo &lt; 5 ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; tongCong += mangInt[chiSo];</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; chiSo++;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>Phiên bản lăn ra lặp:</p>
+
+  <p><code>&nbsp; &nbsp;int mangInt[] = {1, 2, 3, 4, 5};</code></p>
+
+  <p><code>&nbsp; &nbsp;int tongCong = mangInt[0];</code></p>
+
+  <p><code><code>&nbsp; &nbsp;tongCong += mangInt[1];</code></code></p>
+
+  <p><code>&nbsp; &nbsp;tongCong += mangInt[2];</code></p>
+
+  <p><code>&nbsp; &nbsp;tongCong += mangInt[3];</code></p>
+
+  <p><code>&nbsp; &nbsp;tongCong += mangInt[4];</code></p>
+
+  <p><br /></p>
+
+  <p>Nó dài hơn nhưng nhanh hơn.</p>
+
+  <h4>Bài thực hành</h4>
+
+  <p>B4.1 Đổi hàm&nbsp;<code>trongVongTron()</code>&nbsp;được nhập biến tên bán kính. Nên dùng kiểu dữ liệu cho biến này?<br /></p>
+
+  <p><br /></p>
+
+  <p>B4.2 Đổi hàm&nbsp;<code>tinhGoc()</code>&nbsp;cho phát phạm vi góc 0 đến 2π. Hàm này có một sai lầm (trương hợp&nbsp;<i>x</i> = 0 và <i>y</i> = 0), sửa nó.<br /></p>
+
+  <p><br /></p>
+
+  <p>B4.3 Viết hàm nhập điểm học sinh và phát loại theo thang điểm:</p>
+
+  <p>&nbsp; &nbsp;8,0 ≤ giỏi&nbsp;≤ 10</p>
+
+  <p>&nbsp; &nbsp;6,5&nbsp;≤ khá &lt; 8,0&nbsp;</p>
+
+  <p>&nbsp; &nbsp;5,0&nbsp;≤ trung bình &lt; 6,5</p>
+
+  <p>&nbsp; &nbsp;3,5&nbsp;≤ yếu &lt; 5,0</p>
+
+  <p>&nbsp; &nbsp;0&nbsp;≤ kém &lt; 3,5</p>
+
+  <p><br /></p>
+
+  <p>B4.4 Một cách lặp lại cho tính căn số của số thực <i>y</i> là:<br /></p>
+
+  <p>&nbsp; &nbsp;1. đoán giá trị đầu tiên gần <i>x</i><sub>0</sub>&nbsp;≈&nbsp;√<i>y</i></p>
+
+  <p>&nbsp; &nbsp;2. chia giá trị <i>y</i>/<i>x</i><sub>0</sub> = <i>z</i></p>
+
+  <p>&nbsp; &nbsp;3. tính trung bình <i>x</i><sub>1</sub> = (<i>x</i> + <i>z</i>)/2</p>
+
+  <p>&nbsp; &nbsp;4. trở lại bước số 2 đến khi |<i>z</i> – <i>x</i><sub>1</sub>| &lt; độ chính xác</p>
+
+  <p>&nbsp; Dùng phương pháp này cho tính cân cho căn số thật vơi độ chính xác 0.0001. Coi chừng trừng hợp tham số là âm.</p>
+
+  <p><br /></p>
+
+  <p>B4.5 Làm chương trình nhập ba hệ sô của biểu thức ậc hai:</p>
+
+  <p>&nbsp; &nbsp;<i>ax</i><sup>2</sup> + <i>bx</i> + <i>c</i> = 0</p>
+
+  <p>và tính hai nghiệm <i>x</i><sub>1</sub> và <i>x</i><sub>2</sub>&nbsp;của nó, hết số&nbsp;<i>a</i>, <i>b</i>, <i>c</i> là số thực. Đừng quên nó có thể có nghiệm số thực, ảo và phức.</p>
+
+  <p><br /></p>
+
+  <p>B4.6 Trong <code>&lt;stdlib.h&gt;</code> có một hàm tạo số ngêẫu nhiên kêu <code>rand()</code>. Làm chương trình đưa hai trăm số ngẫu nhiên trên màn. Phạm vi của các số làm gì? Chỉnh phạm vi cho phạt số ngẫu nhiên từ 0,0 đến 1,0. Hàm đổi kiểu <code>float()</code> và hằng <code>RAND_MAX</code> có thể giúp bạn.</p>
+
+  <p><br /></p>
+
+  <p>B4.7 Có một cách tính tích phân hàm số tên mô phỏng Monte Carlo dùng hàm số ngẫu nhiên <code>rand()</code> trong <code>&lt;stdlib.h&gt;</code>. Ý kiến chỉ ngẫu nhiên:</p>
+
+  <p>• bỏ điểm vào phạm vi của vùng hàm muốn tính</p>
+
+  <p>• lấy phân số điểm ở dưới hàm nhân cho diên tích vùng đang tính</p>
+
+  <p>• xài số lượng điểm càng nhiều càng chính xác.</p>
+
+  <p>Làm mô phỏng Monte Carlo cho tính</p>
+
+  <p>&nbsp; &nbsp;∫{0→π/2} sin <i>x đx</i>&nbsp;= –cos(π/2) + cos(0) = 1&nbsp;</p>
+
+  <p>và xem độ chính xác cho 1000, 5000, 10 000, 50 000, 100 000 &nbsp;điểm. Này là một cách xem thử chất lượng của hàm phát số ngẫu nhiên.<br /></p>
+
+  <p><br /></p>
+
+  <p style="text-align: center;"><img alt="MonteCarlo_Sin" src="../Images/MonteCarlo_Sin.svg" /><i><br /></i></p>
+
+  <p>B4.8 Có nhiều số thập phân phổ biến không thể lưu trữ chính xác trong số dấu phẫy động như 1/5 = 0.2. Thử lặp này và so sánh kết qủa với đáp số đúng.</p>
+
+  <p><code>&nbsp; &nbsp;unsigned short soLap = 0;</code></p>
+
+  <p><code>&nbsp; &nbsp;float tongCong = 0.0f;</code></p>
+
+  <p><code>&nbsp; &nbsp;while( soLap &lt; 100000 ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;tongCong += 0.2f;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;soLap++;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p>Vấn đề tương đương với không thể viết được phân số 1/3 bằng số thập phân.</p>
+
+  <p><br /></p>
+
+  <p>B4.9 Xem lặp ở dưới để phát số từ 0 đến 255. Tìm sai lầm của nó:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned char chiSo;</code></p>
+
+  <p><code>&nbsp; &nbsp;while( chiSo &lt; 512 ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf( "%d\n", chiSo );</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; chiSo++;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>B4.10 Viết một chương trình thực hành sắp xếp nổi bọt. Cho nên nhập một mảng int và số lượng phần trong mảng. Bắt đầu chạy từ phần tử đầu đến cuối trong mảng tìm, khi gặp phần tứ tiếp nhỏ hơn phần tử hiện tại trao đổi nhau. Sau xong một lặp, phần tử có giá trị lớn nhất ở cuối mảng cho nên không cần so sanh với nó nữa. Xem ví dụ ở dưới bắt đầu với mảng:</p>
+
+  <p>&nbsp; 234, 55, 67, 26, 19, 3, 288, 83, 23 &nbsp;</p>
+
+  <p>và một lặp đầu:<br /></p>
+
+  <p>&nbsp; 55, 234, 67, 26, 19, 3, 288, 83, 23</p>
+
+  <p>&nbsp; 55, 67, 234, 26, 19, 3, 288, 83, 23</p>
+
+  <p>&nbsp; 55, 67, 26, 234, 19, 3, 288, 83, 23</p>
+
+  <p>&nbsp; 55, 67, 26, 19, 234, 3, 288, 83, 23</p>
+
+  <p>&nbsp; 55, 67, 26, 19, 3, 234, 288, 83, 23</p>
+
+  <p>&nbsp; 55, 67, 26, 19, 3, 234, 83, 288, 23</p>
+
+  <p>&nbsp; 55, 67, 26, 19, 3, 234, 83, 23, 288</p>
+
+  <p>Giải thuật này đơn giản nhưng rất chậm.&nbsp;</p>
+</body>
+</html>
