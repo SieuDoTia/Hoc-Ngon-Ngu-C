@@ -1,0 +1,913 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="../Styles/PhongCach0001.css" rel="stylesheet" type="text/css" />
+
+  <title></title>
+</head>
+
+<body>
+  <h2>Chương 3: Các thành phần của ngôn ngữ lập trình<br /></h2>
+
+  <h4>3.1: Cấu trúc chương trình</h4>
+
+  <p>Sơ đồ ở dưới chỉ cấu tạo của một chương ví dụ. Nó có hàm trong một tệp và những chia ra theo nhiệm vụ của họ. Chia một chương trình như vật giúp phát triển nó nhanh hơn, chỉ biên địch tệp đã đổi và ghép lại nhau. Mỗi chương trình C phải có một hàm tên <code>main()</code> mà một cái thôi. Nó báo biên địch điểm khởi hành chương trinh. Song không yêu cầu tệp có hàm <code>main()</code>&nbsp;phải có tên '<code>main.c</code>'.</p>
+
+  <h4 style="text-align: center;"><img alt="Sơ_Đồ_Cấu_Trúc_Chương_Trình" src="../Images/So_Do_Cau_Truc_Chuong_Trinh.svg" />&nbsp;</h4>
+
+  <p>Những gặp hai tệp gọi:</p>
+
+  <p>• '<code>h</code>' tệp đầu</p>
+
+  <p>• '<code>c</code>' tệp nguồn</p>
+
+  <p><br /></p>
+
+  <p>Tệp đầu cho chỉ định các hàm cho bộ phần khác của chương trình được duàng nó mà chẳng biết gì làm sao được thực hàm các hàm trong tệp nguồn. Xem ở dưới:</p>
+
+  <p>trong <code>ham.h</code> chỉ định các hàm<br /></p>
+
+  <p><code>&nbsp; &nbsp;void ham0( int biến0, int biến1 );</code></p>
+
+  <p><code>&nbsp; &nbsp;char ham1();</code></p>
+
+  <p><br /></p>
+
+  <p>trong <code>ham.c</code> mã nguồn cho các hàm</p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;void ham0( int biến0, int biến1 ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;char ham1() {</code></p>
+
+  <p><code>&nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>Cho chương trình nhỏ bạn không chia hàm ở tệp riêng biệt. Xem vi dụ nhỏ này với <code>main()</code> ở dưới cùng:</p>
+
+  <ol>
+    <li><code>#include&nbsp;&lt;stdio.h&gt; &nbsp;/* xài hàm từ thư viện stdio */</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>/* hàm phát lời xin chào */</code></li>
+
+    <li><code>void phatLoiXinChao() {</code></li>
+
+    <li><code>&nbsp; printf( "Xin Chào Qúy Khách\n" );</code></li>
+
+    <li><code>}</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>/* hàm main */</code></li>
+
+    <li><code>int main( int argc, char **argv ) {</code></li>
+
+    <li><code>&nbsp; &nbsp;/* phát lời */</code></li>
+
+    <li><code>&nbsp; &nbsp;phatLoiXinChao();</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp;return 1;</code></li>
+
+    <li><code>}</code></li>
+  </ol>
+
+  <p>Một cách khác là chỉ định hàm ở trên tệp trước hàm <code>main()</code> và bó mã nguồn hàm <code>phatLoiXinChao()</code> ở dưới:</p>
+
+  <ol>
+    <li><code>#include&nbsp;&lt;stdio.h&gt; &nbsp;/* xài hàm từ thư viện stdio */</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>/* hàm phát lời xin chào */</code></li>
+
+    <li><code>void phatLoiXinChao();</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>/* hàm main */</code></li>
+
+    <li><code>int main( int argc, char **argv ) {</code></li>
+
+    <li><code>&nbsp; &nbsp;/* phát lời */</code></li>
+
+    <li><code>&nbsp; &nbsp;phatLoiXinChao();</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp;return 1;</code></li>
+
+    <li><code>}</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>void phatLoiXinChao() {</code></li>
+
+    <li><code>&nbsp; printf( "Xin Chào Qúy Khách\n" );</code></li>
+
+    <li><code>}</code></li>
+  </ol>
+
+  <h4>3.2: Thư viện phổ biến</h4>
+
+  <p>Trong sách này chúng ta sẽ xài ba thư vịện nhiều:'</p>
+
+  <p><code>stdio.h &nbsp; &nbsp; hàm nhập xuất chuẩn</code></p>
+
+  <p><code>stdlib.h &nbsp; &nbsp;hàm thư viện chuẩn</code></p>
+
+  <p><code>math.h &nbsp; &nbsp; &nbsp;hàm toán</code></p>
+
+  <p><code>time.h &nbsp; &nbsp; &nbsp;hàm thời gian</code></p>
+
+  <p><br /></p>
+
+  <p>Khi xài những thư viện này dùng mẫu:</p>
+
+  <p><code>&nbsp; &nbsp;#include &lt;tên thư viện&gt;</code></p>
+
+  <p><br /></p>
+
+  <p>• <code>math.h</code></p>
+
+  <p>Thư viện math.h có nhiều hàm toán như <code>cos()</code>, <code>tan()</code>, <code>exp()</code>, <code>sin()</code>, <code>sqrt()</code>, <code>pow()</code>, v.v. Chúng nhận kiểu <code>double</code> va phát <code>double</code>. Cũng có phiên bản <code>float</code> như <code>cos()</code>, <code>tan()</code>, <code>exp()</code>, <code>sin()</code>, <code>sqrt()</code>, <code>pow()</code>, v.v. Những hàm này tíng nặng cho nên chỉ dùng khi cần thiết. Ví dụ đừng làm:</p>
+
+  <p><code>&nbsp; &nbsp;float binh = powf(so, 2.0f );</code></p>
+
+  <p><code>&nbsp; &nbsp;float giaTri0 = 2.0f*cosf( 2.0f );</code></p>
+
+  <p><code>&nbsp; &nbsp;float giaTri1 = 4.0f*cosf( 2.0f );</code></p>
+
+  <p><br /></p>
+
+  <p>Nên làm:</p>
+
+  <p><code>&nbsp; &nbsp;float binh = 2.0f * 2.0f; &nbsp;/* đừng dùng powf() khi có thể nhân */</code></p>
+
+  <p><code>&nbsp; &nbsp;float giaTriCos = so; &nbsp; &nbsp; &nbsp;/* chỉ tính cosf( 2.0f ) một lần và giữ nó */&nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp;float giaTri0 = 2.0f*giaTriCos;</code></p>
+
+  <p><code>&nbsp; &nbsp;float giaTri1 = 4.0f*giaTriCos;</code></p>
+
+  <h4>3.3: Kiểu dữ liệu chuẩn</h4>
+
+  <p>Danh sách ở chỉ các kiểu dữ liệu cơ bản trong C. Chú ý phạm vi giá trị của chúng. Mặc dụ thời này vi tính có trí nhớ rất nhiều bạn nên chọn kiểu vừa đủ cho cộng việc không phải chỉ để tiết kiệm trí nhớ mà giúp tăng tốc độ tính số. Đọc, lưu, chép kiểu nhỏ sẽ nhanh hơn và có khi được thực hành thao tác songๆ trong bộ xử lý hiện đài.</p>
+
+  <p>&nbsp;</p>
+
+  <p><code>kiểu số nguyên &nbsp; &nbsp; &nbsp;bề dài &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; phạm vi</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (byte)</code></p>
+
+  <p><code>char &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp;–2<sup>7</sup> → 2<sup>7</sup> – 1 (–128 → 127)</code></p>
+
+  <p><code>short &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2 &nbsp; &nbsp; &nbsp;–2<sup>15</sup> → 2<sup>15</sup> – 1 (–32768 → 32767)</code></p>
+
+  <p><code>int &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;4 &nbsp; &nbsp; &nbsp;–2<sup>31</sup> → 2<sup>31</sup> – 1 (–32768 → 32767)</code></p>
+
+  <p><code>long &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ≥ 4 &nbsp; &nbsp;≤ –2<sup>31</sup> → ≥ 2<sup>31</sup> – 1 (–2147483648 → 2147483647)</code></p>
+
+  <p><code>long int &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 8 &nbsp; &nbsp; &nbsp;–2<sup>63</sup> → 2<sup>63</sup> – 1 (−9223372036854775808 → 9223372036854775807)</code></p>
+
+  <p><code>long long &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;≥ 8 &nbsp; &nbsp;≤ –2<sup>63</sup> → ≥ 2<sup>63</sup> – 1 (−9223372036854775808 → 9223372036854775807)</code></p>
+
+  <p><code>unsigned char &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1 &nbsp; &nbsp; &nbsp; &nbsp;0 → 2<sup>8</sup> – 1 (0 → 255)</code></p>
+
+  <p><code>unsigned short &nbsp; &nbsp; &nbsp; &nbsp; 2 &nbsp; &nbsp; &nbsp; &nbsp;0 → 2<sup>16</sup> – 1 (0 → 65535)</code></p>
+
+  <p><code>unsigned int &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4 &nbsp; &nbsp; &nbsp; &nbsp;0 → 2<sup>32</sup> – 1 (0 → 4294967295)</code></p>
+
+  <p><code>unsigned long &nbsp; &nbsp; &nbsp; &nbsp;≥&nbsp;4 &nbsp; &nbsp; &nbsp;≥ 0 → 2<sup>32</sup> – 1 (0 → 4294967295)</code></p>
+
+  <p><code>unsigned long int &nbsp; &nbsp; &nbsp;8 &nbsp; &nbsp; &nbsp; &nbsp;0 → 2<sup>64</sup> – 1 (0 → 18446744073709551615)</code></p>
+
+  <p><code>unsigned long long &nbsp; ≥ 8 &nbsp; &nbsp; &nbsp;≥ 0 → 2<sup>64</sup> – 1 (0 → 18446744073709551615)</code></p>
+
+  <p><br /></p>
+
+  <p><code>kiểu số thật &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; bề dài &nbsp; &nbsp; phạm vi (số chuẩn hóa)</code></p>
+
+  <p><code>(theo chuẩn IEEE 754) &nbsp;(byte)</code></p>
+
+  <p><code>float &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;4 &nbsp; &nbsp; &nbsp;±2<sup>–126</sup> → ±(2 – 2<sup>–32</sup>) × 2<sup>127</sup> (≈ ±1,18 × 10<sup>–38</sup> → ≈ ±3,40 × 10<sup>38</sup>)</code></p>
+
+  <p><code>double &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 8 &nbsp; &nbsp; &nbsp;±2<sup>–1022</sup> → ±(2 – 2<sup>–64</sup>) × 2<sup>1023</sup> (≈ ±2,23 × 10<sup>–308</sup> → ≈ ±1,80 × 10<sup>308</sup></code>)</p>
+
+  <p><code>long double &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp; &nbsp;±2<sup>–16384</sup>&nbsp;→ ±2<sup>16384</sup> (≈ ±10<sup>–4932</sup> → ≈ ±10<sup>4932</sup>)</code></p>
+
+  <p>* Tùy phần cứng, bộ xử lý Intel xài 80 bit (10 byte) cho kiểu này, biên địch có thể giàng 12 hay 16 byte cho nó.</p>
+
+  <p><br /></p>
+
+  <p>Kiểu <code>long</code> và <code>long long</code> có thể dài hơn 4 hay 8 byte tùy phần cứng và hệ điều hành. Để quan sát bề dài kiểu dữ liệu xài hàm <code>sizeof()</code>.</p>
+
+  <p><b>Ví dụ:</b>&nbsp;</p>
+
+  <p><code>&nbsp; &nbsp;sizeof( unsigned char );</code></p>
+
+  <p><code>&nbsp; &nbsp;sizeof( float );</code></p>
+
+  <p><br /></p>
+
+  <p>Ngôn ngữ C cho bạn được pha trộn số nguyên và thật, cũng trong một biểu thức nữa.</p>
+
+  <p><code>&nbsp; &nbsp;unsigned char soCh = 45.6f; &nbsp;/* khao báo bằng giá tri nguyên */</code></p>
+
+  <p><code>&nbsp; &nbsp;float soFl = 23; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* khao báo bằng giá tri nguyên */</code></p>
+
+  <p><code>&nbsp; &nbsp;double soDo = 123.456;</code></p>
+
+  <p><code>&nbsp; &nbsp;printf("kết qủa: %5.3f\n", (soCh - soFl)/soDo );</code></p>
+
+  <p><code><br /></code></p>
+
+  <p>Bạn nên cẩn thận khi dùng hai kiểu chung, co khi bạn sẽ được kết qủa bất ngờ. Nếu có phép toán giữa giạ trị nguyên và thật, giá trị nguyên sẽ bị 'nâng cấp' sang số thật trước thực hành thao tác. Giá trị kết qủa cùng thật luôn. Nếu muốc bắt buộc giá trị nguyên sang thật hay ngược lại bằng gõ tên kiểu muốn sang trước số, hằng, và biến thì muốn đổi:</p>
+
+  <p><code>&nbsp; (&lt;tên kiểu&gt;) &lt;giá trị&gt;</code></p>
+
+  <p><br /></p>
+
+  <p>Ví dụ:</p>
+
+  <p><code>&nbsp; (unsigned char) 45.6f &nbsp; &nbsp; &nbsp; /* = 45 &nbsp; &nbsp; &nbsp;*/</code></p>
+
+  <p><code>&nbsp; (int) -12.45 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* = -12 &nbsp; &nbsp; */</code></p>
+
+  <p><code>&nbsp; (unsigned int) -12.45 &nbsp; &nbsp; &nbsp; /* = 0 &nbsp; &nbsp; &nbsp; */</code></p>
+
+  <p><code>&nbsp; int soInt = 2341;</code></p>
+
+  <p><code>&nbsp; float soFl = (float)soInt; &nbsp;/* = 2341.0f */</code></p>
+
+  <p><br /></p>
+
+  <p><b>Học thêm</b></p>
+
+  <p>Nếu được xài số nguyên thay thế số thật. Thường tính phép toán số thật chậm hơn phép toán số nguyên. Phần cứng máy tính cá nhân thế hệ đầu không hỗ trợ số dấu phẫy động cho nên họ cần viết phần mềm để tính phép toán số thật, chậm lắm. Tính thời nay đở hơn có phần cứng chuyên gia tính phép toán số dấu phẫy động.</p>
+
+  <p><br /></p>
+
+  <p>Tiếp phép toán cộng nhanh hơn trừ nhanh hơn nhân và nhanh hơn chia. Né nhân chia nếu không cần thiết. Một tinh nhân hay chia số nguyên bằng những giá trị mũ 2 như 2, 4, 8, 16, 32, 64, v.v. dùng cú phép địch <code>&gt;&gt;</code> và <code>&lt;&lt;</code>.</p>
+
+  <p><code>&nbsp; &nbsp;23 * 2 giống 23 &lt;&lt; 1</code></p>
+
+  <p><code>&nbsp; &nbsp;3 * 128 giống 3 &lt;&lt; 7</code></p>
+
+  <p><code>&nbsp; &nbsp;400 / 32 giống 400 &gt;&gt; 5</code></p>
+
+  <p>Nhớ rằng bạn không được áp dùng thao tác dịch với số dấu phẫy động.</p>
+
+  <h4>3.4: Chú Dẫn</h4>
+
+  <p>Chú dẫn rất quan trọng dụ nó không có ảnh hưởng đến câu lệnh thực hành. Nó giúp bạn nhớ và hiểu mã nguồn mất tháng và mấy năm viết nó, còn phát thông tin cho lập trình viên khác hiểu biết mã nguồn của bạn. Ngôn ngữ C hiện tại hỗ trợ hai kiểu chú dẫn:</p>
+
+  <p>&nbsp; 1. <code>/* &lt;chú dẫn đa dòng&gt; */</code></p>
+
+  <p>&nbsp; 2. <code>// &lt;chú dẫn một dòng&gt;</code></p>
+
+  <p><br /></p>
+
+  <p>Ví du:</p>
+
+  <p><code>&nbsp; &nbsp;/* chú dẫn bị hạn chế trong dòng */</code></p>
+
+  <p><code>&nbsp; &nbsp;/* chú dẫn này có</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ba&nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; vòng */</code></p>
+
+  <p><code>&nbsp; &nbsp;// chú dẫn đến hết dòng này</code></p>
+
+  <p><br /></p>
+
+  <p>Phuơng pháp xài chú dẫn rất cá nhân. Quan trọng nhất là nó làm mã nguồn dễ hiểu cho người đồng nghiệp.</p>
+
+  <p><br /></p>
+
+  <p>Tối rất thích xài ký tự chú dẫn gíup tìm sai lầm trong chương trình. Dễ 'tắt' hiệu ứng của một số dòng câu lệnh hay hàm hay 'tắt' khi đang tìm sai lầm trong chương trình, nhiều làm biến tạm thời để kiểm tra giá trị biểu thức v.v.</p>
+
+  <h4>3.5: Khai báo hằng số và biến</h4>
+
+  <p>Ngôn ngữ hiện đại C cho bạn khai báo hằng số và biển bắt cứ chổ nào. Các phiên bản C đầu tiên yêu cầu phải khai báo hết biến trước các lệnh.</p>
+
+  <p><code>&lt;kiểu dữ liệu hàm&gt; &lt;tên hàm&gt; (&lt;dãy biến hàm nếu có&gt;) {</code></p>
+
+  <p><code>&nbsp; &nbsp;/* khai báo hết biến */</code></p>
+
+  <p><code>&nbsp; &nbsp; ...</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* các lệnh */</code></p>
+
+  <p><code>&nbsp; &nbsp; ...</code></p>
+
+  <p><code>}</code></p>
+
+  <p>Cái này làm mã nguồn khó hiểu hơn. Thời nay cho bạn khai báo ngay chổ sẽ xài nó.</p>
+
+  <p><code>&nbsp; &nbsp;&lt;kiểu dữ liệu hàm&gt; &lt;tên hàm&gt; (&lt;dãy biến hàm nếu có&gt;) {</code></p>
+
+  <p><code>&nbsp; &nbsp;/* khai báo biến */</code></p>
+
+  <p><code>&nbsp; &nbsp; ...</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* các lệnh */</code></p>
+
+  <p><code>&nbsp; &nbsp; ...</code></p>
+
+  <p><code><code>&nbsp; &nbsp;/* khai báo biến */</code></code></p>
+
+  <p><code>&nbsp; &nbsp; ...</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* các lệnh */</code></p>
+
+  <p><code>&nbsp; &nbsp; ...</code></p>
+
+  <p><code>}</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><b>Khai báo hằng</b></p>
+
+  <p>Có hai cách khai báo hằng:</p>
+
+  <p>1. Từ dành riêng&nbsp;<code>const</code>:</p>
+
+  <p><code>&nbsp; &nbsp;const &lt;kiểu dữ liệu&gt; &lt;tên hằng số&gt; = &lt;giá trị&gt;;</code></p>
+
+  <p><code>&nbsp; &nbsp;const float PI = 3.1415926f;</code></p>
+
+  <p><code>&nbsp; &nbsp;const short MAT_NA = 0x3c00;<br /></code></p>
+
+  <p><code>&nbsp; &nbsp;const char nghi = 'q';</code></p>
+
+  <p><br /></p>
+
+  <p>2. Xài&nbsp;<code>#define</code>. Chú ý cách này không báo kiểu dữ liệu và không xài '<code>;</code>' cuối hàng.</p>
+
+  <p><code>&nbsp; &nbsp;#define &lt;tên hàng số&gt; &lt;giá trị&gt;</code></p>
+
+  <p><code>&nbsp; &nbsp;#define PI 3.1415926f</code></p>
+
+  <p><br /></p>
+
+  <p>Hằng không được đổi giá trị sau khai báo. Nếu thử đặt giá trị khác, biên địch sẽ phát sai lầm.</p>
+
+  <div>
+    <br />
+  </div>
+
+  <p><b>Khai báo biến</b></p>
+
+  <p><code>Khi khai báo biến bạn có thể chỉ khai báo tên biến thiếu giá trị vả khai giá trị đầu.</code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;kiểu dữ liệu&gt; &lt;tên biến&gt;; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* không có giá trị đầu */</code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;kiểu dữ liệu&gt; &lt;tên biến&gt; = &lt;giá trị&gt;; &nbsp;/* có giá trị đầu */</code></p>
+
+  <p>Xem ví dụ</p>
+
+  <p><code>&nbsp; &nbsp;unsigned int chiSo; &nbsp;/* chỉ số &nbsp;*/</code></p>
+
+  <p><font face="monospace">&nbsp; &nbsp;short nam = 2120; &nbsp; &nbsp;/* năm &nbsp; &nbsp; */</font></p>
+
+  <p><code>&nbsp; &nbsp;char chuCai = 's'; &nbsp; /* chữ cái */</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned int mau = 0x00ff00ff; /* màu */</code></p>
+
+  <p><br /></p>
+
+  <p>Bạn cũng được khai nhiều biến cùng kiểu một lượt nếu dùng '<code>,</code>' giữa nó:</p>
+
+  <p><code>&nbsp; &nbsp;float beRong, beCao, beDai;</code></p>
+
+  <p><code>&nbsp; &nbsp;float banKinh = 1.0f, tocDo = 4.0f;</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><b>Lưư ý:</b> Nếu bạn gặp biến bạn có giá trị lạ coi chừng bạn chưa đặt giá trị cho nó.</p>
+
+  <p><br /></p>
+
+  <p><b>Quy tắc dùng khai báo</b></p>
+
+  <p>•&nbsp;Hằng và biến phài đầi với chữ cái Latinh hay ký tự '_' và sau có thể chữ cái Latinh '_' hay số cái. Xem các ví dụ<br /></p>
+
+  <p><code>&nbsp; &nbsp;float f_fg;</code></p>
+
+  <p><code>&nbsp; &nbsp;int __soMoi;</code></p>
+
+  <p><code>&nbsp; &nbsp;char r55;</code></p>
+
+  <p>Ví dụ không hợp lệ</p>
+
+  <p><code>&nbsp; &nbsp;double toc do; &nbsp; &nbsp; &nbsp; &nbsp; /* có dấu cách */</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned int 3banKinh; /* không bắt đầu với chứ cái Latinh */</code></p>
+
+  <p>Chú ý: Tên của các tệp C cũng theo quy tắc này.</p>
+
+  <p><br /></p>
+
+  <p>• Tên hằng và biến nên không dài hơn 1024 ký tự (nhưng giới hạn này rất tùy biên dịch)</p>
+
+  <p><br /></p>
+
+  <p>•&nbsp;Thường người dùng hai phương pháp kết nối hai chữ trở lên khi khai báo.</p>
+
+  <p>1. Dùng chữ hoa đầu chữ mới (kiểu lạc đà)</p>
+
+  <p><code>&nbsp; &nbsp;double dienTich;</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned int danSoTinhAnGiang;</code></p>
+
+  <p><br /></p>
+
+  <p>2. Dùng ký tự '<code>_</code>' giữa mỗi chũ mới</p>
+
+  <p><code>&nbsp; &nbsp;double dien_tich;</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned int dan_so_tinh_an_giang;</code></p>
+
+  <p><br /></p>
+
+  <p>Dùng cái nào rất theo sự thích người lập trình viên. Có người chê kiểu lạc đà vì thấy khó đọc hơn, có người khác chê dùng ký tự '<code>_</code>' vì cần gõ phím xa và lạc đà gọn hơn. Tôi đã thử hai phương paháp này và tôi thích kiểu lạc đà hơn.</p>
+
+  <p><br /></p>
+
+  <p>Hằng ưa dùng chữ hoa</p>
+
+  <p><code>&nbsp; &nbsp;const float LAI_SUAT &nbsp;= 5.6f;</code></p>
+
+  <p><code>&nbsp; &nbsp;const int GIAY_TRONG_MOT_GIO = 3600;</code></p>
+
+  <p><br /></p>
+
+  <p>•&nbsp;Lần nào nên đặt tên giúp bạn biết biến chứa giá trị gì. Ví dụ</p>
+
+  <p><code>&nbsp; &nbsp;int i, j, k; &nbsp; &nbsp; &nbsp; /* không biết biến này là gì */</code></p>
+
+  <p>nên viết</p>
+
+  <p><code>&nbsp; &nbsp;int soNguoi, ngay, thang; /* dễ hiểu hơn */</code></p>
+
+  <p>&nbsp;</p>
+
+  <p>•&nbsp;Khai báo chỉ có hiệu qủa trong hàm sau nó được khai báo:</p>
+
+  <p><code>&nbsp; &nbsp;nam = 2000; &nbsp;/* sai lầm, không được dùng trước khai báo */</code></p>
+
+  <p><code>&nbsp; &nbsp;short nam; &nbsp; /* khai báo biến năm */</code></p>
+
+  <p><code>&nbsp; &nbsp;nam = 2020; &nbsp;/* đã khai báo được dùng */</code></p>
+
+  <p><code>&nbsp; &nbsp;&nbsp;</code></p>
+
+  <p>Biến được hạn chế bởi '<code>{</code>' và '<code>}</code>'. Xem dưới:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned char giaTri0 = 0; &nbsp; &nbsp; &nbsp;/* khai báo giá trị 0 */</code></p>
+
+  <p><code>&nbsp; &nbsp;{</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;unsigned char giaTri1 = 5; &nbsp;/* khai báo giá trị 1 */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;printf( "%d\n", giaTri0 + giaTri1 ); /* phát cộng hai giá trị */</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "%d\n", giaTri0 + giaTri1 ); &nbsp;/* sai lằm, biến giaTri1 không còn báo nữa &nbsp;*/</code></p>
+
+  <p><br /></p>
+
+  <p>•&nbsp;Trong một tệp C, bạn có thể khai báo biến ớ trên tệp gọi&nbsp;<i>biến toàn cầu</i>. Biến toàn cầu được dùng trong toàn bộ hàm trong tệp đó. Các biến trong hàm gọi <i>biến địa phương</i>. Nó được dùng chỉ trong hàm của nó.</p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;float coKich = 0.0f; &nbsp; /* biến toàn cầu */</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;hàm 0&gt; {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;unsigned char soLan = 1; &nbsp; /*&nbsp;biến địa phương&nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;coKich = 3.0f; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* đặt biến toàn cầu cỡ kích = 3.0f */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;hàm 1&gt; {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned short soDan = 0; &nbsp;/*&nbsp;biến địa phương&nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; coKich = 5.0f; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* đặt biến toàn cầu cỡ kích = 5.0f */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><code>&nbsp; &nbsp;...</code></p>
+
+  <p><br /></p>
+
+  <p>Thường xuyên bạn nên tránh dùng biến toàn cầu vì rất khó phần biệt hàm nào sẽ đổi giá trị của chúng. Hàm nào có thể đổi giá trị của nó làm kiểm tra sai lầm khó hơn. Một trường hợp trái ý niêm này là lập trình đối tượng khi biến toàn cầu là của một <i>lớp</i> được khai báo. Ví dụ các ngôn ngữ đối tượng: C++, Objective C, Java, Swift.</p>
+
+  <p><br /></p>
+
+  <p>•&nbsp;Biên dịch ngôn ngữ C phân biệt chữ hoa và chữ thường. Cho nên bạn có thể khai bốn biến khác nhau như vậy:</p>
+
+  <p><code>&nbsp; &nbsp;float so;</code></p>
+
+  <p><code>&nbsp; &nbsp;float SO;</code></p>
+
+  <p><code>&nbsp; &nbsp;float sO;</code></p>
+
+  <p><code>&nbsp; &nbsp;float So;</code></p>
+
+  <p>Bạn nên không làm này tại nó khó phần biệt biến nào là biến naý.</p>
+
+  <p><br /></p>
+
+  <p>• Bạn có thể dùng đặt biến dùng ba hệ số ngôn ngữ C hỗ trợ hay chữ cái:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned short giaTriThap = 0x00ff; &nbsp;/* số thập lục phân */</code></p>
+
+  <p><code>&nbsp; &nbsp;int soLuong = 070745; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* số bát phân &nbsp; &nbsp; &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char soHocSinh = 123; &nbsp; &nbsp; &nbsp; /* số thập phân &nbsp; &nbsp; */</code></p>
+
+  <p><code>&nbsp; &nbsp;float batDau = '@'; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* ký tự &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</code></p>
+
+  <p><br /></p>
+
+  <p>• Cẩn thận đừng khai báo biến thay biến hàm hay biến khác. Vì dụ ở dưới là hàm cộng thêm điện tích mới với diện tich có sẵn. Nhưng sờ ý khai báo một biên mới giữa '<code>{</code>' và '<code>}</code>' cùng tên dienTich trong hàm sẽ thay cho biến hàm:</p>
+
+  <p><code>&nbsp; &nbsp;float congThemDienTich( float beRong, float beCao, float dienTich ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;float dienTich = beRong*beCao;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; }</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; return dienTich;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>Kết qủa là hàm này chỉ trả diện tích cũ. Hàm này rất đơn giản và dễ thấy sai lầm này, nhưng khi có hàm phức tập và dài vấn đề có thể xuất hiện không khó (tôi đã làm) nhưng biên dịch sẽ không phát hiện nó! Cẩn thận đặt tên trong hàm khác các biện nhập.</p>
+
+  <h4>3.6 Kiểu mảng và xâu</h4>
+
+  <p>Có trường hợp tôi muốn có một dãy giá trị ví dụ: dữ liệu nhiệt cho năm qua, danh sách kẻ thù trong trò chơi, điểm ảnh cho tâm hình, chuỗi chữ cái cho phát lợi, v.v. Khai báo biến riêng cho mỗi miến dữ liệu chẳng tiện đầu, một tâm ảnh có thể có mẫy triệu điểm ảnh. Chúng tôi cần một dãy dữ liệu gọi là mảng. Mảng được tạo trong một chổ trong trí nhở</p>
+
+  <p>&nbsp;</p>
+
+  <p><img alt="Mang" src="../Images/Mang.svg" /></p>
+
+  <p><br /></p>
+
+  <p>Vài dạng khai báo mảng một chiều:</p>
+
+  <p><code>&nbsp; &nbsp;&lt;kiểu dữ liệu&gt; &lt;tên mảng&gt; [&lt;bề dài&gt;];</code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;kiểu dữ liệu&gt; &lt;tên mảng&gt; [&lt;bề dài&gt;] = {&lt;giá trị 0&gt;, &lt;giá trị 0&gt;, ...};</code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;kiểu dữ liệu&gt; &lt;tên mảng&gt; [] = {&lt;giá trị 0&gt;, &lt;giá trị 0&gt;, ...};</code></p>
+
+  <p><br /></p>
+
+  <p>Bề dài mảng lả bao nhiêu phần tử trong mảng khổng phải bao nhiêu byte. Số lượng byte được giàng theo kiểu dử liệu.</p>
+
+  <p><br /></p>
+
+  <p>Bạn có thể đặt giá trị khi khai báo mảng, bao quanh các giạ trị với '<code>{</code>' và '<code>}</code>' và dùng '<code>,</code>' giữa mối giá tri. Số lượng giá trị không thể hơn bề dài mảng (ít hơn thì không sao). Bạn không yêu cầu đặt bề dài và để cho biên địch đếm số lượng phần tử giùm.</p>
+
+  <p><br /></p>
+
+  <p>Xem vài ví dụ ở dưới:</p>
+
+  <p><code>&nbsp; &nbsp;float nhietDo[365]; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* mảng float 365 phần tử */</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char beCao[5] = {155, 148, 175, 166, 170};&nbsp;</code><span style="font-family: monospace;">/* mảng uint 5 phần tử, đặt giá trị */</span></p>
+
+  <p><code>&nbsp; &nbsp;char ten[] = {'t', 'h', 'a', 'n', 'h', 0 }; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</code><span style="font-family: monospace;">/* cho biên địch đếm phần tử giùm &nbsp;*/</span></p>
+
+  <p><br /></p>
+
+  <p>Trong ngôn ngữ C, có mảng dài <i>n</i> phần tử, phần tử đầu là phần số 0 và phần từ cuối là <i>n</i> – 1. Trong mảng bề cao ờ trên</p>
+
+  <p><code>&nbsp; &nbsp;beCao[0] = 155;</code></p>
+
+  <p><code>&nbsp; &nbsp;beCao[4] = 170;</code></p>
+
+  <p><br /></p>
+
+  <p><b>Cận thẩn 1:</b> coi trừng đi ra ngoài phạm vi mảng. Bạn không thể biết có gì ở ngoài đó. Nguy hiểm hơn là lưu trữ giá trị ở phạm vi, bạn có thể ghi trên lệnh củ chương trình, làm nó hoạt động sai. Tin tặc thích khai thác này lắm trong chương trình không kiểm tra phạm mảng khi lưu trữ giá trị.</p>
+
+  <p><br /></p>
+
+  <p><b>Cận thẩn 2:</b> đừng quên lưu trữ giá trị trong mảng trước dùng nó, gọi là khởi tạo giá trị. Khi biên địch dành trí nhớ cho biến mảng nó không đặt giá trị mặc định nào trong mảng. Ai biết có cái gì trong mảng chưa được khởi tạo.</p>
+
+  <p><br /></p>
+
+  <p>Các mảng ở trên đợi là mảng một chiều. Cũng có mảng dđa chiều:</p>
+
+  <p><span style="font-family: monospace;">&nbsp; &nbsp;&lt;kiểu dữ liệu&gt; &lt;tên mảng&gt; [&lt;bề dài 0&gt;]</span><span style="font-family: monospace;">[&lt;bề dài 1&gt;]...</span><br /></p>
+
+  <p><span style="font-family: monospace;">&nbsp; &nbsp;&lt;kiểu dữ liệu&gt; &lt;tên mảng&gt; [] = {{&lt;giá trị 00&gt;, &lt;giá trị 01&gt;, ...},&nbsp;</span><span style="font-family: monospace;">{&lt;giá trị 10&gt;, &lt;giá trị 11&gt;, ...}</span><span style="font-family: monospace;">&nbsp;};</span></p>
+
+  <p><br /></p>
+
+  <p>Ví dụ:<br /></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char so[5][2] = {{0xff, 0x05, 0x34, 0x4e, 0x1f}, {0x00, 0x47, 0xa0, 0x20, 0x8f}};</code></p>
+
+  <p><code>&nbsp; &nbsp;float toaDo[256][256][256]; &nbsp; /* mảng ba chiều */</code></p>
+
+  <p><br /></p>
+
+  <p>Mảng thường được dành một cục trí nhớ liên tiếp, mặc dụ là một chiều hay đa chiều. Cho nên mảng bạn có thể tạo mảng đa chiều bằng mảng một chiều. Ví dụ có một tấm ảnh cỡ kích <i>r</i> × <i>c</i>&nbsp;điểm ảnh (bề rộng và bề cao). Bạn có thể làm mảng chứa dữ liệu như:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned int anh[r][c]; &nbsp; /* mảng hai chiều */</code></p>
+
+  <p>hay</p>
+
+  <p><code>&nbsp; &nbsp;unsigned int anh[r*c]; &nbsp; /* mảng một chiều */</code></p>
+
+  <p>Ngay lập tức bạn nên nghĩ làm sao lấy được điểm/phần tử trong cột x và hàng y trong ảnh mảng một chiều. Nếu ảnh được tổ chức dữ liệu bằng hàng (đa số dạng ảnh như JPEG, PNG, EXR được tổ cức như vậy), nhân bề rộng với số hàng và cộng số cột, xem mã nguồn:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned int diemAnh = anh[x + r*y]; &nbsp;/* điểm ảnh tại cột x, hàng y */</code></p>
+
+  <p><br /></p>
+
+  <p>•&nbsp;Xâu là mảng chứa chuỗi ký tự và kiểu liếu <code>char</code> và được kết thúc bởi ký tự '<code>0x00</code>', nhưng không chứa thông tin về bề dài (xâu trong ngôn ngữ có lẻ chứa bề dài) nhưng bề dài chỉ bị hạn chế bởi kiến trúc vi tính đang xài. Ký tự kết thúc rất quan trọng vì nó cho biết kết trúc chiếu ký tự. Mẫu khai bái xâu:</p>
+
+  <p><code>&nbsp; &nbsp;char &lt;tên xâu&gt; = "&lt;chuỗi ký tự&gt;";</code></p>
+
+  <p><code><br /></code></p>
+
+  <p>Khi khai bán xâu như vậy không cẩn quan tâm đến ký tự kết thúc. Biên dịch sẽ bỏ nó vào gìum. Song bạn cũng có thể khai bao xâu kiểu này:</p>
+
+  <p><code>&nbsp; &nbsp;char loiBaoCao[] = {'X', 'i', 'n', ' ', 'C', 'h', 'a', 'o', 0};</code></p>
+
+  <p><br /></p>
+
+  <p>Thấy khi là kiểu này chúng tôi phải tự bỏ ký tự kết thúc ở cuối cùng. Bạng cũng được nhập thông tin trong xâu:</p>
+
+  <p><code>&nbsp; &nbsp;char ten[255];</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char tuoi;</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* nhập thông tin */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "Xin gõ tên: " );</code></p>
+
+  <p><code>&nbsp; &nbsp;scanf( "%s", ten );</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "Xin gõ tuổi: " );</code></p>
+
+  <p><code>&nbsp; &nbsp;scanf( "%d", &amp;tuoi );</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* đưa lên màn */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "Tên: %s &nbsp;tuổi: %d\n", tên, tuổi );</code></p>
+
+  <p><br /></p>
+
+  <p><b>Học thêm</b></p>
+
+  <p>Cho xâu dùng ký tự như <code>"#dR^6"</code> có một mã số cho mỗi ký tự. Nhưng nếu có ký tự như <code>"ềดиす</code><span style="font-family: monospace;">ណ</span><code>"</code> không còn một mã số cho mỗi ký tự mà có hai tới bốn cái! Mã số hóa này gọi UTF8. Xem mã hóa cho hai xâu ở dưới: &nbsp;</p>
+
+  <p><code>"#dR^6"</code> → <code>0x23 &nbsp;0x64 &nbsp;0x52 &nbsp;0x5e &nbsp;0x36</code></p>
+
+  <p><code>"ềดиすណ"</code> → <code>0xe1 0xbb 0x81 &nbsp;0xe0 0xb8 0x94 &nbsp;0xd0 0xb8 &nbsp;0xe3 0x81 0x99 &nbsp;0xe1 09e 0x8e</code></p>
+
+  <h4>3.7 Hàm <code>scanf()</code></h4>
+
+  <p>Có hàm <code>printf()</code> cho đưa thông tin trên màn và có hàm <code>scanf()</code> (hàm quèt) cho nhập thông tin. Sau học về biến, tôo có thể giải thích về cách dùng hàm này. Nó xài mã điều khiển cũng như <code>printf()</code> và giúp biết làm sao địch thông tin nhập. Nó cũng ở trong thư viện <code>&lt;stdio.h&gt;</code>. Xem mẫu cho nó</p>
+
+  <p><code>&nbsp; &nbsp;scanf( "&lt;xâu điểu khiển&gt;", &lt;địa chỉ các biến&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>Để nhập dữ liệu xài ký tự '<code>&amp;</code>' trước tên biến. Nó nghĩa là địa chỉ của biến. Tôi sẽ giải thích thêm về địa chỉ biến trong chương 6 khi học về con trỏ. Tôi giới thiệu hàm này sớm cho bạn được viết chương trình nhập thong tin. Hàm <code>scanf()</code> phải có ít nhất một biến để nhập thông tin. Ví dụ</p>
+
+  <p><code>&nbsp; &nbsp;unsigned char so0; &nbsp; /* số 0 */</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char so1; &nbsp; /* số 1 */</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* nhập thông tin */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "Xin gõ số 0: " );</code></p>
+
+  <p><code>&nbsp; &nbsp;scanf( "%s", &amp;so0 );</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "Xin gõ số 1: " );</code></p>
+
+  <p><code>&nbsp; &nbsp;scanf( "%d", &amp;so1 );</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* đưa lên màn */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "%d x %d = %d\n", so0, so1, so0*so1 );</code></p>
+
+  <p><code><br /></code></p>
+
+  <p>Nhớ bấm phím enter hay return khi gõ xong. Bạn cũng có thể gõ thông tin một lượt:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned char so0; &nbsp; /* số 0 */</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char so1; &nbsp; /* số 1 */</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* nhập thông tin */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "Xin gõ số 0 và số 1: " );</code></p>
+
+  <p><code>&nbsp; &nbsp;scanf( "%s %d", &amp;so0, &amp;so1 );</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* đưa lên màn */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "%d x %d = %d\n", so0, so1, so0*so1 );</code></p>
+
+  <p>Tôi bỏ hai dấu cách giữa mã mỗi ký tự.</p>
+
+  <h3><b>Bài thực hành</b></h3>
+
+  <p>B3.1 Hằng số và biến số khác nhau như thế nào? Khi nào nên dùng hằng số và biến?</p>
+
+  <p><br /></p>
+
+  <p>B3.2 Tên khai báo nào hợp lệ, nếu không hợp giải thích tại sao:</p>
+
+  <p><code>&nbsp; &nbsp;char kyTu = 0x20; &nbsp; &nbsp; &nbsp; unsigned char tieng viet;</code></p>
+
+  <p><code>&nbsp; &nbsp;short soLuong___45; &nbsp; &nbsp; int &amp;e;</code></p>
+
+  <p><code>&nbsp; &nbsp;char 中国; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; long long thoi-gian;</code></p>
+
+  <div>
+    <p><code><code>&nbsp; &nbsp;int __ssfgh; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;unsigned float quangDuong;</code></code></p>
+
+    <div>
+      <code><br /></code>
+    </div>
+  </div>
+
+  <p>B3.3 Khai báo các biến giống ở dưới và dùng <code>printf()</code> để kiểm tra giá trị của chúng:</p>
+
+  <p><code>&nbsp; &nbsp;int beRong = 3.14f;</code></p>
+
+  <p><code>&nbsp; &nbsp;char soNguoi = 233;</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char soNguoi = 1555;</code></p>
+
+  <p>Giải thích kết qủa.</p>
+
+  <p><br /></p>
+
+  <p>B3.4 Giá trị của biến <code>so_f</code> sau thực hành các lênh:</p>
+
+  <p>a.<code>&nbsp; int so_i = 455;</code></p>
+
+  <p><code>&nbsp; &nbsp;float so_f = phut;</code></p>
+
+  <p><br /></p>
+
+  <p>b. <code>&nbsp;int so_i = 455.123f;</code></p>
+
+  <p><code>&nbsp; &nbsp;float so_f = so_i;</code></p>
+
+  <p><code><br /></code></p>
+
+  <p>c.&nbsp;<code>&nbsp;int so_i = -455.123f;</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char so_c = so_i;&nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp;float so_f = so_c;</code></p>
+
+  <p><br /></p>
+
+  <p>B3.5 Giá trị của biến <code>so_i</code> sau thực hành các lênh:<br /></p>
+
+  <p>a. <code>&nbsp;float so_f = 6723;</code></p>
+
+  <p><code>&nbsp; &nbsp;int so_i = so_f;</code></p>
+
+  <p><br /></p>
+
+  <p>b. <code>&nbsp;float so_f = 6723.56f;</code></p>
+
+  <p><code>&nbsp; &nbsp;int so_i = so_f;</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>c. float so_f = 6723.56f;</code></p>
+
+  <p><code>&nbsp; &nbsp;char so_c = so_f;&nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp;int so_i = so_c;</code></p>
+
+  <p><br /></p>
+
+  <p>B3.6 Làm thử nghiệm <code>sizeof( long double )</code> cho nó dùng bao nhiêu byte. Có lẻ nó dùng hơn 10 byte. Máy ví tính thích giữ dữ liệu tròn bộ bốn hay tám byte.</p>
+
+  <p><br /></p>
+
+  <p>B3.7 Xem mã nguồn cho tính tỉ số nam nữ ở dưới:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned short soLuongNu = 45; &nbsp; &nbsp; &nbsp; &nbsp;/* số lượng nữ &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned short soLuongNam = 56; &nbsp; &nbsp; &nbsp; /* số lượng nam */</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned short tongCong = soLuongNam + soLuongNu; /* tổng cộng */</code></p>
+
+  <p><code>&nbsp; &nbsp;float tiSoNam = soLuongNam/tongCong; &nbsp;/* tỉ số nam */</code></p>
+
+  <p><code>&nbsp; &nbsp;float tiSoNu = soLuongNu/tongCong; &nbsp; &nbsp;/* tỉ số nữ &nbsp;*/</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* chiếu kết qủa */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "Tỉ số nam: %5.3f\n", );</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "Tỉ số nữ: %5.3f\n", );</code></p>
+
+  <p>Mã nguồn này được tính kết qủa đúng hay sai? Nếu sai làm sao được sửa nó?</p>
+
+  <p><br /></p>
+
+  <p>B3.8 Giả sư bán đang thiết kế một trò chơi lấy phi thuyền bắn kẻ địch từ hành tinh khác. Bạn cần viết các hàm lữu trứ và nâng cấp giao diện để chiếu:</p>
+
+  <p>• điểm</p>
+
+  <p>• số mạng</p>
+
+  <p>• số sủng đang xài</p>
+
+  <p>• sức súng súng</p>
+
+  <p>• vị trí phi thuyền<br /></p>
+
+  <p>• cách xa từ Trái Đất<br /></p>
+
+  <p>Bạn sẽ chọn kiểu dữ liệu nào các thông tin này và mô tả vì sao.</p>
+
+  <p><br /></p>
+
+  <p>B3.9 Tìm những sai lầm trong các mảng ở dưới</p>
+
+  <p><code>&nbsp; &nbsp;unsigned char chuCai[5] = {'a' 'e', 'i', 'o', 'u', 'y'};</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char chuCai[][] = {'a', 'e', 'i', 'o', 'u', 'y'};</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char chuCai[][] = {{'a'}, {'e'}, {'i'}, 'o', 'u', 'y'};<br /></code></p>
+
+  <p><span style="font-family: monospace;">&nbsp; &nbsp;unsigned char chuCai[3][3] = {{'a'}, {'e'}, {'i'}}, {'o'}, {'u'}, {{'y'}, {x}, {z}};</span><br /></p>
+
+  <p><br /></p>
+
+  <p>B3.10 Tạo một hàm nhân hai ma trận 4 × 4 và phát kết qủa nhân trong ma trận thứ ba mà dùng mảng hai chiều.</p>
+
+  <p><br /></p>
+
+  <p>B3.11 Tạo một hàm nhân hai ma trận 4 × 4 và phát kết qủa nhân trong ma trận thứ ba như bài ở trên nhưng hết ma trận là mảng một chiều.</p>
+</body>
+</html>
