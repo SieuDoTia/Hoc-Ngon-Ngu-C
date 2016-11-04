@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="../Styles/Style0001.css" rel="stylesheet" type="text/css" />
+
+  <title></title>
+</head>
+
+<body>
+  <h2>บท ๕: ประเภทข้อมูลที่มีโครงสร้าง</h2>
+
+  <p>งานจำนวนมากได้ใช้เวลามากตัวแปร เราจำเป็นต้องมีโครงสร้างที่จะช่วยให้องค์กรหันภาษีเป็นกลุ่มที่อยู่ โครงสร้างจะช่วยให้โปรแกรมเมอร์และตัวแปรกระบวนการที่ใช้ในโปรแกรมง่ายต่อการเข้าใจ อ่านด้านล่างสำหรับข้อมูลเพิ่มเติม</p>
+
+  <h4>5.1 <code>struct</code> และ&nbsp;<code>union</code></h4>
+
+  <p><b>• <code>struct (</code></b>โครงสร้าง<b><code>)</code></b></p>
+
+  <p>เพื่อช่วยให้องค์กรที่มีการดั้งเดิมชนิดข้อมูล struct ดูแม่แบบระบุ:<br /></p>
+
+  <p><code>&nbsp; &nbsp;struct {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;ตัวแปรชนิด 0&gt; &lt;ชื่อตัวแปร 0&gt;; &nbsp; /*&nbsp;ฟิลด์&nbsp;0 */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;ตัวแปรชนิด 1&gt; &lt;ชื่อตัวแปร 2&gt;; &nbsp;&nbsp;/*&nbsp;ฟิลด์&nbsp;1 */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;} &lt;ชื่อ struct&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p>ประกาศโครงสร้าง:</p>
+
+  <p><code>&nbsp; &nbsp;struct &lt;ชื่อ struct&gt; &lt;ชื่อตัวแปร&gt;;</code></p>
+
+  <p><code><br /></code></p>
+
+  <p>และกำหนดค่าสำหรับผู้ใช้ '.' ระหว่างชื่อ struct และชื่อโรงเรียน:<br /></p>
+
+  <p><code>&nbsp; &nbsp;&lt;ชื่อโครงสร้าง&gt;.&lt;</code><span style="font-family: monospace;">ชื่อ</span>ฟิลด์&gt; = &lt;มูลค่า&gt;;</p>
+
+  <p><br /></p>
+
+  <p>ดูตัวอย่างบางส่วนของสี:</p>
+
+  <p><code>&nbsp; &nbsp;struct { &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* กำหนด struct สี */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char r; &nbsp; /* สีแดง &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char g; &nbsp; /* สีเขียว &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char b; &nbsp; /* สีน้ำเงิน */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char o; &nbsp; /* ความทึบ */</code></p>
+
+  <p><code>&nbsp; &nbsp;} Si;</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;struct Si siThongFa; &nbsp;/* ประกาศ struct&nbsp;</code>สีท้องฟ้า */</p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* ตั้งค่าเริ่มต้นสำหรับฟิลด์ */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;siThongFa.r = 0x20;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;siThongFa.g = 0x20;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;siThongFa.b = 0xff;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;siThongFa.o = 0xff;</code></p>
+
+  <p><br /></p>
+
+  <p>นอกจากนี้คุณยังสามารถใช้ตัวแปรชุดและสายอักขระอีกครั้ง<br /></p>
+
+  <p><code>&nbsp; &nbsp;struct { &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* กำหนด struct นักเรียน */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; char namsakun[255]; &nbsp; &nbsp; &nbsp;/* นามสกุล &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; char chu[255]; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* ชื่ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char phet; &nbsp; &nbsp; &nbsp;/* เพศ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float physic; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* คะแนนฟิสิกส์ &nbsp; &nbsp; &nbsp; &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float khanithaSat; &nbsp; &nbsp; &nbsp; /* คะแนนคณิตศาสตร์ &nbsp; &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float wanKam; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* คะแนนวรรณกรรม &nbsp; &nbsp; */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float PhasaMuangNok; &nbsp; &nbsp; /*&nbsp;คะแนนภาษาต่างประเทศ&nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp;} NakRian;</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;struct HocSinh mangLop[30]; &nbsp;/* khai báo mảng struct cho 30 học sinh */</code></p>
+
+  <div>
+    <code><br /></code>
+  </div>
+
+  <p><b>• <code>union (</code></b>สหภาพ<b><code>)</code></b></p>
+
+  <p>&nbsp;ใช union คล้ายกันมากกับ struct:</p>
+
+  <p><code>&nbsp; &nbsp;union {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;ตัวแปรชนิด 0&gt; &lt;ชื่อตัวแปร 0&gt;; &nbsp; /*&nbsp;ฟิลด์&nbsp;0 */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;ตัวแปรชนิด 1&gt; &lt;ชื่อตัวแปร 1&gt;; &nbsp;&nbsp;/*&nbsp;ฟิลด์&nbsp;1 */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;} &lt;</code><span style="font-family: monospace;">ชื่อ union</span>&gt;;</p>
+
+  <p><br /></p>
+
+  <p><code>ประกาศ union</code>:</p>
+
+  <p><code>&nbsp; &nbsp;union &lt;ชื่อ&nbsp;union&gt; &lt;ชื่อตัวแปร&gt;;</code></p>
+
+  <p><code><br /></code></p>
+
+  <p>และกำหนดค่าสำหรับผู้ใช้ '.' ระหว่างชื่อยูเนี่ยนและชื่อตัวแปร:</p>
+
+  <p><code>&nbsp; &nbsp;&lt;ชื่อ&nbsp;union&gt;.&lt;ชื่อตัวแปร&gt; = &lt;มูลค่า&gt;;</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><br /></p>
+
+  <p>แต่กิจกรรม <code>union</code> ไม่เหมือน <code>struct</code> ทั้งหมดของสหภาพในสถานที่หนึ่งในความทรงจำ ความคิดสำคัญคือ:<br /></p>
+
+  <p>•&nbsp;<code>struct</code> ใช้หน่วยความจำสำหรับแต่ละตัวแปรภายในตัวของมันเอง</p>
+
+  <p>•&nbsp;<code>union</code> เพียงชนิดข้อมูลที่ใหญ่ที่สุดในมัน</p>
+
+  <p><br /></p>
+
+  <p>การรักษานี้สามารถเสนอชื่อได้รับประโยชน์ใด ๆ ถนนแน่นอนมี ตัวอย่างเช่นผมต้องการตรวจสอบบิตลอยจุดชนิดจำนวนจริงเป็นลอยหรือสองครั้งผมพยายามที่จะเขียนโค้ด:<br /></p>
+
+  <p><code>&nbsp; float jamNuanJing = 1.0f; &nbsp;/* จำนวนจริง */</code></p>
+
+  <p><code>&nbsp; printf( "%x\n", jamNuanJing &amp; 0x7f800000 );</code></p>
+
+  <p><br /></p>
+
+  <p>แต่เลี้ยวผิดจะแปลและการจัดการรายงานบิตไม่สามารถนำมาประยุกต์ใช้กับการลอย แต่สหภาพสามารถใช้เบราว์เซอร์ในการแก้ไขปัญหา:<br /></p>
+
+  <p><code>&nbsp; &nbsp;union { &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /*&nbsp;กำหนด&nbsp;union fl_int &nbsp; &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float f; &nbsp; &nbsp; &nbsp; &nbsp; /* จำนวนจริงที่อยากตรวจสอบค่า &nbsp; */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned int i; &nbsp;/* สามารถตรวจสอบบิตจำนวนเต็ม */</code></p>
+
+  <p><code>&nbsp; &nbsp;} fl_int;</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;union fl_int tuatSop; &nbsp; &nbsp;/*&nbsp;ประกาศ&nbsp;union&nbsp;ตรวจสอบ&nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp;tuatSop.f = 1.0f; &nbsp; &nbsp; &nbsp;/* nhập giá tri muốn kiểm tra */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "%x\n",&nbsp;tuatSop.i &amp; 0x7f800000 ); /* การตรวจบิต */</code></p>
+
+  <h4>5.2 <code>typedef</code></h4>
+
+  <p>ตั้งแต่คุณใช้ typedef ชื่อที่กำหนดไว้ล่วงหน้าชนิดของข้อมูล:</p>
+
+  <p><code>&nbsp; &nbsp;typedef &lt;tên kiêu&gt; &lt;tên kiểu mới&gt;</code></p>
+
+  <p><br /></p>
+
+  <p>ดูตัวอย่างบางส่วน:</p>
+
+  <p><code>&nbsp; &nbsp;typedef unsigned char Byte;</code></p>
+
+  <p><code>&nbsp; &nbsp;typedef int Int32;</code></p>
+
+  <p><code>&nbsp; &nbsp;typedef long int Int64;</code></p>
+
+  <p><br /></p>
+
+  <p>ประโยชน์ใช้ typedef คือช่วยสร้างชนิดข้อมูลที่ซับซ้อนจาก struct นี้:<br /></p>
+
+  <p><code>&nbsp; &nbsp;typedef struct {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char r; &nbsp; /* สีแดง &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char g; &nbsp; /* สีเขียว &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char b; &nbsp; /* สีน้ำเงิน */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char o; &nbsp; /* ความทึบ */</code></p>
+
+  <p><code>&nbsp; &nbsp;} Si;</code></p>
+
+  <p><br /></p>
+
+  <p>เมื่อประกาศตัวแปรเพียง:</p>
+
+  <p><code>&nbsp; &nbsp;Si siThongFa; /* สีท้องฟ้า */</code></p>
+
+  <p><code>&nbsp; &nbsp;Si rot; &nbsp; &nbsp; &nbsp; /* รถ &nbsp; &nbsp; */</code></p>
+
+  <p><br /></p>
+
+  <p>ทำ&nbsp;<code>union</code>&nbsp;ก็ค้ลายการ:</p>
+
+  <p><code>&nbsp; &nbsp;typedef union {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float f; &nbsp; &nbsp; &nbsp; &nbsp; /* จำนวนจริง */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned int i; &nbsp;/* จำนวนเต็ม */</code></p>
+
+  <p><code>&nbsp; &nbsp;} fl_int;</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;fl_int tuatSop; &nbsp;/* ประกาศตัวแปรตรวจสอบ */</code></p>
+
+  <p><br /></p>
+
+  <p>Bạn được thấy sau dùng <code>typedef</code> không cẩn gõ <code>struct</code> hay <code>union</code>. Gần lần nào tôi làm vậy.</p>
+
+  <h4>5.3 <code>enum (แจงนับ)</code></h4>
+
+  <p>Enum ใช้ในการตั้ง 'ชื่อ'&nbsp;สำหรับมูลค่าค่าตัวแปรสามารถรับและช่วยให้ง่ายต่อการอ่าน กำหนดให้เป็น</p>
+
+  <p><code>&nbsp; &nbsp;enum {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;ชื่อพิเศษ 0&gt;,</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;ชื่อพิเศษ 1&gt;,</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;} &lt;</code><span style="font-family: monospace;">ชื่อ</span>&nbsp;enum&gt;;</p>
+
+  <p><br /></p>
+
+  <p><span style="font-family: monospace;">ประกาศ</span>:</p>
+
+  <p><code>&nbsp; &nbsp;enum &lt;ชื่อ&nbsp;enum&gt; &lt;ตัวแปร&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p>ระหว่างสมาชิกใช้ '<code>,</code>' ไม่ไช้ '<code>;</code>' ดูตัวอย่าง</p>
+
+  <p><code>&nbsp; &nbsp;enum { &nbsp; /* กำหนด enum ทิศ */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; SAI, &nbsp; &nbsp;/* ซ้าย&nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; KHUA, &nbsp; &nbsp;/* ขวา */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; LANG, &nbsp; &nbsp;/* ล่าง */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; BON, &nbsp; &nbsp; /* บน */</code></p>
+
+  <p><code>&nbsp; &nbsp;} Thit;</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;enum Thit thit_pai = SAI; /* ประกาศ</code><span style="font-family: monospace;">ทิศไป</span>&nbsp;*/</p>
+
+  <p><br /></p>
+
+  <p>คนมักจะใช้ตัวอักษรสำหรับองค์ประกอบคงที่เดียวกัน enum นอกจากนี้คุณยังสามารถใช้ค่า enum โดยตรงไปในทะเลอีก ดูตัวอย่าง Thit ใช้เวลาในวันอาทิตย์ที่ระบุไว้ที่การปะทะกันในเกม:<br /></p>
+
+  <p><code>&nbsp; &nbsp;float siLiamChon[4]; &nbsp; &nbsp; &nbsp; &nbsp;/* ประกาศตัวแปรชุดสี่เหลี่ยมชน */</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;siLiamChon[SAI] = -10.0f;</code></p>
+
+  <p><code>&nbsp; &nbsp;siLiamChon[KUA] = 10.0f;</code></p>
+
+  <p><code>&nbsp; &nbsp;siLiamChon[LANG] = 30.0f;</code></p>
+
+  <p><code>&nbsp; &nbsp;siLiamChon[BON] = -30.0f;</code></p>
+
+  <p><br /></p>
+
+  <p>มันจะเป็นเช่นนั้น? กับรายการที่ผมเพียงจำนวนเต็มเริ่มต้นจากศูนย์ ลอง:<br /></p>
+
+  <p><code>&nbsp; &nbsp;printf( "%d %d %d %d\n", TRAI, PHAI, DUOI, TREN );</code></p>
+
+  <p><br /></p>
+
+  <p><b>บทเรียน</b></p>
+
+  <p>บทที่5.1 struct และ union มีลักษณะเหมือนและแตกต่างกันบ้าง</p>
+
+  <p>บทที่5.2 union ข้างล่างต้องการกี่ไบต์เพื่อรักษามันได้</p>
+
+  <p><code>&nbsp; &nbsp;union { /* กำหนด unon ระเบียน&nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;char rahat[5]; &nbsp; /* รหัส */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;double khuamYao; /* ความยาว */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;int jamNuan; &nbsp; &nbsp; /* จำนวน */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; char set; &nbsp; &nbsp; &nbsp; &nbsp; /* เส็รจ */</code></p>
+
+  <p><code>&nbsp; &nbsp;} RaBian;</code></p>
+
+  <p><br /></p>
+
+  <p>บทที่5.3 ให้ union fl_int ทำไมต้องเลือก unsigned int แทน unsigned char เหมือนข้างล่างนี้?</p>
+
+  <p><code>&nbsp; &nbsp;union { &nbsp; &nbsp; /* chỉ định unon fl_ch */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float f; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char ch;</code></p>
+
+  <p><code>&nbsp; &nbsp;} fl_ch;</code></p>
+
+  <p><br /></p>
+
+  <p>บทที่5.4<font face="monospace">&nbsp;เตรียมย union ดังต่อไปนี้ ดูและวิเคราะห์ผล</font></p>
+
+  <p><code>&nbsp; &nbsp;union { &nbsp; &nbsp; /* กำหนด union i_mangCh */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; int i</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char ch[4];</code></p>
+
+  <p><code>&nbsp; &nbsp;} i_mangCh;</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;union i_mangCh thotLong; &nbsp;/* ประกาศ union ทดลอง */</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;union i_mangCh thotLong.ch[0] = 0x76; &nbsp; &nbsp; &nbsp;/* đặt giá trị mảng */</code></p>
+
+  <p><code>&nbsp; &nbsp;union i_mangCh&nbsp;thotLong.ch[1] = 0x21;</code></p>
+
+  <p><code>&nbsp; &nbsp;union i_mangCh&nbsp;thotLong.ch[2] = 0x31;</code></p>
+
+  <p><code>&nbsp; &nbsp;union i_mangCh&nbsp;thotLong.ch[3] = 0x01;</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;printf( "%x\n",&nbsp;thotLong.i ); &nbsp; /* พิมพ์ผล */</code></p>
+
+  <p><br /></p>
+
+  <p>บทที่5.5 ใช้ typedef และ struct เพื่อทำชนิดข้อมูลเวกเตอร์สามมิติ (มีส่วนประกอบ <i>x</i>, <i>y</i>, <i>z</i>) สร้างฟังก์ชั่นการคำนวณ:</p>
+
+  <p>a. ความยาวเวกเตอร์</p>
+
+  <p>b. ผลคูณเชิงสเกลาร์</p>
+
+  <p>c. ผลคูณเชิงเวกเตอร์</p>
+
+  <p>d. ทำเป็น ๑ หน่วย</p>
+
+  <p><br /></p>
+
+  <p>บทที่5.6 ใช้ชนิดข้อมูลเวกเตอร์จากบทที่5.5เพื่อทำชนิดข้อมูลรังสีสามมิติ จำไว้ว่ารังสีเป็นวัตถุคณิตศาสตร์ที่มีจุดเริ่มตนและทิศทาง</p>
+
+  <p><br /></p>
+
+  <p>บทที่5.7 <font face="monospace">กำหนดและประกาศ enum&nbsp;</font><span style="font-family: monospace;">หนึ่ง</span><span style="font-family: monospace;">ตัวแปรและการใช้ sizeof() เพื่อสังเกตว่าต้องการกี่</span><font face="monospace">ไบต์</font><font face="monospace">บรรจุมัน</font></p>
+
+  <p><br /></p>
+</body>
+</html>
