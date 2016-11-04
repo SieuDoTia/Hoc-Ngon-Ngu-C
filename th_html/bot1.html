@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="../Styles/Style0001.css" rel="stylesheet" type="text/css" />
+
+  <title></title>
+</head>
+
+<body>
+  <h2>บทที่ ๐: แนะนำ</h2>
+
+  <p>สวัสดีครับทุกคน! แม้ว่าคุณจะอยากทำเกม ฐานข้อมูล สร้างภาพเคลื่อนไหว สร้างระบบปฏิบัติการแฮกเกอร์ว่าง หรือทำวิทยาศาสตร์คอมพิวเตอร์ คุณได้ทราบว่าโลกเขียนโปรแกรม<sup>รูหรา</sup>มาก และ<i><sup>ตอนนี้กับเทคโนโลยี</sup></i>ในอนาคตแสงมาก</p>
+
+  <p><br /></p>
+
+  <p>ภาษ C ก่อตั้งโดยเดนนิสริชชี่ (Dennis Ritchie)ในกลุ่มปี 1969-1973 มันเป็นภาษาที่ได้รับการสนับสนุนบนเครื่องคอมพิวเตอร์และและระบบจัดงานมากหมาย เกือบทุกเครื่องคอมพิวเตอร์อย่างสำคัญมีอย่างน้อยหนึ่งคอมไพเลอร์ภาษา C ต่อไปCเป็นภาษาสูงไม่ใกล้เคียงกับภาษาเครื่อง (คือภาษาของโปรเซสเซอร์CPU) ทำเป็นเรื่องง่ายเอาโปรแกรม C สามารถใช้วิ่งบนเครื่องอื่นๆ</p>
+
+  <p><br /></p>
+
+  <p>แล้วก็เทคโนโลยีคอมพิวเตอร์เปลี่ยนเลยๆ และมีความสามารถนำเข้ามาในเครื่องใหม่และยังใช้ได้สะดวกสบายมาก จริงบกติภาษาระดับสูงเป็นภาษามักจะช้าก่วาภาษาเครื่องคอมพิวเตอร์แต่ความเร็วเครื่องทันสมัยเพียงพอทำนักเขียนโปรแกรมเมอร์ส่วนใหญ่ไม่เคยใช้ภาษาเคี่รอง</p>
+
+  <p style="text-align: center;"><img alt="So_Do_Bien_Dich" src="../Images/th_So_Do_Bien_Dich.svg" /><br /></p>
+
+  <p>การเรียนรู้การเขียนโปรแกรมภาษาเช่น C ไม่ง่าย อย่ากลัวว่าไม่ถ้าคุณไม่เข้าใจทุกอย่างครั้งแรก อ่านเสร็จแล้วก็อ่านอีกรอบ ที่สำคัญกว่าเป็นสู้ต่อเพื่อความสำเร็จ สุดทายไม่กลัวทำผิดพลาด เรียนรู้จากมัน แก้ไขมันให้ถูกต้องและไปเรียนต่อ นั่นคือวิธีเดียวที่จะเรียนรู้</p>
+
+  <p><br /></p>
+
+  <p>ฉันได้เขียนโปรแกรมภาษา C เวลาหลายปีมาแล้วแต่ฉันยังต้องการแก้ไขความผิดพลาดของฉันตลอด! ทราบซ่อมและปรับรหัสแหล่งสำคัญมากกว่าคุณสามารถเขียนรหัสแหล่งที่สมบูรณ์ครั้งแรก</p>
+
+  <p><br /></p>
+
+  <p>ในที่สุดผมก็ต้องขอขอบคุณนายวณณะ เขาต้องการหนังสือเล่มนี้เพิ่อจะสอนที่มหาวิทยาลัยอยู่เขมรและดิดต่อและร่วมมือกับผมเขียนมัน</p>
+
+  <h4>0.1 เตรียมพร้อมสภาพแวดล้อม</h4>
+
+  <p>หนังสือเล่มนี้จะใช้คอมไพเลอร์ <code>clang</code> หรือ <code>gcc</code> แต่คุณสามารถใช้คอมไพเลอร์อื่น ๆ เพื่อทำบทเรียนในหนังสือเล่มนี้</p>
+
+  <p><br /></p>
+
+  <p><b>ลินุกซ์</b></p>
+
+  <p>บกติลินุกซ์ตั้งเครื่องมือเพื่อชุดพัฒนาและเขียนโปรแกรมอยู่แล้ว &nbsp;เปิด <code>Terminal</code> ตี</p>
+
+  <p><code>clang -v</code></p>
+
+  <p>หรือ</p>
+
+  <p><code>gcc -v</code></p>
+
+  <p>และดูว่าได้ตั้งหรือยัง ถ้ายังไม่มีลองนี้ได้ติดตั้ง <code>gcc</code>:</p>
+
+  <p><code>sudo apt-get install gcc</code></p>
+
+  <p><br /></p>
+
+  <p><b>Windows</b></p>
+
+  <p>• ติดตั้ง MinGW</p>
+
+  <p>ฉันรู้สึกใช้Windowลำคันมากแต่ถ้าคุณต้องการใช้มันตามวิธีต่อไปนี้ คุณจะต้องดาวน์โหลด MinGW จาก <code>http://mingw.org&nbsp;</code>ในรายการด้านซ้ายกดบนคำ 'ดาวน์โหลด' เมื่อถึงจอเหมือนภาพข้างล่างนี้ กดบนกระดุ 'ดาวน์โหลด' เพิอได้รับโปรแกรมติดตั้ง MinGW</p>
+
+  <p style="text-align: center;"><img alt="Mingw" height="75%" src="../Images/Mingw.png" width="75%" /></p>
+
+  <p>หลังจากดาวน์โหลดเสร็จแล้วกดไอคอน MinGW Installer เพื่อติดตั้งระบบ MinGW (ทำ Windows สามารถทำกิจกรรมต่าง ๆ เช่นลินุกซ์) เมื่อมันติดตั้งเสร็จแล้วคุณควรเห็นได้จออย่างนี้:</p>
+
+  <p style="text-align: center;"><img alt="Mingw_cai_dat_1" height="75%" src="../Images/Mingw_cai_dat_1.png" width="75%" /></p>
+
+  <p>กดกระดูง 'ต่อไป' บนหน้าจอต่อไปเลือกติดตั้งสองของเหล่านี้:</p>
+
+  <p>1. <code>mingw-developer-toolkit &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; bin</code></p>
+
+  <p>2. <code>mingw32-base &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bin</code></p>
+
+  <p><br /></p>
+
+  <p style="text-align: center;"><img alt="Mingw_cai_dat_2" height="75%" src="../Images/Mingw_cai_dat_2.png" width="75%" /><br /></p>
+
+  <p>ในเมนูอยู่ข้างบนเลึอก 'Installation→Apply Changes' และรอมัน เมื่อได้ทำเสร็จแล้วควรมีหน้าจอเหมือนนี้:<br /></p>
+
+  <p><br /></p>
+
+  <p style="text-align: center;"><img alt="Mingw_cai_dat_3" height="75%" src="../Images/Mingw_cai_dat_3.png" width="75%" /></p>
+
+  <p><br /></p>
+
+  <p>•เตรียมพร้อม Command Prompt</p>
+
+  <p>เราต้องการชี้Windowsว่า GCC อยู่ด้านไหน ต้องติดตั้งdirectory ของ gcc ในตัวแปรของระบบจัดงาน ก่อนเปิด Control Panel→System and Security→System' และเข้า 'Advanced system settings' ค้นหาและเลือก 'Path' ในรายการ 'System variables' หลังจากนั้นกดคลิก กระดุง 'Edit'</p>
+
+  <p style="text-align: center;"><img alt="Window Đường Dẫn 1" height="75%" src="../Images/Window_Duong_Dan_1.png" width="75%" /></p>
+
+  <p>ตีเพิ่มที่สุดทายของสายอักขระ (อย่าตีช่องว่างไหน):</p>
+
+  <p><code>&nbsp;;C:\MinGW\bin</code></p>
+
+  <p><br /></p>
+
+  <p>จากนั้นกด 'OK' เพื่อยอมรับการเปลี่ยนแปลง</p>
+
+  <p style="text-align: center;"><img alt="Window Đường Dẫn 2" height="75%" src="../Images/Window_Duong_Dan_2.png" width="75%" /></p>
+
+  <p>เปิด Command Prompt และตี</p>
+
+  <p><code>&nbsp; &nbsp;gcc -v</code></p>
+
+  <p><br /></p>
+
+  <p>และดูว่าได้ผลอย่างนี้:</p>
+
+  <p style="text-align: center;"><img alt="Window_Duong_Dan_3" src="../Images/Window_Duong_Dan_3.png" width="75%" /></p>
+
+  <p><br /></p>
+
+  <p>ถ้าผลไม่เหมือนตี'path' เพื่อดูpathเป็นถูกต้องหรือไม่</p>
+
+  <p style="text-align: center;"><img alt="Window_Duong_Dan_4" src="../Images/Window_Duong_Dan_4.png" width="75%" /></p>
+
+  <p>หากคุณยังมีปัญหาแล้วและแน่ใจว่าpathที่ถูกต้องพยายามติดตั้ง mingw-developer-toolkit และ mingw32-base<br /></p>
+
+  <p><br /></p>
+
+  <p><b>Mac OS</b></p>
+
+  <p>ดาวน์โหลดเครื่องมือเขียนโปรแกรม Xcode จากตลาดแอปเปิ้ล</p>
+
+  <p><br /></p>
+
+  <p><b>Puppy Linux</b></p>
+
+  <p>หากคุณใช้คอมพิวเตอร์ไม่ได้เป็นแมคอินทอชของแอปเปิ้ล คุณสามารถเปิดเครื่องใช้ Puppy Linux ติดตั้งไน USB และไม่ต่อติดตั้งในฮาร์ดไดรฟ์ของเครื่องคุณ ดาวน์โหลด Puppy Linux จากที่นี่: <code>http://puppylinux.org</code> รุ่นปลายสุดปี 2016 เป็น: <code>slacko-6.3.2-uefi.iso</code></p>
+
+  <p><br /></p>
+
+  <p>กับลูกสุนัขลินุกซ์คุณต้องการติดตั้งเพิม:</p>
+
+  <p>• <code>devx_slacko_6.3.0.sfs</code></p>
+
+  <p>• <code>llvm-2.8-all.pet</code></p>
+
+  <h4>0.2 วิธีคอมไพล์และวิ่งโปรแกรมแปลภาษา</h4>
+
+  <p>หลังจากทำเสร็จติดตั้ง clang หรือ gcc คุณสามารถคอมไพล์โดยคำสั่ง:</p>
+
+  <p><code>&nbsp; &nbsp; clang &lt;ชื่อแฟ้มรหัสแหล่ง&gt; -o &lt;filename โปรแกรม&gt;</code></p>
+
+  <p><br /></p>
+
+  <p>ตัวอย่างเช่นผมมีแฟ้มชื่อ <code>program.c</code> และจะใช้ clang ผมจะตี:</p>
+
+  <p><code>&nbsp; &nbsp; clang program.c -o program</code></p>
+
+  <p><br /></p>
+
+  <p>ถ้าคุณใช้ gcc ตี '<code>gcc</code>' แทน '<code>clang</code>' ตั้งใจหน่อย: ชื่อแฟ้มรหัสและโปรแกรมได้ดอมไพล์ไม่จำเป็นมีชื่อเดียวกัน</p>
+
+  <p><br /></p>
+
+  <p>เพื่อวิ่งโปรแกรมตี '<code>./</code>' ก่อนชื่อโปรแกรม:</p>
+
+  <p><code>&nbsp; &nbsp; ./&lt;ชื่อแฟ้มรวบรวม&gt;</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>ให้กรณีข้างบน:</code></p>
+
+  <p><code>&nbsp; &nbsp;./program</code></p>
+
+  <p><br /></p>
+
+  <p>อย่าตี'<code>./</code>'ถ้าคุณใช้ Windows</p>
+</body>
+</html>
