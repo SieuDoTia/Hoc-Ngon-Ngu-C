@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="../Styles/Style0001.css" rel="stylesheet" type="text/css" />
+
+  <title></title>
+</head>
+
+<body>
+  <h2>Chương 6: ตัวชี้</h2>
+
+  <p>ตัวชี้สำคัณมากในภาษา C และได้ใช้งนิยม บางคนสามารถเข้าใจแนวคิดนี้บางคนไม่ได้เลย มันแยกกันผู้เขียนโปรแกรมรดับเด็กจากผู้ใหญ่ เวลาแรกผมเขียนหนังสือเล่มนี้ในปี 2016 มีคนไม่น้อยทะเลาะกันว่าภาษาโปรแกรมรุ่นใหม่ควรมีตัวชี้หรือเป่ลา ควรมีไม่สำคัญสำหรับหนังสือชี้เล่มนี้เพราะภาษาCมีตัวชี้และคุณบังคับเรียนเกี่ยวกับมัน</p>
+
+  <h4>6.1 ตัวชี้คืออะไร</h4>
+
+  <p>ง่ายที่สุดมันเป็นที่อยู่ในความจำ แทนติดต่อโดยตรงกับตัวแปรเราสามารถใช้ที่อยู่ของมัน วิธีประกาศตัวชี้ใช้ตัวอักขระ '*' ก่อนชื่อตัวแปร:</p>
+
+  <p><code>&nbsp; &nbsp;&lt;ชนิดข้อมูล&gt; *&lt;ชื่ิตัวชี้&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p>ตัวอย่าง</p>
+
+  <p><code>&nbsp; &nbsp;float *Wela; &nbsp;/* เวลา */</code></p>
+
+  <p><code>&nbsp; &nbsp;long *thiYuNaiFem; &nbsp;/* ที่อยู่ในแฟ้ม */</code></p>
+
+  <p><br /></p>
+
+  <p>นอกจากนี้ยังสามารถใช้เพื่อชนิดข้อมูลที่เรากำหนด</p>
+
+  <p><code>&nbsp; &nbsp;Vector *normal; &nbsp; &nbsp; &nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp;NakRian *Wicha_bo_6; /* วิชา บ.๖ */</code></p>
+
+  <p><br /></p>
+
+  <p>เอาที่อยู่ของตัวแปรได้อย่างไง? ใช้ตัวอักขระ "<code>&amp;</code>" ก่อนชื่อตัวแปร (ความหมายที่อยู่)<br /></p>
+
+  <p><code>&nbsp; &nbsp;&amp;&lt;ชื่อตัวแปร&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p>ตัวอย่างให้ตัวแปร float khuamKuang:</p>
+
+  <p><code>&nbsp; &nbsp;&amp;khuamKuang; /* ความกว้าง */</code></p>
+
+  <p><br /></p>
+
+  <p>หากคุณต้องการมูลค่าของตัวชี้ใช้ '*' ก่อนตัวแปร (ก็เรียกว่า<i>อ้างอิงกลับ</i>)<br /></p>
+
+  <p><code>&nbsp; &nbsp;*&lt;</code><span style="font-family: monospace;">ชื่อ</span>ตัวแปร&gt;</p>
+
+  <p><br /></p>
+
+  <p>ตัวอย่างหนึ่งที่ใช้ตัวแปร&nbsp;<code>wela</code> ข้างบน</p>
+
+  <p><code>&nbsp; float welaThangMot += *wela; /* เวลาทั้งหมด */</code></p>
+
+  <p><br /></p>
+
+  <p>ทำไมต้องใช้ตัวชี้? บางครั้งเราสามารถออกแบบโปรแกรมแต่ไม่ทราบงานของผู้ใช้จะต้องการบรรจุความจำเท่าไร ในองค์ประกอบข้อมูลเท่าไร ฯลฯ ก่อน &nbsp;ตัวชี้ช้วยเราแก้พวกปัญหานี้</p>
+
+  <p><br /></p>
+
+  <p>ใช้ตัวชี้อันตรายนิดถ้าไม่ระมัดระวัง สังเกตสองอย่างของโปรแกรมข้างล้างนี้<br /></p>
+
+  <p>ชุด ๑: ไม่ใช้ตัวชี้</p>
+
+  <p><code>&nbsp; &nbsp;/* ฟังก์ชั่นคำนวณพื้นที่สี่เหลี่ยม */</code></p>
+
+  <p><code>&nbsp; &nbsp;float khamNuanPhernThiSiLiam( float khuamKuang, float khuamSung ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;khuamKuang = 100.0f;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;return khuamKuang*khuamSung;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/*&nbsp;ฟังก์ชั่น&nbsp;main */</code></p>
+
+  <p><code>&nbsp; &nbsp;int main() {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&nbsp;</code><code>/*&nbsp;</code><span style="font-family: monospace;">ตั้ง</span>ค่าที่ให้ความกว้างและความสูง */</p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float khuamKuang = 5.0f, khuamSung = 10.0f; &nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float phernThi =&nbsp;khamNuanPhernThiSiLiam( khuamKuang, khuamSung );</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf( "ความกว้าง %4.1f &nbsp;ความสูง&nbsp;%4.1f &nbsp;พื้นที่ %4.1f (%4.1f)\n", khuanKuang, khuamSung,&nbsp;khuanKuang*khuamSung, phernThi );</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; return 1;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>ชุด ๒ ใช้ตัวชี้</p>
+
+  <p><code>&nbsp; &nbsp;/* ฟังก์ชั่นคำนวณพื้นที่สี่เหลี่ยม */<br /></code></p>
+
+  <p><code>&nbsp; &nbsp;float&nbsp;khamNuanPhernThiSiLiam(&nbsp;float&nbsp;*khuamKuang, float *KhuamSung ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; *khuamKuang = 100.0f; &nbsp;/* ความกวาง */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; return *khuamKuang * *khuamSung; &nbsp;/* '*' ระหว่างเป็นขวน, ไม่ใช่อ้างอิง</code><span style="font-family: monospace;">กลับ</span>&nbsp;*/</p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/*&nbsp;ฟังก์ชั่น&nbsp;main */</code></p>
+
+  <p><code>&nbsp; &nbsp;int main() {</code></p>
+
+  <p><code><code>&nbsp; &nbsp; &nbsp;&nbsp;</code><code>/*&nbsp;</code><span style="font-family: monospace;">ตั้ง</span>ค่าที่ให้ความกว้างและความสูง */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float khuamKuang = 5.0f, khuamSung = 10.0f; &nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float phernThi =&nbsp;khamNuanPhernThiSiLiam( &amp;beRong, &amp;beCao);</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf( "ความกว้าง %4.1f &nbsp;ความสูง&nbsp;%4.1f &nbsp;พื้นที่ %4.1f (%4.1f)\n", khuanKuang, khuamSung,&nbsp;khuanKuang*khuamSung, phernThi );</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; return 1;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>คุณสามารถเห็นในทั้งสองรุ่นฟังก์ชั่น <code>khamNuanPhernThiSiLiam()</code> เปลี่ยนมูลค่าตัวแปร <code>khuamKuang</code> ในอย่างที่ ๑, ความผิดพลาดโดนถูก จำกัด การใช้ <code>khuamKuang</code> คำนวณต่อไปไม่ส่งผลกระทบอะไร สลับกับในอย่างที่ ๒ มูลค่าของ <code>khuamKuang</code> ถูกเปลี่ยนแปลงทำให้ผิดตลอดไป</p>
+
+  <p><br /></p>
+
+  <p>ทำไม? ในรอย่างที่ ๑, เมื่อเตรียมความพร้อมฟังก์ชั่นการปฏิบัติ <code>khamNuanPhernThiSiLiam()</code> คอมพิวเตอร์จะคัดลอกมูลค่าของตัวแปร <code>beRong</code> และ <code>beCao</code> และส่งไปเข้าฟังก์ชั่น ฟังก์ชั่นได้ใช้มูลค่าคัดลอก ไม่สามารถเปลี่ยนมูลค่าเป็นเริ่มต้นใน <code>main()</code> สลับกับอย่างที่ ๒ เอาให้ฟังก์ชั่น <code>khamNuanPhernThiSiLiam()</code> ตัวชี้ของสองตัวแปรแหล่ง สามารถเปลี่ยนมูลค่าของมัน</p>
+
+  <p><br /></p>
+
+  <p>ถ้าไม่ปลอดภัยทำไมให้ฟังก์ชั่นสามารถเปลี่ยนตัวแปรงแบบนี้ คุณคิดอย่างนั้นถูกต้องมากแต่มีครั้งความเร็วหรือประหยัดความจำสำคัณกว่าความปลอดภัย เช่นคุณอยากใข้ข้อมูลของตัวแปรชุดหลายล้านสมาชิกหรือ <code>struct</code> ยักษ์ยาวกี่กิกาไบต์ คัดลอกข้อมูลเอาไปฟังก์ชั่นใช้จะเสียเวลามาก สบวกก่วาส่งตัวชี้ติดต่อข้อมูลในกรณีนี้</p>
+
+  <h4>6.2 ตัวชี้และตัวแปรชุด</h4>
+
+  <p>ความจริงคุณได้พบกับตัวชี้แล้วม: ตัวแปรชุด ตัวแปรชุดเป็นตัวชี้ถึงสมาชิกที่ 0 ตัวแปรชุด โปรดดูที่นี้:</p>
+
+  <p><code>char chu[5] = {'d', 'u', 'y', 'e', 'n', 0x00}; &nbsp;/* ชื่อ */</code></p>
+
+  <p><br /></p>
+
+  <p><code>chu</code> เป็นตัวชี้แรกอาร์เรย์เสาอากาศ ดูข้างล่าง</p>
+
+  <p><code>&nbsp; &nbsp;printf( "%c%c%c%c%c\n", chu[0], chu[1], chu[2], chu[3], chu[4] );</code></p>
+
+  <p><br /></p>
+
+  <p>ก็เหมือนกัน</p>
+
+  <p><code>&nbsp; &nbsp;printf( "%c%c%c%c%c\n", *chu, *(chu+1), *(chu+2), *(chu+3), *(ten+4) );</code></p>
+
+  <p><br /></p>
+
+  <p>คุณเห็นได้ไหม เราสามารถใช้เลขคณิตกับตัวชี้ สองวงซ้ำเหมือนกันอีกครั้ง</p>
+
+  <p><code>&nbsp; &nbsp;/* วงซ้ำอย่าง ๑ */</code></p>
+
+  <p><code>&nbsp; &nbsp;/* ทั้งหมดในตัวแปรชุด */</code></p>
+
+  <p><code>&nbsp; &nbsp;float thangMotNaiTuaPreChut( float *tuaPreChut, unsigned int khuamYaoTuaPreChut ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsiged char lamDap = 0; &nbsp;/* ลำดับ */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float thangMot = 0.0f; &nbsp; &nbsp;/* ทั้งหมด */</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; while( lamDap &lt; khuamYaoTuaPreChut ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;thangMot += tuaPreChut[lamDap];</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lamDap++;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; }</code></p>
+
+  <p><code>&nbsp; &nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; return thangMot;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;/* วงซ้ำอย่าง ๒ - ใช้เลขคณิตกับตัวชี้ */</code></p>
+
+  <p><code>&nbsp; &nbsp;/* ทั้งหมดในตัวแปรชุด */</code></p>
+
+  <p><code>&nbsp; &nbsp;float thangMotNaiTuaPreChut( float *tuaPreChut, unsigned int khuamYaoTuaPreChut ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; /* ปล่ายตัวแปรชุด */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float *plaiTuaPreChut = tuaPreChut +&nbsp;khuamYaoTuaPreChut;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; float thangMot = 0.0f; &nbsp;/* ทั้งหมด */</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; while( tuaPreChut &lt; keThucMangSo ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;thangMot += *tuaPreChut++;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; }</code></p>
+
+  <p><code>&nbsp; &nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; return thangMot;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>•&nbsp;ตัวชี้และ&nbsp;<code>struct</code></p>
+
+  <p>หากคุณจำเป็นต้องใช้ตัวแปรของตัวชี้ struct ใช้ '<code>-&gt;</code>':</p>
+
+  <p><code>&nbsp; &nbsp;&lt;<span style="font-family: 'Times New Roman', Times, serif;">ตัวชี้</span>&nbsp;struct&gt;-&gt;&lt;ชื่ตัวแปร&gt;</code></p>
+
+  <p><br /></p>
+
+  <p>สมมติว่าฉันกำหนดและประกาศหนึ่งตัวแปร nakRian (นักเรียน จากบท ๕) และใช้ตัวชี้ในฟังก์ชั่น</p>
+
+  <p><code>&nbsp; &nbsp;void phimKhoMunNakRian( NakRian *nakRian ) {</code></p>
+
+  <p>&nbsp; &nbsp;</p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf( "นัรเรียน: %s %s\n", hocSinh-&gt;ho, hocSinh-&gt;tên );</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf( "ฟิสิกส์: %3.1\n", hocSinh-&gt;ho );</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf( "คณิตศาสตร์: %3.1f\n", hocSinh-&gt;toan );</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf( "วรรณกรรม: %3.1f\n", hocSinh-&gt;van );</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf( "ภาษาต่างประเทศ: %3.1f\n", hocSinh-&gt;ngoaiNgu );</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <h4>6.3 ฟังก์ชั่น <code>calloc</code> และ&nbsp;<code>malloc</code></h4>
+
+  <p>กรณีมากไม่สามารถทราบก่อนว่างานจะต้องใช้ความจำเ่ทาไร ตัวแปรชุดควรมีสมาชิกกี่ตัว มีสองฟังก์ชั่นช่วยแก้ปัญหานี้ <code>malloc</code> และ <code>calloc</code> พวกเขาใช้รูปแบบ:</p>
+
+  <p><code>&nbsp; &nbsp;&lt;ชื่อตัวชี้&gt; = malloc( &lt;กี่ไบต์&gt;</code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;ชื่อตัวชี้&gt; = calloc( &lt;กี่สมาชิก&gt;, &lt;กี่ไบต์ต่อสมาชิก&gt;);</code></p>
+
+  <p><br /></p>
+
+  <p>คุณสามารถใช้ <code>sizeof()</code> เพื่อช่วยให้ทราบว่าขนาดของชนิดข้อมูลต่างๆ มีฟังก์ชั่นหนึ่งชื่อ <code>free()</code> สำหรับปล่อยความจำจากการใช้สองฟังก์ชั่นนี้</p>
+
+  <p><code>&nbsp; &nbsp;free( &lt;ชื่อตัวชี้&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>พวกฟังก์ชั่นนี้อยู่ในห้องสมุด stdlib.h ฟังก์ชั่น malloc สงวนไว้หน่วยความจำแต่เราไม่ทราบว่าสิ่งที่อยู่ในมัน ในขณะที่ calloc จะทำให้หน่วยความจำทั้งหมดเท่ากับศูนย์ ดูตัวอย่างด้านล่างใช้สองฟังก์ชั่นนี้:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned int *tuaPreChut_jamNuanTem = malloc( 128*sizeof( unsigned int) );</code></p>
+
+  <p><code>&nbsp; &nbsp;NakRian *tuaPreChut_nakRian = malloc( 128*sizeof( NakRian ) );</code></p>
+
+  <p><code>&nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp;</code><span style="font-family: monospace;">/* ใช้ทำงานอะไร */</span></p>
+
+  <p><code>&nbsp; &nbsp;... &nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp;free(&nbsp;tuaPreChut_jamNuanTem&nbsp;);</code></p>
+
+  <p><code>&nbsp; &nbsp;free(&nbsp;tuaPreChut_nakRian&nbsp;);</code></p>
+
+  <p><br /></p>
+
+  <p>พวกฟังก์ชั่นเหล่านี้ช่วยทำบัฟเฟอร์บล็อกหน่วยความจำ bufferคือคล่ายเป็นคลังสินค้าเพื่อเก็บข้อมูลเพื่อทำสิ่งต่างๆเช่นการอ่าน / บันทึกแฟ้ม เปลี่ยนข้อมูลภาพ ไว้ข้อมูลจากการดาวน์โหลดหรือมีข้อมูลเพื่อวาดหน้าจอ ฯลฯ&nbsp;</p>
+
+  <p><br /></p>
+
+  <p><b>ระวัง:</b> สำคัญมากโปรแกรมคุณปล่อยหน่วยความจำหลังจากใช้เส็รจ ถ้าไม่มันจะสงวนไว้ความจำ สามารถทำให้โปรแกรมทำงานช้า (หรือทั้งเครื่องวิ่งช้า) หรือทำระบบจัดงานปิดโปรแกรมของคุณ</p>
+
+  <p><br /></p>
+
+  <p><b>เรียนรู้เพิ่มเติม:</b> มีฟังก์ชั่นอีกชื่อ <code>realloc()</code> เพื่อ 'สงวนไว้อีกรอบ' หน่วยความจำเสริม นักเขียนโปรแกรมมักจะใช้มันเมื่อบัฟเฟอร์ไม่ยาวพอที่ได้รองรับข้อมูลทั้งหมด</p>
+
+  <p><br /></p>
+
+  <p>บทที่6.1 อธิบายตัวชี้คืออะไร ทำไมมันสำคัญ&nbsp;</p>
+
+  <p><br /></p>
+
+  <p>บทที่6.2 หากตัวแปรชุดมีมูลค่านี้</p>
+
+  <p><code>&nbsp; &nbsp;float leik[3] = { 2.0f, 4.0f, 5.0f};</code></p>
+
+  <p>ข้างล่างจะพิมพ์ค่าอะไร</p>
+
+  <p><code>&nbsp; &nbsp;printf( "%3.1f\n", *leik++ );</code></p>
+
+  <p><br /></p>
+
+  <p>บทที่6.3 การบีบอัดภาพทั่วไปในทศวรรษ 1980 เรียก RLE ข้างลา่งอธิบายหนึ่งวิธีทำ</p>
+
+  <p>1. ถ้าพบกลุ่มจำนานไบต์ 3 ถึง 128 ไบต์เดียวกันบันทึกจำนวนไบต์และติดตามมูลค่าของไบต์เดียวกัน (บันทึ ๒ ไบต์)</p>
+
+  <p><code>&nbsp; &nbsp;&lt;จำนวนไบต์เดียวกัน (ไบต์ ๑)&gt; &lt;มูลค่าของไบต์ (ไบต์ ๒)&gt;</code></p>
+
+  <p>2. หากเจอจำนานไบต์ไม่เดียวกัน 127 ไบต์ลงไบหรือจำนวนไบต์เดียวกันแต่ 3 หรือน้อยกว่า บันทึกหมายเลขลบของจำนวนไบต์ในกลุมและบันทึกคัดลอกไบต์ทั้งหมดในกลุม</p>
+
+  <p><code>&nbsp; &nbsp;&lt;-จำนวนไบต์ในกลุม (ไบต์ ๑)&gt; &lt;คัดลอกไบต์ในกลุม(n ไบต์)&gt;</code></p>
+
+  <p>3. ทำถึงหมดข้อมูลในภาพ</p>
+
+  <p>เมื่อถอดรหัสRLEค่าบวกบอกจำนวนไบต์เดีวยกันและค่าลบบอกจำนวนไบต์ต้องคัดลอก</p>
+
+  <p><br /></p>
+
+  <p>บทที่6.4 เพื่อเพิ่มประสิทธิภาพการบีบอัด RLE คำนวณความแตกต่างระหว่างสองไบต์ติดต่อกันเสร็จแล้วใช้การบีบอัด RLE เขียนฟังก์ชั่นเพิ่อคำนวณแตกต่างระหว่างสองไบต์ติดต่อกันใช้สูตรด้านล่างสำหรับบัฟเฟอร์ยาวnไบต์ จำไว้ว่าไบต์ที่ 0 ไม่เปลี่ยนแปลง (คัดลอกมัน)</p>
+
+  <p><code>&nbsp; &nbsp;byte[s] = (int)(byte[s] - byte[s-1] + 128)</code></p>
+
+  <p>สูตรช่วยแก้ไขความผิดพลาด</p>
+
+  <p><code>&nbsp; &nbsp;byte[s] = (int)(byte[s-1] + byte[s] - 128)</code></p>
+
+  <p><br /></p>
+
+  <p>บทที่6.5 ถ้าต้องการทำตัวแปรชุดชะนิด float มีสมาชิก 32 &nbsp;คำสั่งดังต่อไปนี้ทำถูกต้องหรือไม่? หากไม่ถูกต้องแก้ไขมัน</p>
+
+  <p><code>&nbsp; &nbsp;float *tuaPreChutFloat = malloc( 32 );</code></p>
+
+  <p><br /></p>
+</body>
+</html>
