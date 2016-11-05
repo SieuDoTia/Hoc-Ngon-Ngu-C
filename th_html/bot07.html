@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="../Styles/Style0001.css" rel="stylesheet" type="text/css" />
+
+  <title></title>
+</head>
+
+<body>
+  <h2>บท๗: แฟ้ม</h2>
+
+  <p>แฟ้มช่วยเราเก็บและบันทึกข้อมูลสำหรับใช้ต่อไปในอนาคต แน่ใจคอมพิวเตอร์ของคุณมีจำนวนแฟ้มมากมายที่มีข้อมูลที่คุณต้องการเพิอทำงาน ดังนั้นเรียนรู้วิธีปฏิสัมพันธ์กับแฟ้มสำคัญมาก บทนี้จะแนะนำคุณกับการทำงานกับไฟล์ภาษาC ฟังก์ชั่นแฟ้มทั้งหมดอยู่ในห้องสมุด <code>stdio.h</code>.&nbsp;</p>
+
+  <h4>7.1 การเปิด อ่าน เขียนและปิดแฟ้ม</h4>
+
+  <p>แฟ้มดังกล่าวจะถือว่าเป็นกระแสไบต์ รายละเอียดของแฟ้มได้จัดระเบียบในฮาร์ดไดรฟ์ไม่สำคัญ นอกจักต้องการรู้จักเส้น path ไปถึงแฟ้ม สำหรับทำงานกับแฟ้มมีตัวชี้ <code>FILE</code> มันเป็นโครงสร้างไว้ข้อมูลเกี่ยวกับแฟ้มถูกสัมผัส การประกาศตัวชี้แฟ้ม:</p>
+
+  <p><code>&nbsp; &nbsp;FILE *&lt;ชื่อตัวชี้แฟ้ม&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p>และฟังก์ชั่นเพื่อเปิดแฟ้ม&nbsp;<code>fopen()</code>. ดูตัวอย่างด้านล่าง:</p>
+
+  <p><code>&nbsp; &nbsp;FILE *&lt;ชื่อตัวชี้แฟ้ม&gt; = fopen( "&lt;ชื่อแฟ้ม&gt;", &lt;ระบบปกครอง&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>มันมีพวกระบอบปกครอง</p>
+
+  <p><code>&nbsp; &nbsp;r</code> &nbsp; อ่าน</p>
+
+  <p><code>&nbsp; &nbsp;r+</code>&nbsp;อ่าน/บันทึก</p>
+
+  <p><code>&nbsp; &nbsp;w</code>&nbsp; &nbsp;บันทึก</p>
+
+  <p><code>&nbsp; &nbsp;w+</code>&nbsp;บันทึก/อ่าน</p>
+
+  <p><code>&nbsp; &nbsp;a</code>&nbsp; &nbsp;บันทึกต่อไปจากจุดท้าย<span style="font-family: monospace;">แฟ้ม</span></p>
+
+  <p><code>&nbsp; &nbsp;a+</code>&nbsp;บันทึกต่อไปจากจุดท้าย<span style="font-family: monospace;">แฟ้ม</span>&nbsp;/อ่านต่อ</p>
+
+  <p><br /></p>
+
+  <p>ถ้า<span style="font-family: monospace;">แฟ้ม</span>ยังไม่มีระบอบปกครอง '<code>w</code>' และ '<code>a</code>' จะทำแฟ้มใหม่</p>
+
+  <p><b>ระวัง:</b> คุณต้องการตรวจสอบว่าตัวชี้แฟ้ม&nbsp;<code>!= NULL</code>&nbsp;ก่อนใช้ทำงารอะไรกับมันและถ้ามีความผิดประกดให้ผู้ใช้ทราบ &nbsp;สามารถมีหลายเรื่องเช่นฮาร์ดดิสก์เต็ม ไม่มีอนุญาตอ่านหรือบันทึก แฟ้มไม่อยู่(ถ้าลองอ่านแฟ้ม) เป็นต้น</p>
+
+  <p><br /></p>
+
+  <p>ตัวอย่างทำเพิอบันทึกแฟ้มเพื่อเก็บข้อมูล:</p>
+
+  <p><code>&nbsp; &nbsp;FILE *femKhoMun = fopen( "</code>แฟ้มบันทึก.dat", "w");</p>
+
+  <p><br /></p>
+
+  <p>และอ่านข้อมูล:</p>
+
+  <p><code>&nbsp; &nbsp;FILE *femKhoMun = fopen( "</code>แฟ้มบันทึก.dat", "r");</p>
+
+  <p><br /></p>
+
+  <p>และปิดแฟ้มโดยใช้ฟังก์ชั่น <code>fclose()</code>:</p>
+
+  <p><code>&nbsp; &nbsp;fclose( &lt;ชื่อตัวชี้แฟ้ม&gt; );</code></p>
+
+  <p><code>ตามตัวอย่างข้างบน</code></p>
+
+  <p><code>&nbsp; &nbsp;fclose(&nbsp;femKhoMun&nbsp;);</code></p>
+
+  <h4>7.2 ย้ายในแฟ้ม<br /></h4>
+
+  <p>เพิ่อย้ายตำแหน่งในแฟ้มมีสามฟังก์ชั่นสะดวก:&nbsp;<code>ftell()</code>, <code>fseek()</code>, <code>frewind()</code>.</p>
+
+  <p>• ใช้ <code>fell()</code> ทราบตำแหน่งในแฟ้ม&nbsp;(จำนวนไบจากหัวแฟ้ม)</p>
+
+  <p><code>&nbsp; &nbsp;long ftell( &lt;ชื่อตัวชี้แฟ้ม&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>• เพิ่อย้ายในแฟ้มใช้&nbsp;</p>
+
+  <p><code>&nbsp; &nbsp;fseek( &lt;ชื่อตัวชี้แฟ้ม&gt;, &lt;รายาทาง&gt;, &lt;คงค่าทิศ&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>รายาทางคือจำนวนไบต้สัมพัทธ์ตำแหน่งปัจจุบันอยู่ประเพณีคงค่าทิศ:</p>
+
+  <p>&nbsp; 1. <code>SEEK_SET</code>&nbsp;(จากหัวแฟ้ม)</p>
+
+  <p>&nbsp; 2. <code>SEEK_CUR</code>&nbsp;(จากตำแหน่งปัจจุบันในแฟ้ม)</p>
+
+  <p>&nbsp; 3. <code>SEEK_END</code>&nbsp;(จากสุดท้ายแฟ้ม)</p>
+
+  <p><br /></p>
+
+  <p>เพิ่อทราบทึกสุดท้ายแฟ้มมีคงค่า&nbsp;<code>EOF</code>.</p>
+
+  <p><br /></p>
+
+  <p>• กลับไปหัวแฟ้ม</p>
+
+  <p><code>&nbsp; &nbsp;frewind( &lt;ชื่อตัวชี้แฟ้ม&gt; );</code></p>
+
+  <h4>7.3 อ่านและบันทึกแฟ้ม</h4>
+
+  <p>เวลาแล้วฉันยังไม่บอกเกี่ยวกับวิธีอ่านและบันทึกแฟ้ม! มีฟังก์ชั่นอ่านหนึ่งไบต์:&nbsp;</p>
+
+  <p><code>&nbsp; &nbsp;fgetc( &lt;ชื่อตัวชี้แฟ้ม&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>และฟังก์ชั่นบันทึกหนึ่งไบต์:</p>
+
+  <p><code>&nbsp; &nbsp;fputc( &lt;ชื่อตัวแปร&gt;, &lt;ชื่อตัวชี้แฟ้ม&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>เพิ่ออ่านและบันทึกข้อมูลมากกว่าในเวลาเดียวใช้</p>
+
+  <p><code>&nbsp; &nbsp;fscanf( &lt;ชื่อตัวชี้แฟ้ม&gt;, "&lt;สายอักขระควบคุม&gt;", &lt;พวรตัวชี้ของตัวแปร&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>และ<br /></p>
+
+  <p><code>&nbsp; &nbsp;fprintf( &lt;ชื่อตัวชี้แฟ้ม&gt;, "&lt;สายอักขระควบคุม&gt;", &lt;พวรตัวชี้ของตัวแปร&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>การใช้คล้ายกับ <code>scanf()</code> และ <code>printf()</code> ที่เราพบในบทที่ 2 และ 3 นอกจากมีตัวชี้แฟ้มอยู่ข้างหน้า คุณสามารถใช้สายอักขระควบคุมเพิ่อจัดงานวิธีบันทึกข้อมูลเข้าไปในแฟ้มกับ <code>fprintf()</code>. สมมติว่าเปิดไฟล์แล้ว):</p>
+
+  <p><code>&nbsp; &nbsp;char akSon0 = 'v', akSon1 = @; &nbsp;/*&nbsp;</code><font face="monospace">อักษร 0 และ 1</font>&nbsp;*/</p>
+
+  <p><code>&nbsp; &nbsp;char saiAkra[] = "thanh cong"; /* สายอ้กขระ&nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp;int leik = 345; &nbsp;/* เลข&nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;fprintf( ''%s - %c %c: %5d", saiAkra, akSon0, akSon1, leik );</code></p>
+
+  <p><br /></p>
+
+  <p>ได้บันทึก:</p>
+
+  <p><code>&nbsp; &nbsp; thanh cong - v @: &nbsp; 345</code></p>
+
+  <p><br /></p>
+
+  <p>เมื่อใช้ <code>fscanf()</code> ต้องรมัดระวังอ่านตามระเบียบข้อมูลในแฟ้ม ข้างล่างมีตัวอย่างเพื่อบันทึกแฟ้ม:</p>
+
+  <ol>
+    <li><code>#include &lt;stdio.h&gt;</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>int main() {</code></li>
+
+    <li><code>&nbsp; &nbsp;char saiAkra[] = "ข้อมูลบันทึก"; /*&nbsp;สายอ้กขระ&nbsp;*/</code></li>
+
+    <li><code>&nbsp; &nbsp;FILE *tuaChiFem = fopen( "แฟ้มบันทึก.txt", "w" ); /* เปิดแฟ้ม&nbsp;*/</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp;/* Xem tạo tệp thành công */</code></li>
+
+    <li><code>&nbsp; &nbsp;if(&nbsp;tuaChiFem&nbsp;!= NULL ) {</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; fprintf(&nbsp;tuaChiFem, "%s%c", saiAkra, 0x00 ); &nbsp;/* 0x00 เพิ่อจบแฟ้ม&nbsp;*/</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; fclose(&nbsp;tuaChiFem&nbsp;); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* ปิดแฟ้ม&nbsp;*/</code></li>
+
+    <li><code>&nbsp; &nbsp;}</code></li>
+
+    <li><code>}</code></li>
+  </ol>
+
+  <p>แล้วก็อ่านแฟ้ม:</p>
+
+  <ol>
+    <li><code>#include &lt;stdio.h&gt;</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>int main() {</code></li>
+
+    <li><br /></li>
+
+    <li><code>&nbsp; &nbsp;FILE *tuaChiFem = fopen( "แฟ้มบันทึก.txt", "r" ); /*&nbsp;เปิดแฟ้ม*/</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp;/* Xem tạo tệp thành công */</code></li>
+
+    <li><code>&nbsp; &nbsp;if(&nbsp;tuaChiFem&nbsp;!= NULL ) {</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; char saiAkra[128];</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; unsigned char lamDap = 0, byte; /* ลำดับ&nbsp;*/</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; /* อ่านข้อมูล&nbsp;*/</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; do {</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;byte = fgetc(&nbsp;tuaChiFem&nbsp;);</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;saiAkra[lamDap] = byte; /* lưu trữ trong xâu */</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;chiSo++;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; } while( (byte != EOF) &amp;&amp; (lamDap &lt; 128) );</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; fclose(&nbsp;tuaChiFem&nbsp;); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /*&nbsp;ปิดแฟ้ม&nbsp;*/</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; /* พิมพ์บนหน้าจอ */</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf( "%s\n", saiAkra );</code></li>
+
+    <li><code>&nbsp; &nbsp;}</code></li>
+
+    <li><code>}</code></li>
+  </ol>
+
+  <h3><b>Bài thực hành</b></h3>
+
+  <p>บทที่7.1 ในตัวอย่างอ่านแฟ้มข้างบนฉันทราบก่อนว่าแฟ้มไม่เกิน 128 ไบต์&nbsp;แต่ในกรณีจริงปกติคุณจะไม่ทราบก่อนว่าแฟ้มหนึ่งจะยาวกี่ไบต์ เปลี่ยนแปลงเพิ่อได้ทำ:</p>
+
+  <p>• ตรวจความยาวแฟ้มก่อน (จำนวนไบต์)</p>
+
+  <p>• ใช้&nbsp;<code>malloc()</code> เพิ่อทำบัฟเฟอร์สามารบรรจุทั้งหมกข้อมูล</p>
+
+  <p><br /></p>
+
+  <p>บทที่7.2 มีหลายกรณีที่เครื่องคุณกำวิ่งโปรแกรมไม่สามารถอ่านแฟ้มทั้งหมดในเวลาหนื่งเพราะแฟ้มใหญ่เกินไป เขียนฟังก์ชั่นที่สามารถอ่าน1024ไบต์เข้าไปในบัฟเฟอร์<br />
+  หลังจากโปรแกรมได้ประมวลผลข้อมูลทั้งหมดในบัฟเฟอร์จะอ่านอี่ก 1024 ไบต์&nbsp;ระมัดระวังความยาวแฟ้มหรือต้นสุดทา้ยน่าจะไม่เท่ากับ1024ไบต์ตรง ฟังก์ชั่นต้องบอกว่าได้อ่านกี่ไบต์</p>
+
+  <p><br /></p>
+</body>
+</html>
