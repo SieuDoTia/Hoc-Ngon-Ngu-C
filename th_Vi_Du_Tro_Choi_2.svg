@@ -15,6 +15,18 @@
    id="svg3025"
    inkscape:version="0.48.1 r9760"
    sodipodi:docname="th_Vi_Du_Tro_Choi_2.svg">
+  <metadata
+     id="metadata3421">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -131,7 +143,7 @@
      x="424.92523"><tspan
        id="tspan3928"
        y="78.730896"
-       x="424.92523">ฉายคำแพ้</tspan></text>
+       x="424.92523">แสดงคำแพ้</tspan></text>
   <path
      inkscape:connector-curvature="0"
      style="color:#000000;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -221,7 +233,7 @@
      x="637.7312"><tspan
        id="tspan3994"
        y="74.5"
-       x="637.7312">ชณะ</tspan></text>
+       x="637.7312">แสดงชณะ</tspan></text>
   <path
      inkscape:connector-curvature="0"
      style="color:#000000;fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -458,7 +470,7 @@
        sodipodi:role="line"
        id="tspan4924"
        x="74.796021"
-       y="80.600754">ฉายคำเริ่นต้น</tspan></text>
+       y="80.600754">ฝากคำเริ่นต้น</tspan></text>
   <text
      sodipodi:linespacing="125%"
      id="text4926"
