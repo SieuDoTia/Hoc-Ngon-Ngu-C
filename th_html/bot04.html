@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="../Styles/Style0001.css" rel="stylesheet" type="text/css" />
+
+  <title></title>
+</head>
+
+<body>
+  <h2>บทที่ ๔: โครงสร้างสาขาและวนซ้ำ</h2>
+
+  <p><br /></p>
+
+  <p>เราได้เรียนรู้เกี่ยวกับค่าคงที่ตัวแปรอาร์เรย์แล้ว แต่ที่จะเรียนรู้วิธีที่พวกเขามีการจัดการ โปรแกรมควรเลือกฟังก์ชั่นขึ้นอยู่กับเงื่อนไขการปฏิบัติแล้วซ้ำอีก ภาษา C ที่เรียกว่าแยกทางเรขาคณิตและทำซ้ำจะทำงานนี้</p>
+
+  <h4>4.1 แยกสาขา</h4>
+
+  <p>บางครั้งโปรแกรมจะต้องตรวจสอบมูลค่าอันหนึ่งและปฏิบัติตามมูลค่านั้น ตัวอย่างเช่นผู้ใช้พิมพ์อักษรหรือมูลค้าผิดในโปรแกรมและโปรแกรมควรแจ้งให้ผู้ใช้ทราบและเรียกพิมพ์อีกครั้ง หรือคำนวณค่าจ่ายน้ำใช้ถ้าทราบว่า 10 m<sup>3</sup> แรกคิด m<sup>3</sup> ละ 8 บาท และเกินนั้น m<sup>3</sup> ละ 12 บาท การตัดสินใจของโปรแกรมแล้วแต่กรนีเรียกว่าแยกสาขา</p>
+
+  <h4>4.1.1 if (ถ้า)</h4>
+
+  <p><code>&nbsp; &nbsp;if( &lt;เงื่อนไข&gt; )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &lt;คำสั่ง&gt;</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;if( &lt;เงื่อนไข&gt; )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &lt;คำสั่ง&gt;</code></p>
+
+  <p><code>&nbsp; &nbsp;else</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &lt;คำสั่ง&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;if( &lt;เงื่อนไข&gt; )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &lt;คำสั่ง&gt;;</code></p>
+
+  <p><code>&nbsp; &nbsp;if else(&lt;เงื่อนไข&gt;)</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &lt;คำสั่ง&gt;;</code></p>
+
+  <p><code>&nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp;else</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &lt;คำสั่ง&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p>สำหรับได้ใช้คำสั่งเพิ่มให้ทุกเงื่อนไขแหนบพวกคำสั่งระหวาง '<code>{</code>' และ '<code>}</code>'</p>
+
+  <p><code>&nbsp; &nbsp;if(&lt;เงื่อนไข&gt;) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &lt;คำสั่ง&gt;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;if( &lt;เงื่อนไข&gt; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &lt;คำสั่ง&gt;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><code>&nbsp; &nbsp;else {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &lt;คำสั่ง&gt;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>และ</p>
+
+  <p><code>&nbsp; &nbsp;if( &lt;เงื่อนไข&gt; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &lt;คำสั่ง&gt;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><code>&nbsp; &nbsp;if else( &lt;เงื่อนไข&gt; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &lt;คำสั่ง&gt;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><code>&nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp;else {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&lt;คำสั่ง&gt;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>ถ้าเงื่อนไขเป็นจริงมันมีมูลค่า = 1 เท็จ = 0</p>
+
+  <p><br /></p>
+
+  <p>ตัวอย่างเช่นคุณอยากเขียนฟังก์ชั่นปรับว่าถ้าจุด (<i>x</i>, <i>y</i>) อยู่ในวงกลมมีรัศมี = 5.0 จากแหล่งแกน</p>
+
+  <p><br /></p>
+
+  <p style="text-align: center;"><img alt="th_So_Do_The_Hien_Cau_Truc_Re_Nhanh_Ban_Kinh" src="../Images/th_So_Do_The_Hien_Cau_Truc_Re_Nhanh_Ban_Kinh.svg" /><br /></p>
+
+  <p><br /></p>
+
+  <p>เปลี่ยนเป็นฟังก์ชั่น C:</p>
+
+  <ol>
+    <li><code>&nbsp; &nbsp;/* ในวงกลม */</code></li>
+
+    <li><code>&nbsp; &nbsp;unsigned char naiWongKlom( float x, float y) {</code></li>
+
+    <li><code>&nbsp; &nbsp;&nbsp;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; float kamLangSong = x*x + y*y; &nbsp; /* กำลัง ๒ */</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; if(&nbsp;kamLangSong&nbsp;&lt;= 25.0f )</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return 1; &nbsp; /* จริง */</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; else</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return 0; &nbsp; /* เท็จ */</code></li>
+
+    <li><code>&nbsp; &nbsp;}</code></li>
+  </ol>
+
+  <p>ระมัดระวังกับ ';' ถ้าพิมพ์ผิด</p>
+
+  <p><code>&nbsp; &nbsp;if( &lt;เงื่อนไข&gt; ); &nbsp; &nbsp; /* &lt;--- มี ';' หลัง if() */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &lt;คำสั่ง&gt;; &nbsp; &nbsp; &nbsp; &nbsp; /* ปฏิบัติทุกเวลา &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</code></p>
+
+  <p><br /></p>
+
+  <p>ก็เหมื่อน</p>
+
+  <p><code>&nbsp; if( &lt;เงื่อนไข&gt; )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;; &nbsp; &nbsp; &nbsp; /* &lt;--- มี ';' หลัง if() */</code></p>
+
+  <p><code>&nbsp; &lt;คำสั่ง&gt;; &nbsp; &nbsp; /* ปฏิบัติทุกเวลา &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */</code></p>
+
+  <p><br /></p>
+
+  <p>ก็มีอีกความผิดพลาดคล้ายคลึง:</p>
+
+  <p><code>&nbsp; &nbsp; if(&lt;เงื่อนไข&gt;)</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;&lt;คำสั่ง&gt;;</code></p>
+
+  <p><code>&nbsp; &nbsp; else; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* &lt;--- มี ';' หลังจาก else */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;&lt;คำสั่ง&gt;; &nbsp; &nbsp; /* ปฏิบัติทุกเวลา */</code></p>
+
+  <p><br /></p>
+
+  <p>คุณสามารถใช้ <code>if else</code> ภายใน <code>if else</code> อื่น</p>
+
+  <p><code>&nbsp; &nbsp;if( &lt;เงื่อนไข 1&gt; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; if( &lt;เงื่อนไข 2&gt; )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;คำสั่ง&gt;;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;else</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;คำสั่ง&gt;;</code></p>
+
+  <p><code>&nbsp; &nbsp; }</code></p>
+
+  <p><code>&nbsp; &nbsp; else {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;if( &lt;เงื่อนไข&nbsp;3&gt; )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;คำสั่ง&gt;;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;else</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;คำสั่ง&gt;;</code></p>
+
+  <p><code>&nbsp; &nbsp; }</code></p>
+
+  <p><br /></p>
+
+  <p>ตัวอย่างเช่นพิกัด (<i>x</i>, <i>y</i>) ของจุดหนึ่งและคำนวณมุมจากแกน +<i>x</i> ใช้ฟังก์ชั่นทางคณิตศาสตร์ <code>atan()</code> จากห้องสมุด &nbsp;<code>math.h</code>&nbsp;จะให้&nbsp;–π/2 ≤ มุม ≤ π/2 แต่ควรมีเต็มรูปแบบ –π ≤ มุม ≤ π</p>
+
+  <p style="text-align: center;"><img alt="th_So_Do_The_Hien_Cau_Truc_Re_Nhanh_Goc" src="../Images/th_So_Do_The_Hien_Cau_Truc_Re_Nhanh_Goc.svg" /><br /></p>
+
+  <p>ฟังก์ชั่น C:</p>
+
+  <ol>
+    <li><code>&nbsp; &nbsp;const float PI 3.1415927f;</code></li>
+
+    <li><code>&nbsp; &nbsp;/* คำนวนมุม */</code></li>
+
+    <li><code>&nbsp; &nbsp;float khamNuanMum( float x, float y ) {</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; float mum = atan( y/x ); /* คำนวณมุม */</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; /* รักศาไว้ใน –π ≤ มุม ≤ π */</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; if( x &lt; 0.0f ) {</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if( y &lt; 0.0f )</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mum -= PI;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;else</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mum += PI;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; }</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; return mum;</code></li>
+
+    <li><code>&nbsp; &nbsp;}</code></li>
+  </ol>
+
+  <p><br /></p>
+
+  <p><b>เรียนรู้เพิ่มเติม</b></p>
+
+  <p>ภาษา C มีวิธีการเขียน if() else ในแถว</p>
+
+  <p><code>&nbsp; &lt;เงื่อนไข&gt; ? &lt;คำสั่งถ้าเป็นจริง&gt; : &lt;คำสั่งถ้าเท็จ&gt;;</code></p>
+
+  <p><br /></p>
+
+  <p>สนามครั้งที่ 5-8 ในการทำงาน <code>naiWongKlom()</code> ดังกล่าวข้างต้นจะเขียนใหม่:</p>
+
+  <p><code>&nbsp; &nbsp;kamLangSong &lt;= 25.0f ? return 1 : return 0; /* ตรวจมูลค่ากำลังสอง */</code></p>
+
+  <h4>4.1.2 switch case</h4>
+
+  <p>คำสั่ง <code>case switch</code> สวดมากสำหรับกรนีมากหมาย</p>
+
+  <ol>
+    <li><code>void phimChuWan( unsigned char wan ) { /* พิมพ์ชื่อวัน */</code></li>
+
+    <li><br /></li>
+
+    <li><code>&nbsp; &nbsp;switch( wan ) { /* เลึอกวันตามมูลค่า */</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 1:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printf( "อาทิตย์" );</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 2:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printf(&nbsp;"จันทร์\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 3:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printf( "อังคาร\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 4:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printf(&nbsp;"พุธ\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 5:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printf( "พฤหัสบด\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 6:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printf( "ศุกร์\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 7:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printf( "เสาร์\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; default:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printf(&nbsp;"ความผิดพลาด: ไม่มีวัน %d\n", wan&nbsp;);</code></li>
+
+    <li><code>&nbsp; &nbsp;} /* หมด switch */</code></li>
+
+    <li><code>}</code></li>
+  </ol>
+
+  <p>รหัสแหล่งข้างบนก็เหมื่อน</p>
+
+  <ol>
+    <li><code>void phimChuWan( unsigned char wan ) { /* พิมพ์ชื่อวัน */</code></li>
+
+    <li><br /></li>
+
+    <li><code>&nbsp; &nbsp;if( wan == 1 )</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf( "อาทิตย์\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp;else if( wan == 2 )</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf( "จันทร์\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp;else if( wan == 3 )</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf( "อังคาร\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp;else if( wan == 4 )</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf( "พุธ\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp;else if( wan == 5 )</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf( "พฤหัสบด\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp;else if( wan == 6 )</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf( "ศุกร์\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp;else if( wan == 7 )</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf( "เสาร์\n" );</code></li>
+
+    <li><code>&nbsp; &nbsp;else</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf( "ความผิดพลาด: ไม่มีวัน %d\n", wan );</code></li>
+
+    <li><code>}</code></li>
+  </ol>
+
+  <p>รหัสที่มาข้างต้นจะเทียบเท่ากับ:</p>
+
+  <ol>
+    <li><code>unsigned char phatTenNgay ( unsigned char wan ) {</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp;if( wan == 1)</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf ( "อาทิตย์ \ n");</code></li>
+
+    <li><code>&nbsp; &nbsp;else if( wan == 2)</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf ( "จันทร์ \ n");</code></li>
+
+    <li><code>&nbsp; &nbsp;else if( wan == 3)</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf ( "อังคาร \ n");</code></li>
+
+    <li><code>&nbsp; &nbsp;else if( wan == 4)</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf ( "พุธ \ n");</code></li>
+
+    <li><code>&nbsp; &nbsp;else if( wan == 5)</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf ( "พฤหัสบดี \ n");</code></li>
+
+    <li><code>&nbsp; &nbsp;else if( wan == 6)</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf ( "ศุกร์ \ n");</code></li>
+
+    <li><code>&nbsp; &nbsp;else if( wan == 7)</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf ( "เสาร์ \ n");</code></li>
+
+    <li><code>&nbsp; &nbsp;else</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; printf ( "ความผิดพลาด: ไม่มีวันที่ %d\n" wan );</code></li>
+
+    <li><code>}</code></li>
+  </ol>
+
+  <p>ถามว่าถ้าคุณลืมพิมพ์คำ <code>break</code> หลังจากพักหรือไม่? โปรแกรมจะปฏิบัติพวกคำสั่งอื่นๆ ของกรนีต่อไปอยู่ข้างล้าง ก็สะดวกถ้ามีกรนีต่างๆ ปฏิบัติเหมื่อนกัน ดูฟังก์ชั่นปรับว่าหมายเลข ≤ 64 เป็นจำนวนเฉพาะ:</p>
+
+  <ol>
+    <li><code>unsigned char jamNuanChaPho_64( unsigned char leik ) {</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp;unsigned char jamNuanChaPho = 0; &nbsp;/* จำนวนเต็ม กำหนดค่าเริ่มต้น&nbsp;*/</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp;switch( leik ) {</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 2:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 3:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 5:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 7:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 11:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 13:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 17:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 19:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 23:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 29:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 31:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 37:<br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 41:<br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 43:<br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 47:<br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 53:<br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 59:<br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; case 61:<br /></code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;jamNuanChaPho = &nbsp;1; &nbsp;/* จริง */</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; default:</code></li>
+
+    <li><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;jamNuanChaPho = &nbsp;0; &nbsp;/* เท็จ */</code></li>
+
+    <li><code>&nbsp; &nbsp;}</code></li>
+
+    <li><code>&nbsp; &nbsp;return jamNuanChaPho;</code></li>
+
+    <li><code>}</code></li>
+  </ol>
+
+  <p><b>เรียนรู้เพิ่มเติม</b></p>
+
+  <p>ฉันได้พบมีสองวิธีเพื่อทราบว่าจุดหนึ่งอยู่ข้างในสี่เหลี่มผืนผ้า ขั้นตอนวิธีนี้ได้ใช้ในเกม ตัวอย่างเช่นต้องทราบกระสุนโดนศัตรู</p>
+
+  <p style="text-align: center;"><img alt="th_Vi_Du_Re_Nhanh_Hoc_Them" src="../Images/th_Vi_Du_Re_Nhanh_Hoc_Them.svg" /><br /></p>
+
+  <p>ขั้นตอนวิธีที่มักจะสอนในหนังสือทำเกม:</p>
+
+  <p><code>&nbsp; &nbsp;/* จุดอยู่ในสี่เหลี่ยม( float จุด_x, จุด_y, ซาย, ขวา, ล้าง, บน ) */</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char jutYuNaiSiLiam( float jut_x, jut_y, sai, khua, lang, bon ) {</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; if( (jut_x &gt; ch_trai) &amp;&amp; (jut_x &lt; khua)</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&amp;&amp; (jut_y &gt; lang) &amp;&amp; (jut_y &lt; bon) )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return 1; &nbsp;/*&nbsp;จุดอยู่ในสี่เหลี่ยม&nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; else</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return 0; &nbsp; /*&nbsp;จุดไม่อยู่ในสี่เหลี่ยม&nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>วิธีที่สอง:</p>
+
+  <p><code>&nbsp; &nbsp;/* จุดอยู่ในสี่เหลี่ยม( float จุด_x, จุด_y, ซาย, ขวา, ล้าง, บน ) */</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char jutYuNaiSiLiam( float jut_x, jut_y, sai, khua, lang, bon ) {</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; if( jut_x &lt; sai )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return 0; /* จุดไม่อยู่ในสี่เหลี่ยม */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; else if( jut_x &gt; khua )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return 0; /* จุดไม่อยู่ในสี่เหลี่ยม */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; else if( jut_y &lt; lang )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return 0; /* จุดไม่อยู่ในสี่เหลี่ยม */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; else if (jut_y &gt; bon )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return 0; &nbsp;/* จุดไม่อยู่ในสี่เหลี่ยม */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; else</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return 1; /* จุดอยู่ในสี่เหลี่ยม */</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>นี้สอนเราว่าน่าจะหลายๆ วิธีที่สามารถแก้ปัญหา อันไหนที่ดีที่สุด พูดยาก แล้วแต่กรนีและวิธีใช้มันมีอิทธิพลประสิทธิภาพของขั้นตอนวิธีมาก การใช้งานและจะช่วยส่งผลต่อประสิทธิผลของขั้นตอนวิธี คุณต้องการลองในโปรแกรมและดู!</p>
+
+  <h4>4.2 วนซ้ำ<br /></h4>
+
+  <p>ซ้ำเป็นโครงสร้างมีประโยชน์ช่วยทำงานหลายๆ ครั้ง ตัวอย่างนับจำนวนนักเรียนในโรงเรียน การค้นหา &nbsp;ใช้การแปลงมูลค่าในตัวแปรชุด ฯลฯ ภาษา C มีสามประเภทของวนซ้ำนี้</p>
+
+  <p><br /></p>
+
+  <p>1.&nbsp;<code>while()</code></p>
+
+  <p>ตัวอย่างสำหรับกวนซ้ำนี้:</p>
+
+  <p><code>&nbsp; &nbsp;while(&lt;เงื่อนไข&gt;) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;&lt;คำสั่ง&gt;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>หากเงื่อนไขที่ไม่ถูกต้องก่อนพบวนซ้ำ <code>while()</code> โปรแกรมจะไม่ปฏิบัติคำสั่งระหว่าง '<code>{</code>' และ '<code>}</code>' ตัวอย่างเข่น:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned char daChaNi = 10; /* ดัชนี = 10 */</code></p>
+
+  <p><code>&nbsp; &nbsp;while( daChaNi &lt; 5 ) { &nbsp; /* daChaNi &gt; 5 จะไม่เข้าวนซ้ำ */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>2.&nbsp;<code>for( ; ; )</code></p>
+
+  <p>ตัวอย่างสำหรับวนซ้ำนี้:</p>
+
+  <p><code>&nbsp; &nbsp;for(&lt;เริ่มต้นการศึกษา&gt; &lt;เงื่อนไข&gt; &lt;อัพเกรด</code><span style="font-family: monospace;">ตัวแปร</span>&gt;) {</p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;&lt;คำสั่ง&gt;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>จำได้ว่ามันต้องมีเงื่อนไข ทำเช่นนี้ยังถูกต้อง</p>
+
+  <p><code>&nbsp;• for( ; &lt;เงื่อนไข&gt;; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;&lt;คำสั่ง&gt;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>3.&nbsp;<code>do while()</code></p>
+
+  <p>ตัวอย่างสำหรับกวนซ้ำนี้:</p>
+
+  <p><code>&nbsp; &nbsp;do {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;&lt;คำสั่ง&gt;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp;} while( &lt;เงื่อนไข&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>มันดูคล้าย <code>while()</code> ที่เราเจอมาก่อนแต่ก็มีจุดหนี่งไม่เหมืื่อน มันตรวจสอบเงื่อนไขหลังจากทำพวกคำสั่งระหว่าง '<code>{</code>' และ '<code>}</code>' ดังนั้นทุกครั้งที่มันจะได้ปฏิบัติคำสั่งอย่างน้อยหนึ่งครั้ง ใช้ในเวลาอยากประกันโปรแกรมจะปฏิบัติวนซ้ำครั้งหนึ่ง</p>
+
+  <p><br /></p>
+
+  <p>กดใช้วนซ้ำ</p>
+
+  <p>• ระดับวนซ้ำ</p>
+
+  <p>สามารถว่างวนซ้ำภายในวนซ้ำอื่น ตัวอย่างหนึ่ง:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned char y = 0;</code></p>
+
+  <p><code>&nbsp; &nbsp;while( y &lt; 10 ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char x = 0;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; for( x=0; x &nbsp;&lt; 20; x++ ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;printf ( "%d; %d\n", x, y);</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; }</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; y++;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>• วนซ้ำไม่บังคับอัพเกรดตัวแปรวิธีหนึ่ง ดูตัวอย่างวนซ้ำ for() คำนวณมูลค่ากำลังสองขนาดเล็ก 70 000:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned int kamLangSong; &nbsp; &nbsp; &nbsp; /* กำลังสอง */</code></p>
+
+  <p><code>&nbsp; &nbsp;for( kamLangSong = 1; kamLangSong &lt; 70000; kamLangSong *= 2)</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf ( "%d\n", kamLangSong );</code></p>
+
+  <p><br /></p>
+
+  <p>• หลายกรนี&nbsp;<code>while()</code> และ <code>for( ; ; )</code> ใช้แทนกันได้ ยกตัวอย่างวนซ้ำคำนวณเลขกำลังสองข้างบนสามารถเขียนใช้วนซ้ำ <code>while()</code>:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned int kamLangSong = 1; &nbsp;/* กำลังสอง */</code></p>
+
+  <p><code>&nbsp; &nbsp;while( kamLangSong &lt; 70000 ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;kamLangSong *= 2;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf ( "%d\n", kamLangSong );</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>• break (ปล่อย)</p>
+
+  <p>คำหลัก break ใช้เพื่อปล่อยจากวนซ้ำ</p>
+
+  <p><code>&nbsp; &nbsp;while( &lt;เงื่อนไข&gt; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;if( &lt;เงื่อนไข&gt; )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; break;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>มันปล่อยวนซ้ำระดับหนึ่งเท่านั้นเช่น:</p>
+
+  <p><code>&nbsp; &nbsp;for( &lt;เริ่มต้นการศึกษา&gt;; &lt;เงื่อนไข&gt;; &lt;อัพเกรดตัวแปร&gt; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; while( &lt;เงื่อนไข&gt; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if( &lt;เงื่อนไข&gt; )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; }</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; /* break จะมาที่นี่ */</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>• continue (ต่อไป)</p>
+
+  <p>หากคุณอยากกระโดดข้ามวนซ้ำแต่ไม่ปล่อยใช้คำหลัก <code>continue</code></p>
+
+  <p><code>&nbsp; &nbsp;while( &lt;เงื่อนไข&gt; ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; if( &lt;เงื่อนไข&gt; )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;continue;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>เหมื่อนกับ <code>break</code> มันจะข้ามในวนซ้ำระดับหนึ่ง</p>
+
+  <p><code>&nbsp; &nbsp;for( &lt;เริ่มต้นการศึกษา&gt;; &lt;เงื่อนไข&gt;; &lt;ทะเลอัพเกรด&gt;) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; for( &lt;เริ่มต้นการศึกษา&gt;; &lt;เงื่อนไข&gt;; &lt;ตัวแปรอัพเกรด&gt; ) {/* continue จะมาที่นี่ */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if( &lt;เงื่อนไข&gt; )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; continue;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; }</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;&nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>หากใช้ <code>do while()</code> เหตุการณ์ข้ามไปถึงเงื่อนไขด้านล่าง</p>
+
+  <p><code>&nbsp; &nbsp;do {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; if( &lt;เงื่อนไข&gt; )</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; continue;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;} while( &lt;เงื่อนไข&gt; ) /* continue จะมาที่นี่และดูเงื่อนไข */</code></p>
+
+  <p><br /></p>
+
+  <p><b>เรียนรู้เพิ่มเติม</b></p>
+
+  <p>เมื่อใช้วนซ้ำโปรแกรมต้องการอัพเกรดตัวแปรและตรวจสอบเงื่อนไข ในกรนีที่ความเร็วสำคัญมากคืจำลองฟิสิกส์ เกม ฯลฯ บางครั้งคนไม่ใช้วนซ้ำแต่จะ<i>มวนออกวนซ้ำ</i> ตัวอย่างเช่นอยากบวกขึ้ห้าตัวเลข:</p>
+
+  <p><code>&nbsp; &nbsp;int tuaPreChutJamNuanTem[] = {1, 2, 3, 4, 5}; &nbsp; /* ตัวแปรชุดจำนวนเต็ม */</code></p>
+
+  <p><code>&nbsp; &nbsp;int thangMot = 0; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* ทั้งหมด */</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char dachani = 0; &nbsp;/* ดัชนี &nbsp; */</code></p>
+
+  <p><code>&nbsp; &nbsp;while( dachani &lt; 5 ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; thangMot +=&nbsp;tuaPreChutJamNuanTem[dachani];</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; dachani++;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>อย่างมวนออกวนซ้ำ:<br /></p>
+
+  <p><code>&nbsp; &nbsp;mangJamNuanTem[] = {1, 2, 3, 4, 5};</code></p>
+
+  <p><code>&nbsp; &nbsp;int thangMot = tuaRiangJamNuanTem[0];</code></p>
+
+  <p><code>&nbsp; &nbsp;tongCong += tuaRiangJamNuanTem[1];</code></p>
+
+  <p><code>&nbsp; &nbsp;tongCong += tuaRiangJamNuanTem[2];</code></p>
+
+  <p><code>&nbsp; &nbsp;tongCong += tuaRiangJamNuanTem[3];</code></p>
+
+  <p><code>&nbsp; &nbsp;tongCong += tuaRiangJamNuanTem[4];</code></p>
+
+  <p><br /></p>
+
+  <p>มันยาวก่วาแต่เร็วก่วา</p>
+
+  <p><br /></p>
+
+  <h3><b>บทเรียน</b></h3>
+
+  <p>บทที่4.1 เปลี่ยนฟังก์ชัน <code>naiWongKlom()</code> ให้ได้รับตัวแปรชี่รัศมี ควรใช้ประเภทข้อมูลไหนสำหรับตัวแปร?</p>
+
+  <p><br /></p>
+
+  <p>บทที่4.2 เปลี่ยนฟังก์ชั่น <code>khamNuanMum()</code> ให้คิดมุมระหว่าง 0 ถึง 2π แล้วก็ฟังก์ชั่นนี้มีความผิดพลาด (ในกรณี <i>x</i> = 0 และ <i>y</i> = 0), แก้ไขมัน</p>
+
+  <p><br /></p>
+
+  <p>บทที่4.3 เขียนฟังก์แบ่งนักเรียนตามขนาด:</p>
+
+  <p>&nbsp; &nbsp;สุดยอด ≤ 8.0 ≤ 10</p>
+
+  <p>&nbsp; &nbsp;6.5 ≤ ได้ &lt;8.0</p>
+
+  <p>&nbsp; &nbsp;≤ 5.0 เฉลี่ย &lt;6.5</p>
+
+  <p>&nbsp; &nbsp;3.5 ≤ อ่อนแอ &lt;5.0</p>
+
+  <p>&nbsp; &nbsp;0 ≤ แย้ &lt;3.5</p>
+
+  <p><br /></p>
+
+  <p>บทที่4.4 หนึ่งวิธีคำนวณรากของจำนวนจริงคือ:</p>
+
+  <p>&nbsp; &nbsp;1. คาดเดามูงค่าแรกใก้ล <i>x</i><sub>0</sub> ≈ √<i>y</i></p>
+
+  <p>&nbsp; &nbsp;2. หาร&nbsp;<i>y</i>/<i>x</i><sub>0</sub> = <i>z</i></p>
+
+  <p>&nbsp; &nbsp;3. คำนวณเฉลี่ย&nbsp;<i>x</i><sub>1</sub> = (<i>x</i> + <i>z</i>)/2</p>
+
+  <p>&nbsp; &nbsp;4. ถ้า |<i>z</i> - <i>x</i><sub>1</sub>| &gt; ความผิดกลับต้อน 2</p>
+
+  <p>&nbsp; ใช้วิธีนี้เพื่อคำนวณรากมีความผิดน้อยกว่า 0.001 ฟังก์ชั่นควรป้อนกันจากพารามิเตอร์รับจำนวนลบ</p>
+
+  <p><br /></p>
+
+  <p>บทที่4.5 ทำโปรแกรมรับสามหมายเลขของสมการกำลังสอง:</p>
+
+  <p>&nbsp; &nbsp;<i>ax</i><sup>2</sup> + <i>bx</i> + <i>c</i> = 0</p>
+
+  <p>และหามูลค่าให้สองราก&nbsp;<i>x</i><sub>1</sub> และ <i>x</i><sub>2</sub>&nbsp; ค่าของสัมประสิท&nbsp;<i>a</i>, <i>b</i>, <i>c</i> เป็นจำนวนจริง อย่าลืมว่ามันอาจมีบางประสบการณ์จริงเสมือนและซับซ้อน</p>
+
+  <p><br /></p>
+
+  <p>บทที่4.6 ใน <code>stdlib.h</code> มีฟังก์ชั่นกำเนิดจำนวนสุ่มเรียกว่า <code>rand()</code> เขียนโปรแกรมฝากหืงร้อยจำนวนสุ่มบนหน่าจอ ช่วงของจำนวนสุ่มเป็นอะไร? เปลี่นช่วงตั้งแต่ 0.0 ถึง 1.0 ฟังก์ชั่นเปลี่นประเภท <code>float()</code> และ คงค่า <code>RAND_MAX</code> น่าจะช่วยคุณ</p>
+
+  <p><br /></p>
+
+  <p>บทที่4.7 มีวิธีคำนวณปริพันธ์จำกัดเขตของฟังก์ชันคณิตศาสตร์มีชื่อจำลอง Monte Carlo โดยใช้ฟังก์ชั่นจำนวนสุ่ม <code>rand()</code> ใน <code>stdlib.h</code> ความคิดเห็นที่สุ่มเพียง:</p>
+
+  <p>• สุ่มว่างจุดในขอบเขตของฟังก์ชันคณิตศาสตร์ที่อยากทราบ</p>
+
+  <p>• คูณเศษจุดอยู่ใต้ฟังก์ชั่นคณิตศาสตร์กับพื้นที่่่ขอบเขต</p>
+
+  <p>• ใช้จุดมากขึ้นความถูกต้งมากขึ้นด้วย</p>
+
+  <p>ทำจำลอง Monte Carlo เพื่อคำนวณปริพันธ์จำกัด&nbsp;sin&nbsp;<i>x</i>&nbsp;จาก 0 ถึง π/2 หรือ</p>
+
+  <p>&nbsp; &nbsp;∫{0→π/2} sin <i>x đx</i>&nbsp;= –cos(π/2) + cos(0) = 1&nbsp;</p>
+
+  <p>และดูความถูกต้องสำหรับ 1000, 5000, 10 000, 50 000, 100 000 จุด นี่ก็เป็นหนึ่งวิธีลองดูคุณภาพฟังก์ชั่นจำนวนสุ่ม</p>
+
+  <p style="text-align: center;"><img alt="MonteCarlo_Sin" src="../Images/MonteCarlo_Sin.svg" /><i><br /></i></p>
+
+  <p>บทที่4.8 มีตัวเลขฐานสิบมีมูลค่าไม่สามารถเก็บไว้ตรงในจำนวนจริง float ช่น 1/5 = 0.2 พยายามทดสอบโดยวนซ้ำนี้และเปรียบเทียบผลกับมูลค่าถูกต้อง</p>
+
+  <p><code>&nbsp; &nbsp;unsigned short jamNuanSam = 0; /* จำนวนซ้ำ */</code></p>
+
+  <p><code>&nbsp; &nbsp;float thangMot = 0.0f; &nbsp; &nbsp; &nbsp; &nbsp; /* ทั้งหมด */</code></p>
+
+  <p><code>&nbsp; &nbsp;while( jamNuanSam &lt; 100000 ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;thangMot += 0.2f;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;jamNuanSam++;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p>ปัญหานี้คล้ายกับปััญหาไม่สามารถเขียน 1/3 โดยตรงใช้กับเลขฐานเศษสิบ</p>
+
+  <p><br /></p>
+
+  <p>บทที่ 4.9 ดูวนซ้ำด้านล่างเพื่อตพิมพ์หมายเลขจาก 0 ถึง 512 พยายามหาความผิดพลาดในมัน:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned char leik; &nbsp;/* เลข */ &nbsp;</code></p>
+
+  <p><code>&nbsp; &nbsp;while( leik &lt; 512 ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; printf( "%d\n", leik );</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; leik++;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>บทที่4.10 เขียนโปรแกรมปฏิบัติจัดเรียง<i>ขึ้นฟอง</i> ฟังก์ชั่นจะต้องรับสองพารามิเตอร์ 1 สายอักขระหนึ่งประเภท int และ 2 จำนวนสมาชิกในสายอักขระ เริ่มต้นตรวจสมาชิกทั้งหมด เปรียบเทียบสมาชิก <i>x</i> กับสมาชิก <i>x</i>+1 ถ้าสมาชิก <i>x</i>+1 เล็กกว่าสมาชิก <i>x</i> แลกเปลี่ยนตำแหน่งของทั้งสมาชิก หลังจากเสร็จวนซ้ำแรกมูลค่าใหญ่ที่สุดจะอยู่ตอนท้ายในตัวแปรชุด หลังจาก จึงไม่จำเป็นต้องเปรียบเทียบกับมันอีกต่อไป ดูตัวอย่างด้านล่างเริ่มต้นด้วยตัวตัวแปรชุด:</p>
+
+  <p>&nbsp; 234, 55, 67, 26, 19, 3, 288, 83, 23</p>
+
+  <p>และปฏิบัติวนซ้ำแรก:</p>
+
+  <p>&nbsp; 55, 234, 67, 26, 19, 3, 288, 83, 23</p>
+
+  <p>&nbsp; 55, 67, 234, 26, 19, 3, 288, 83, 23</p>
+
+  <p>&nbsp; 55, 67, 26, 234, 19, 3, 288, 83, 23</p>
+
+  <p>&nbsp; 55, 67, 26, 19, 234, 3, 288, 83, 23</p>
+
+  <p>&nbsp; 55, 67, 26, 19, 3, 234, 288, 83, 23</p>
+
+  <p>&nbsp; 55, 67, 26, 19, 3, 234, 83, 288, 23</p>
+
+  <p>&nbsp; 55, 67, 26, 19, 3, 234, 83, 23, 288</p>
+
+  <p>ขั้นตอนวิธีการนี้ง่าย แต่ช้ามาก&nbsp;</p>
+</body>
+</html>
