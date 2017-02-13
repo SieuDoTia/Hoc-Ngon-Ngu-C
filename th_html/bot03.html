@@ -1,0 +1,933 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="../Styles/Style0001.css" rel="stylesheet" type="text/css" />
+
+  <title></title>
+</head>
+
+<body>
+  <h2>บทที่ ๓: โครงสร้าง ห้องสมุด ตัวแปร แถวลลำดับ</h2>
+
+  <p>เพื่อมสามรถเริ่มต้นเขียนโปรแกรมเริ่มต้นเราต้องเข้าใจองค์ประกอบและ 'วัสดุ' จะสร้างมันขึ้นมา โปรแกรมที่ได้สร้างขึ้นจากงบ ฟังก์ชั่น ค่าคง ตัวแปรอื่น ๆ คุณจะเริ่มต้นที่จะเรียนรู้เกี่ยวกับเรื่องดังต่อไปข้างล้างนี้</p>
+
+  <h4>3.1 โครงสร้างโปรแกรม</h4>
+
+  <p>แผนภาพด้านล่างแสดงให้เห็นโครงสร้างของโปรแกรมตัวอย่างหนึ่ง โปรแกรมนี้มีฟังก์ชั่นอยู่ในหลายไฟล์แยกกันตามภารกิจของพวกเขา แบ่งโปรแกรมเช่นนี้ช่วยพัฒนามันเร็วขึ้น ต้องคอมไฟล์แฟ้มที่เปลี่ยนแปลงเท่านั้นและผสานเข้าด้วยกัน ทุกโปรแกรม C ต้องมีฟังก์ชั่นที่มีชื่อว่า <code>main()</code> หนึ่งเพียงอย่างเดียว มันปรับคอมไพล์เริ่มวิ่งโปรแกรมจากไหน แต่ไม่จำเป็นฟังก์ชั่น <code>main()</code> ต้องอยู่ในแฟ้มที่มีชื่อ '<code>main.c</code>'</p>
+
+  <p style="text-align: center;"><img alt="Sơ_Đồ_Cấu_Trúc_Chương_Trình" src="../Images/th_So_Do_Cau_Truc_Chuong_Trinh.svg" />&nbsp;</p>
+
+  <p>ผู้ที่มีไฟล์ที่สองเรียกว่า:</p>
+
+  <p>• '<code>h</code>' แฟ้มหัว</p>
+
+  <p>• '<code>c</code>' แฟ้มแหล่ง</p>
+
+  <p><br /></p>
+
+  <p>แฟ้มหัวจะกำหนดพวกฟังก์ชั่นให้ส่วนอื่นๆ ของโปรแกรมได้ใช้มันแต่ไม่ต้องการทราบว่าวิธีทำพวกฟังก์ชั่นนั้นในแฟ้มแหล่ง ดูด้านล่าง:</p>
+
+  <p>ภายใน <code>ham.h</code> ระบุพวกฟังก์ชั่น</p>
+
+  <p><code>&nbsp; &nbsp;void ham0(int tuaPreng0, int tuaPreng1);</code></p>
+
+  <p><code>&nbsp; &nbsp;char ham1();</code></p>
+
+  <p><br /></p>
+
+  <p>ในแฟ้ม ham.c มีรหัสสำหรับฟังก์ชั่น</p>
+
+  <p><code>&nbsp; &nbsp;void ham0( int utaPreng0, int tuaPreng1 ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;char ham1() {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>สำหรับโปรแกรมขนาดเล็กที่คุณน่าจะไม่ต้องการเแยกฟังก์ชั่นอยู่ในแฟ้มแตกต่าง ดูตัวอย่างเล็ก <code>main()</code> ที่ด้านล่าง:</p>
+
+  <ol>
+    <li><code>#include &lt;stdio.h&gt; &nbsp;/* ใช้ฟังก์ชั่นฝากคำบนหน้าจอจากห้องสมุด stdio */</code></li>
+
+    <li><br /></li>
+
+    <li><code>/* ฟังก์ชั่นฟากคำสวัสดี */</code></li>
+
+    <li><code>void fakKhamSawadi() {</code></li>
+
+    <li><code>&nbsp; printf ( "สวัสดี\ n");</code></li>
+
+    <li><code>}</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>/* ฟังก์ชั่นหัวหน้า */</code></li>
+
+    <li><code>int main(int argc, ถ่าน ** argv) {</code></li>
+
+    <li><code>&nbsp; &nbsp;/*&nbsp;ฟากคำสวัสดี&nbsp;*/</code></li>
+
+    <li><code>&nbsp; &nbsp;fakKhamSawadi();</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp;return 1;</code></li>
+
+    <li><code>}</code></li>
+  </ol>
+
+  <p>อีกวิธีหนึ่งคือกำหนดฟังก์ชั่นในแฟ้มก่อน <code>main()</code> และรหัสแหล่งของฟังก์ชั่นมัด <code>fakKhamSawadi()</code> ด้านล่าง:</p>
+
+  <ol>
+    <li><code>#include &lt;stdio.h&gt; /*&nbsp;ใช้ฟังก์ชั่นฝากคำบนหน้าจอจากห้องสมุด&nbsp;stdio */</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>/* กำหนดฟังก์ชั่นฟากคำสวัสดีก่อน */</code></li>
+
+    <li><code>void fakKhamSawadi();</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>/* ฟังก์ชั่นหัวหน้า */</code></li>
+
+    <li><code>int main (int argc, ถ่าน ** argv) {</code></li>
+
+    <li><code>&nbsp; &nbsp;/* ฟากคำสวัสดี */</code></li>
+
+    <li><code>&nbsp; &nbsp;fakKhamSawadi();</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp;return 1;</code></li>
+
+    <li><code>}</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>/* กำหนดฟังก์ชั่นฟากคำสวัสดี */</code></li>
+
+    <li><code>void fakKhamSawadi() {</code></li>
+
+    <li><code>&nbsp; printf ( "สวัสดี\n");</code></li>
+
+    <li><code>}</code></li>
+  </ol>
+
+  <h4>3.2 ห้องสมุดที่นิยมใช้</h4>
+
+  <p>ในหนังสือเล่มนี้เราจะใช้สี่ห้องสมุดมากที่สุด</p>
+
+  <p><code>stdio.h</code> ห้องสมุดฝากรับมาตรฐาน</p>
+
+  <p><code>stdlib.h</code> ห้องสมุดมาตรฐานห้องสมุด</p>
+
+  <p><code>math.h</code> ห้องสมุดทางคณิตศาสตร์</p>
+
+  <p><code>time.h</code> ห้องสมุดทางเวลา</p>
+
+  <p><br /></p>
+
+  <p>เวลาใช้พวกห้องสมุดใช้เหล่านี้:</p>
+
+  <p><code>&nbsp; &nbsp;#include &lt;ชื่อห้องสมุด&gt;</code></p>
+
+  <p><br /></p>
+
+  <p>• <code>stdlib.h</code></p>
+
+  <p>มีฟังก์ชั่นมากมีประโยชน์ใน stdlib.h แต่ตอนนี้ฉันเพียงบอกเกี่ยวกับฟังก์ชั่น rand() มันสร้างตัวเลขสุ่มและใช้สำหรับกระบวนการสุ่มเหล่านี้ ก่อนใช้ rand() โดยใช้คำสั่งก่อน:</p>
+
+  <p><code>&nbsp; &nbsp;srand (time(0));</code></p>
+
+  <p>ในเวลาเริ่มต้นวิ่งโปรแกรม ถ้าไม่เตรียมพร้อมมันจะฝากเรียงตัวเลขสุ่มเหมือนกันทุกครั้งที่คุณวิ่งโปรแกรมของคุณ ฟังก์ชั่น <code>time()</code> อยู่ในห้องสมุด <code>time.h</code>.</p>
+
+  <p><br /></p>
+
+  <p>• <code>math.h</code></p>
+
+  <p>ห้องสมุด math.h มีฟังก์ชั่นหลายอย่างคือ cos math.h เช่น (), () exp() sin() sqrt() pow() ฯลฯ พวกมันรับแบบ double และฝากจำนวน double ก็มีประเภท float เช่น cosf() tanf() expf() sinf() sqrtf() powf() ฯลฯ พวกฟังก์ชั่นนี้ควรใช้เฉพาะxี่จำเป็นเพราะมันคำนวณช้า ยกตัวอย่างอย่าทำเช่น:</p>
+
+  <p><code>&nbsp; &nbsp;float gamLangSong = powf(leik, 2.0f);</code></p>
+
+  <p><code>&nbsp; &nbsp;float jamNuan0 = 2.0f*cosf(2.0f);</code></p>
+
+  <p><code>&nbsp; &nbsp;float jamNuan1 = 4.0f *cosf(2.0f);</code></p>
+
+  <p><br /></p>
+
+  <p>ควรทำ:</p>
+
+  <p><code>&nbsp; &nbsp;float gamLangSong = 2.0f * ลอย 2.0f; /* อย่าใช้ powf() เมื่อไม่จำเป็น */</code></p>
+
+  <p><code>&nbsp; &nbsp;float jamNuanCos = leik; /* คำนวณ cosf(2.0f) หนึ่งครั้งเท่ามัน */</code></p>
+
+  <p><code>&nbsp; &nbsp;float giaTri0 = 2.0f * giaTriCos;</code></p>
+
+  <p><code>&nbsp; &nbsp;float giaTri1 = 4.0f * giaTriCos;</code></p>
+
+  <h4>3.3: ข้อมูลประเภทมาตรฐาน</h4>
+
+  <p>รายการประเภทข้อมูลพื้นฐานภาษา C ตั้งใจช่วงระยของค่าพวกมัน แม้ว่าคอมพิวเตอร์ทันสมัยมีความจำมากแต่คุณควรเลือกประเภทข้อมูเพียงพอใช้กับงานทำ ไม่ใช้แต่จะช่วยประหยัดความจำ จะช่วยเพิ่มความเร็วคำนวณด้วย อ่าน บันทึก คัดลอก ประเภทข้อมูขนาดเล็กได้คำนวณเร็วขึ้นและบางครั้งคำนวณเลขขนานในโปรเซสเซอร์ที่ทันสมัย</p>
+
+  <p><br /></p>
+
+  <p><code>จำนวนเต็ม &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ความยาว &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ช่วงระยะ<br /></code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (<span style="font-family: 'Times New Roman', Times, serif;">ไบต์</span>)</code></p>
+
+  <p><code>char &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp;–2<sup>7</sup> → 2<sup>7</sup> – 1 (–128 → 127)</code></p>
+
+  <p><code>short &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2 &nbsp; &nbsp; &nbsp;–2<sup>15</sup> → 2<sup>15</sup> – 1 (–32768 → 32767)</code></p>
+
+  <p><code>int &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;4 &nbsp; &nbsp; &nbsp;–2<sup>31</sup> → 2<sup>31</sup> – 1 (–32768 → 32767)</code></p>
+
+  <p><code>long &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ≥ 4 &nbsp; &nbsp;≤ –2<sup>31</sup> → ≥ 2<sup>31</sup> – 1 (–2147483648 → 2147483647)</code></p>
+
+  <p><code>long int &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 8 &nbsp; &nbsp; &nbsp;–2<sup>63</sup> → 2<sup>63</sup> – 1 (−9223372036854775808 → 9223372036854775807)</code></p>
+
+  <p><code>long long &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;≥ 8 &nbsp; &nbsp;≤ –2<sup>63</sup> → ≥ 2<sup>63</sup> – 1 (−9223372036854775808 → 9223372036854775807)</code></p>
+
+  <p><code>unsigned char &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1 &nbsp; &nbsp; &nbsp; &nbsp;0 → 2<sup>8</sup> – 1 (0 → 255)</code></p>
+
+  <p><code>unsigned short &nbsp; &nbsp; &nbsp; &nbsp; 2 &nbsp; &nbsp; &nbsp; &nbsp;0 → 2<sup>16</sup> – 1 (0 → 65535)</code></p>
+
+  <p><code>unsigned int &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4 &nbsp; &nbsp; &nbsp; &nbsp;0 → 2<sup>32</sup> – 1 (0 → 4294967295)</code></p>
+
+  <p><code>unsigned long &nbsp; &nbsp; &nbsp; &nbsp;≥&nbsp;4 &nbsp; &nbsp; &nbsp;≥ 0 → 2<sup>32</sup> – 1 (0 → 4294967295)</code></p>
+
+  <p><code>unsigned long int &nbsp; &nbsp; &nbsp;8 &nbsp; &nbsp; &nbsp; &nbsp;0 → 2<sup>64</sup> – 1 (0 → 18446744073709551615)</code></p>
+
+  <p><code>unsigned long long &nbsp; ≥ 8 &nbsp; &nbsp; &nbsp;≥ 0 → 2<sup>64</sup> – 1 (0 → 18446744073709551615)</code></p>
+
+  <p><br /></p>
+
+  <p><code>จำนาณจริง &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ความยาว &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ช่วงระยะ &nbsp;(มราฐาน)</code></p>
+
+  <p><code>(theo chuẩn IEEE 754) &nbsp;(<span style="font-family: 'Times New Roman', Times, serif;">ไบต์</span>)</code></p>
+
+  <p><code>float &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;4 &nbsp; &nbsp; &nbsp;±2<sup>–126</sup> → ±(2 – 2<sup>–32</sup>) × 2<sup>127</sup> (≈ ±1,18 × 10<sup>–38</sup> → ≈ ±3,40 × 10<sup>38</sup>)</code></p>
+
+  <p><code>double &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 8 &nbsp; &nbsp; &nbsp;±2<sup>–1022</sup> → ±(2 – 2<sup>–64</sup>) × 2<sup>1023</sup> (≈ ±2,23 × 10<sup>–308</sup> → ≈ ±1,80 × 10<sup>308</sup></code>)</p>
+
+  <p><code>long double &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp; &nbsp; &nbsp;±2<sup>–16384</sup>&nbsp;→ ±2<sup>16384</sup> (≈ ±10<sup>–4932</sup> → ≈ ±10<sup>4932</sup>)</code></p>
+
+  <p><br /></p>
+
+  <p>* แล้วแต่ฮาร์ดแวร์บริ CPU เทลใช้ 80 บิต (10 ไบต์) สำหรับประเภทนี้ แต่คอมไพเลอร์สามารถเอา 12 หรือ 16 ไบต์สำหรับมัน</p>
+
+  <p><br /></p>
+
+  <p>ประเภท <code>long</code> และ <code>long long</code> สามารถยาวก่วา 4 หรือ 8 ไบต์ขึ้นแล้วแต่ฮาร์ดแวร์และระบบจัดงาน เพื่อสังเกตความยาวประเภทข้อมูลใช้ฟังก์ชั่น <code>sizeof()</code></p>
+
+  <p><b>ตัวอย่างเช่น:</b></p>
+
+  <p><code>&nbsp; &nbsp;sizeof( unsigned char );</code></p>
+
+  <p><code>&nbsp; &nbsp;sizeof( float );</code></p>
+
+  <p><br /></p>
+
+  <p>ภาษา C คุณสามารถผสมจำนวนเต็มและจริง ใช้ในสตูรการตัวหนึ่ง</p>
+
+  <p><code>&nbsp; &nbsp;unsigned char ch = 45.6f; &nbsp;/* กำหนดมีจำนวณจริง */</code></p>
+
+  <p><code>&nbsp; &nbsp;float fl = 23; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* กำหนดมีจำนวณเต็ม */</code></p>
+
+  <p><code>&nbsp; &nbsp;double dbl = 123.456;</code></p>
+
+  <p><code>&nbsp; &nbsp;printf("ผล: %5.3f\n", (ch - fl)/dbl );</code></p>
+
+  <p><br /></p>
+
+  <p>คุณควรระมัดในกรนีใช้ตัวแปรงประเภทไม่เหมื่อนกัน อาจว่าคำนวณเห็ตผูลที่ไม่คาดคิด หากมีการคำนวณจำนวนจริงกับจำนวนเต็ม จำนวนเต็มจะถูกเปลี่ยนเป็นจำนวนจริง แล้วคำนวณเห็ตผูลก็เป็นความจริงด้วย หากว่าคุณต้องการบังคับเปลี่ยนค่าจำนวนเต็มเป็นจริงหรือสลับไป (ค่าจำนวนเต็มเต็มเป็นค่าจำนวนเต็มเต็มอื่น ตัวอย่าง short เป็น char)ใช้ชื่อประเภทก่อนชื่อตัวแปร ค่าคง ฟังก์ชั่นที่คุณอยากเปลี่ยนเช่น:</p>
+
+  <p><code>&nbsp; (&lt;ชื่อตัวแปร&gt;) &lt;จำนวณ&gt;</code></p>
+
+  <p><br /></p>
+
+  <p>ตัวอย่างเช่น:</p>
+
+  <p><code>&nbsp; (unsigned char) 45.6f &nbsp; &nbsp;/* = 45 &nbsp;*/</code></p>
+
+  <p><code>&nbsp; (int) -12.45 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* = -12 */</code></p>
+
+  <p><code>&nbsp; (unsigned int) -12.45 &nbsp; &nbsp;/* = 0 &nbsp; */</code></p>
+
+  <p><code>&nbsp; int intr = 2341;</code></p>
+
+  <p><code>&nbsp; float fl = (float)intr; /* = 2341.0f */</code></p>
+
+  <p><br /></p>
+
+  <p><b>เรียนรู้เพิ่มเติม</b></p>
+
+  <p>หากสามารถเลือกค่าจำนวนเต็มแทนค่าจำนวนจริงทำไปซี ปรกติเลขคณิตจำนวนเต็มเร็วกว่าเลขคณิตจำนวนจริง ฮาร์ดแวร์รุ่นคอมพิวเตอร์ส่วนบุคคลแรกไม่สนับสนุนจำนวนจริง บังคับเขียนซอฟแวร์ทำให้และวิ่งช้ามาก ทันสมัยสบายก่วา คอมพิวเตอร์ส่วนบุคคลมีฮาร์ดแวร์สนับสนุนจำนวนจริง แต่ยังเร็วเท่ากับเลขคณิตจำนวนเต็ม</p>
+
+  <p><br /></p>
+
+  <p>เลขคณิตบวกเร็วกว่าลบเร็วกว่าคูณเร็วกว่าหาร ซ้ำในกรณีที่จำเป็น บางครั้งคุณสามารถหนีคูณและหารถ้าค่าจำนวนเป็นค่ากำลัง 2 เช่น 2, 4, 8, 16, 32, 64, ฯลฯ ใช้เลื่อนขว่า <code>&gt;&gt;</code> และเลื่อนซาย <code>&lt;&lt;</code> วิธีนี้เร็วมาก</p>
+
+  <p><code>&nbsp; &nbsp;23 * 2 เหมื่อน 23 &lt;&lt; 1 (คูณ 2)</code></p>
+
+  <p><code>&nbsp; &nbsp;3 * 128 เหมื่อน 3 &lt;&lt; 7 (คูณ 128)</code></p>
+
+  <p><code>&nbsp; &nbsp;400 / 32 เหมื่อน 400 &gt;&gt; 5 (หาร 32)</code></p>
+
+  <p>จำไว้ว่าคุณไม่ได้สามารถใช้วิธีนี้กับจำนวนจริง</p>
+
+  <h4>3.4: คำบรรยาย</h4>
+
+  <p>คำบรรยายสำคัญมากแต่มันไม่มีอิทธิพลอะไรในโปรแกรม มันช่วยคุณจำไว้และเข้าใจรหัสแหล่งคุณได้เขียนหลายๆ เดือนหรือปีมาแล้ว แล้วก็คำบรรยายช่วยนักเขียนโปรแกรมอื่นๆ เข้าใจรหัสแหล่งของคุณ ภาษา C ทันสมัยมีสนับสนุนสองแบบคำบรรยายภาพ:</p>
+
+  <p><code>&nbsp; 1. /* &lt;คำบรรยาย&gt; */</code></p>
+
+  <p><code>&nbsp; 2. // &lt;คำบรรยาย&gt;</code></p>
+
+  <p><br /></p>
+
+  <p>ตัวอย่างเช่น:</p>
+
+  <p><code>&nbsp; &nbsp;/* คำบรรยายจำกัดในแถวเดียว */</code></p>
+
+  <p><code>&nbsp; &nbsp;/* คำบรรยายใช้</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; สาม</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; แถว */</code></p>
+
+  <p><code>&nbsp; &nbsp;// คำบรรยายไปตลอดแถว</code></p>
+
+  <p><br /></p>
+
+  <p>วิธีใช้คำบรรยายส่วนตัวมาก สิ่งสำคัญที่สุดคือมันทำให้รหัสเข้าใจง่ายขึ้นสำหรับเพื่อนร่วมงาน<br /></p>
+
+  <p><br /></p>
+
+  <p>ฉันชอบใช้คำบรรยายแบบ '<code>//</code>' ช่วยหาความผิดพลาดในโปรแกรม มันง่าย'ปิด'ผลกระทบของคำสั่งหรือฟังก์ชั่นกลุ่มหนึ่งโดยคำบรรยายแบบ '<code>/* &nbsp;*/</code>' เพื่อตรวจสอบความผิดพลาดอยู่ที่ไหน</p>
+
+  <h4>3.5: ประกาศค่าคงและตัวแปร</h4>
+
+  <p>ภาษา C ทันสมัยให้คุณกำหนดค่าคงและตัวแปรที่ใดก็ได้ รุ่นแรกของภาษา C บังคับกำหนดตัวแปรทั้งหมดก่อนพวกคำสั่ง</p>
+
+  <p><code>&lt;ชนิดข้อมูลของฟังก์ชั่น&gt; &lt;ชื่อฟังก์ชัน&gt; (&lt;เรียงตัวแปรส่งขอมูลเข้าฟังก์ชันถ้ามี&gt;) {</code></p>
+
+  <p><code>&nbsp; &nbsp;/* กำหนดตัวแปรทั้งหมด */</code></p>
+
+  <p><code>&nbsp; &nbsp; ...</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* คำสั่ง */</code></p>
+
+  <p><code>&nbsp; &nbsp; ...</code></p>
+
+  <p><code>}</code></p>
+
+  <p>ซึ่งจะทำให้รหัสสับสนมากขึ้น เวลานี้คุณจะใช้จ่ายประกาศสถานที่ที่เหมาะสมของมัน</p>
+
+  <p><code>&nbsp; &nbsp;&lt;ชนิดข้อมูลของฟังก์ชั่น&gt; &lt;ชื่อฟังก์ชัน&gt; (&lt;ตัวแปรลำดับของฟังก์ชัน ถ้ามี&gt;) {</code></p>
+
+  <p><code>&nbsp; &nbsp;/* กำหนดตัวแปร */</code></p>
+
+  <p><code>&nbsp; &nbsp; ...</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* คำสั่ง */</code></p>
+
+  <p><code>&nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;/* คำหนดอีกตัวแปร */</code></p>
+
+  <p><code>&nbsp; &nbsp; ...</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* คำสั่ง */</code></p>
+
+  <p><code>&nbsp; &nbsp; ...</code></p>
+
+  <p><code>}</code></p>
+
+  <p><br /></p>
+
+  <p><b>กำหนดตัวค่าคง</b></p>
+
+  <p>มีสองวิธีที่กำหนดค่าคงเช่น:</p>
+
+  <p>1. ใช้คำหลัก const:</p>
+
+  <p><code>&nbsp; &nbsp;const &lt;ประเภทข้อมูล&gt; &lt;ชื่อตัวค่าคง&gt; = &lt;มูลค้า&gt;;</code></p>
+
+  <p><code>&nbsp; &nbsp;const float PI = 3.1415926f; &nbsp;/* π */</code></p>
+
+  <p><code>&nbsp; &nbsp;const short NA_KAK = 0x3c00; &nbsp;/* หน้ากาก */</code></p>
+
+  <p><code>&nbsp; &nbsp;const char ok = 'q'; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* ออก */</code></p>
+
+  <p><br /></p>
+
+  <p>2. ใช้ <code>#define</code> ตั้งใจว่าไม่ได้กำหนดประเภทข้อมูลและไม่ใช้ '<code>;</code>' สุดท้ายแถว</p>
+
+  <p><code>&nbsp; &nbsp;#define &lt;ชื่อตัวค่าคง&gt; &lt;มูลค่า&gt;</code></p>
+
+  <p><code>&nbsp; &nbsp;#define 3.1415926f PI</code></p>
+
+  <p><br /></p>
+
+  <p>ค่าคงไม่สามารถเปลี่ยนแปลงมูลค่าหลังการกำหนด ถ้าคุณพยายามเปลี่ยนมูลค่าของค่าคงคอมไพลร์จะประกาศความผิดพลาด</p>
+
+  <p><br /></p>
+
+  <p><b>กำหนดตัวแปร</b></p>
+
+  <p>เมื่อกำหนดตัวแปรคุณก็สามารถกำหนดชื่อตัวแปรไม่มีมูลค่าหรือกำหนดมูลค่าแรก</p>
+
+  <p><code>&nbsp; &nbsp;&lt;ชนิดข้อมูล&gt; &lt;ชื่อตัวแปร&gt;; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* ไม่<span style="font-family: 'Times New Roman', Times, serif;">กำหนด</span>ค่าแรก */</code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;ชนิดข้อมูล&gt; &lt;ชื่อตัวแปร&gt; = &lt;มูลค่า&gt;; /*&nbsp;<span style="font-family: 'Times New Roman', Times, serif;">กำหนด</span>ค่าแรก */</code></p>
+
+  <p><br /></p>
+
+  <p>ดูตัวอย่าง</p>
+
+  <p><code>&nbsp; &nbsp;unsigned int khaDanchani; /* ค่าดรรชนี */</code></p>
+
+  <p><code>&nbsp; &nbsp;short pi = 2120; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* ปี */</code></p>
+
+  <p><code>&nbsp; &nbsp;char akson = 's'; &nbsp; &nbsp; &nbsp; &nbsp; /* ตัวอักษร */</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned int si = 0x00ff00ff; /* สี */</code></p>
+
+  <p><br /></p>
+
+  <p>คุณก็สามารถกำหนดหลายตัวแปรประเภทเดียวกันหากผู้ใช้ '<code>,</code>' ระหว่างมัน:</p>
+
+  <p><code>&nbsp; float khuamYao, khuamKuang, khuamSung; /* ความยาว ความกวาง ความสูง*/</code></p>
+
+  <p><code>&nbsp; float ratMi = 1.0f, khuamReo = 4.0f; &nbsp; /* รัศมี, ความเร็ว */</code></p>
+
+  <p><br /></p>
+
+  <p><b>ตั้งใจหน่อย:</b> หากคุณพบว่าตัวแปรมีมูลค่าแปลกลองดูยังไม่กำหนดค่าให้มัน</p>
+
+  <p><br /></p>
+
+  <p><b>กฎแกงใช้ในการกำหนบ</b></p>
+
+  <p>• ชื่อตัวคงค่าและตัวแปรต้องการเริ่มต้นมีตัวอักษรภาษาละตินหรือตัวสัญลักษณ์ '<code>_</code>' หลังจากนั้นสามารถใช้ภาษาละตินหรือตัวสัญลักษณ์ '<code>_</code>';หรือหมายเลข ดูตัวอย่าง</p>
+
+  <p><code>&nbsp; &nbsp;float f_fg;</code></p>
+
+  <p><code>&nbsp; &nbsp;int __soMoi;</code></p>
+
+  <p><code>&nbsp; &nbsp;char r55;</code></p>
+
+  <p>ตัวอย่างไม่ถูกต้อง</p>
+
+  <p><code>&nbsp; &nbsp;double khuam reo &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* มีช่องว่าง */</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned int 3khrang; &nbsp; &nbsp; &nbsp;/* เริ่มต้นมีหมายเลข */</code></p>
+
+  <p><br /></p>
+
+  <p>• ชื่อค่าคงที่และตัวแปรควรไม่ยาวเกิน 1024 ตัวอักษร ( แต่จำกัดนี้แล้วแต่คอมไพเลอร์)</p>
+
+  <p><br /></p>
+
+  <p>• ปรกติคนมักจะใช้สองวิธีที่จะเชื่อมต่อสองคนหรือมากกว่าตัวอักษรเมื่อประกาศ</p>
+
+  <p>1. ใช้ตัวอักษรใหญ่ให้คำใหม่เช่น (เรียกว่าทรงอูฐ)</p>
+
+  <p><code>&nbsp; &nbsp;double phernThi; &nbsp;/* พื้นที่่ */</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned int jamnuanKhonNaiKrungThep; /* จำนวนคนในกรุงเทพฯ */</code></p>
+
+  <p><br /></p>
+
+  <p>2. ใช้ตัวสัญลักษณ์&nbsp;'_' ระหว่างคำใหม่เช่น</p>
+
+  <p><code>&nbsp; &nbsp;double phern_thi;</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned int jamnuan_khon_nai_krung_thep;</code></p>
+
+  <p><br /></p>
+
+  <p>บางคนตำหนิว่าทรงอูฐเพราะเขาคิดมันอ่านยากก่วา มีคนอื่นบ่นว่าใช้ตัวอักษร '_' ต้องกดแป้นพิมพ์ไกลและทรงอูฐสวกก่วา ฉันพยายามทั้งแล้วและชอบทรงอูฐมากก่วา</p>
+
+  <p><br /></p>
+
+  <p>ชื่อค่าคงนิยมใช้ตัวอักษรใหญ่เช่น:</p>
+
+  <p><code>&nbsp; &nbsp;const float DOK_BIA = 5.6f; &nbsp; /* ดอกเบีย */</code></p>
+
+  <p><code>&nbsp; &nbsp;const int WINATHI_NAI_NUNG_WAN = 3600; &nbsp;/* วินาทีในหนึ่งวัน */</code></p>
+
+  <p><br /></p>
+
+  <p>• ุกครั้งควรตั้งชื่อชื่อตัวแปรที่จะช่วยให้คุณรู้ว่าเป็นมูลค่าอะไร ตัวอย่าง</p>
+
+  <p><code>&nbsp; &nbsp;int i, j, k; /* ไม่ทราบว่าตัวแปรนี้เป็น</code><span style="font-family: monospace;">สิ่งอะไร</span>&nbsp;*/</p>
+
+  <p>ควรเขียน</p>
+
+  <p><code>&nbsp; &nbsp;int jamNuanKhon, wan, duan; /* จำนวนคน วัน เดือน เข้าใจง่ายก่วา */</code></p>
+
+  <p>&nbsp;</p>
+
+  <p>• ต้องการกำหนดตัวแปรก่อนใช้มัน:</p>
+
+  <p><font face="monospace">&nbsp; &nbsp;void function() {</font></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; pi = 2000 &nbsp; /* ผิด ยังไม่กำหนดตัวแปร */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; short pi; &nbsp; /*&nbsp;กำหนดตัวแปรปี */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; pi = 2020; &nbsp;/*&nbsp;กำหนดแล้ว ใช้ได้ */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p>&nbsp; &nbsp;&nbsp;</p>
+
+  <p>สามารถจำกัดตัวแปรโดย '<code>{</code>' และ '<code>}</code>' ดูด้านล่าง:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned char munKha0 = 0; /* ประกาศมูลค่า 0 */</code></p>
+
+  <p><code>&nbsp; &nbsp;{</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;usigned char munKha1 = 5; /* ประกาศมูลค่า 1 */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;printf ( "%d\n", munKha0 + munKha1); /* ฝากค่าบวกสองมูลค่า */</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><code>&nbsp; &nbsp;printf ( "%d\n", munKha0 + munKha1); /* ผิด&nbsp;</code><span style="font-family: monospace;">กำหนกของ</span><span style="font-family: monospace;">มูลค่า1หมดแล้ว</span>&nbsp;*/</p>
+
+  <p><br /></p>
+
+  <p>• ในแฟ้มภาษา C คุณสามารถกำหนดตัวแปรเรียกว่าตัว<i>แปรทั่วโลก</i> ตัวแปรแปรทั่วโลกที่ใช้ในฟังก์ชั่นทั้งหมดในแฟ้มนั้น ตัวแปรกำหนดในฟังก์ชั่นเรียกว่า<i>ตัวแปรท้องถิ่น</i> มันถูกจำกัดใช้เฉพาะในฟังก์ชั่นนั้น</p>
+
+  <p><code>&nbsp; float khanat = 0.0f; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* ขนาด ตัวแปรทั่วโลก */</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;ฟังก์ชั่น 0&gt; {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;unsigned char kiKrang = 1; /* กี่ครั้ง ตัวแปรท้องถิ่น */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;khanat = 3.0f; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* ตั้งตัวแปรทั่วโลกขนาด = 3.0f */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;ฟังก์ชั่น 1&gt; {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; unsigned char kiKhon = 0; &nbsp; /* กี่คน ตัวแปรท้องถิ่น */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; khanat = 5.0f; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* ตั้งตัวแปรทั่วโลกขนาด = 5.0f */</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><code>&nbsp; &nbsp;...</code></p>
+
+  <p><br /></p>
+
+  <p>ปรกติคุณควรไม่ใช้ตัวแปรทั้วโลกเพราะเป็นเรื่องยากจะทราบว่าฟังก์ชั่นตัวใดจะเปลี่ยนแปลงมูลค่าของตัวแปร ฟังก์ชั่นใดก็สามารถเปลี่ยนมูลค่าของตัวแปรทั่วโลกทำตรวจสอบความผิดพลาดอู่ด้านไหน กรนีหนึ่งไม่ตามกดนี้คือการเขียนโปรแกรมเชิงวัตถุและตัวแปรทั่วโลกเป็นตัวแปรของ<i>วิชา</i>กำหนด ตัวอย่างภาษาวัตถุ: C++ ObjectiveC Java Swift</p>
+
+  <p><br /></p>
+
+  <p>• ภาษา C สังเกตตั้วอักษรเล็กและใหญ่ &nbsp;ทุกตัวแปรข้างล้งนี้เป็นตัวแปรแตกต่างกัน:</p>
+
+  <p><code>&nbsp; &nbsp;float so;</code></p>
+
+  <p><code>&nbsp; &nbsp;float SO;</code></p>
+
+  <p><code>&nbsp; &nbsp;float sO;</code></p>
+
+  <p><code>&nbsp; &nbsp;float So;</code></p>
+
+  <p>คุณไม่ควรตั้งชื่อตัวแปรคล่ายกัน ทำแยกแยะตัวแปรยาก</p>
+
+  <p><br /></p>
+
+  <p>• คุณสามารถกำหนบตูลค่าโดยสามเลขฐานที่ภาษา C สนับสนุนหรือใช้มูลค่าของตัวอักษรตัวสัญลักษณ์:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned short giaTriThap = 0x00ff; /* เลขฐานสิบหก */</code></p>
+
+  <p><code>&nbsp; &nbsp;int jamNuan = 070745; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* เลขฐานแปด */</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char nakRian = 123; &nbsp; &nbsp; &nbsp; &nbsp;/* เลขฐานสิบ */</code></p>
+
+  <p><code>&nbsp; &nbsp;float sanyalak = '@'; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* ตัวสัญลักษณ์ */</code></p>
+
+  <p><br /></p>
+
+  <p><b>ระวัง:</b> อย่ากำหนดตัวแปรแทนตัวแปรอื่นในฟังก์ชัน ตัวอย่างด้านล่างเป็นฟังก์ชั่นบวกขึ้นมูลค่าพึ้นทีกับพื้นที่่่ที่มีอยู่แล้ว แต่ว่าไม่ระมดระวังและตั้งตัวแปรระหว่าง '<code>{</code>' และ '<code>}</code>'ที่มีชื่อ <code>tarang</code> (ตาราง) เดียวกับพารามิเตอร์ของฟังก์ชั่น ตัวแปรใหม่จะแทนพารามิเตอร์ของฟังก์ชั่น</p>
+
+  <p><code>&nbsp; &nbsp;float khamNuanTarang( float khuamKuang, float khuamSung, float tarang ) {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; ...</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; {</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;float tarang = khuamKuang * khuamSung;</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; }</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp; return tarang;</code></p>
+
+  <p><code>&nbsp; &nbsp;}</code></p>
+
+  <p><br /></p>
+
+  <p>เห็ตผลของฟังก์ชั่นนี้คือส่งขึ้นมูลค่าพารามิเตอร์ <code>tarang</code> ไม่บวกเพิ่มมูลค่า <code>khuamKuang * khuamSung</code> แสดงเฉพาะพื้นที่่เก่า ฟังก์ชั่นนี้เป็นอย่างง่ายและตรวจสอบหาเจอความผิดพลาดนี้ไม่ยาก แต่ในฟังก์ชั่นสับสนหาเจอความผิดพลาดอย่างนี้อาจไม่ง่ายจริง (ฉันเคยได้แล้ว) แต่คอมไพเลอร์จะไม่หาเจอตรวจสอบมัน! ระมัดระวังในเวลากำหนดชื่อตัวแปรไม่เหมื่อนพารามิเตอร์!</p>
+
+  <h4>3.6 ตัวแปรชุดและสายอักขระ</h4>
+
+  <p>มีกรณีหที่ต้องการมีช่วงมูลค่าเช่นข้อมูลอุณหภูมิสำหรับปีที่ผ่านมา รายการของศัตรูในเกม พิกเซลสำหรับรูป เรียงอักษรของประโยชน์ที่อยากฝากบนหน้าจอ ฯลฯ กำหนดตัวแปรหนึ่งสำหรับทุกชิ้นข้อมูลไม่สะดวก รูปภาพหนึ่งสามารถมีหลายล้านพิกเซล เราต้องมีช่วงข้อมูลที่เรียกว่าตัวแปรชุด ตัวแปรชุดได้สร้างขึ้นในความจำเป็นชุดหน่วยหนึ่ง</p>
+
+  <p style="text-align: center;"><img alt="Mang" src="../Images/th_Mang.svg" /></p>
+
+  <p><br /></p>
+
+  <p>บางรูปแบบกำหนดตัวแปรชุดหนึ่งมิติ</p>
+
+  <p><code>&nbsp; &nbsp;&lt;ชนิดข้อมูล&gt; &lt;ชื่อตัวแปรชุด&gt;[&lt;ความยาว&gt;];</code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;ชนิดข้อมูล&gt; &lt;ชื่อตัวแปรชุด&gt;[&lt;ความยาว&gt;] = {&lt;มูลค่า 0&gt; &lt;มูลค่า 1&gt; ... };</code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;ชนิดข้อมูล&gt; &lt;ชื่อตัวแปรชุด&gt;[] = {&lt;มูลค่า 0&gt; &lt;มูลค่า 1&gt; ... };</code></p>
+
+  <p><br /></p>
+
+  <p>ความยาวประกอบจำนวนสมาชิกในตัวแปรชุด ไม่ใช้จำนวนไบต์ของตัวแปรชุด&nbsp;</p>
+
+  <p><br /></p>
+
+  <p>คุณสามารถตั้งมูลค่าเมื่อกำหนดตัวแปรชุด ล้อมรอบพวกมูลค่าโดย '<code>{</code>' และ '<code>}</code>' และใช้ '<code>,</code>' ระหว่างแต่ละมูลค่า จำนวนตัวมูลค่าไม่สามรถมากกว่าความยาวตัวแปรชุด (น้อยก่วาไม่เป็ยไร) แต่คุณสามารถไม่กำหนดจำนวนสมชิดและปล่อยให้คอมไพเลอร์นับจำนวนตัวมูลค่า</p>
+
+  <p><br /></p>
+
+  <p>ดูตัวอย่างบางด้านล่าง:</p>
+
+  <p><code>&nbsp; &nbsp;float khuamRon[365]; /* ตัวแปรชุดความร้อนเป็น float มี 365 สมาชิก */</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char khuamSung[5] = {155, 148, 175, 166, 170}; /* ตัวแปรชุดความสูงเป็น uint มี 5 สมาชิก */</code></p>
+
+  <p><code>&nbsp; &nbsp;char chu[] = { 'T', 'h', 'a' 'k', 's', 'i', 'n', 0}; &nbsp; &nbsp;/* ชื่อ กำหนดมูลค่าโดยตัวสัญลักษณ */</code></p>
+
+  <p><br /></p>
+
+  <p>ในภาษา C ตัวแปรชุดที่มีความยาว <i>n</i> สมาชิก&nbsp;สมาชิกเริ่มต้นมีดัชนี 0 และสมาชิกสุดท้ายคือ <i>n</i> - 1. ในตัวแปรชุดความสูงจากจากข้างบน สมาชิก 0 และ 4 มีมูลค่า:</p>
+
+  <p><code>&nbsp; &nbsp;khuamSung[0] = 155;</code></p>
+
+  <p><code>&nbsp; &nbsp;khuamSung[4] = 170;</code></p>
+
+  <p><br /></p>
+
+  <p><b>ระวัง 1:</b> ระมัดระวังไปนอกตัวแปรชุด (ดัชนีสูงก่วา <i>n</i> - 1) คุณไม่สารารถทราบมีสิ่งที่มีอยู่ อันตรายมากก่วาคือเก็บไว้มูลค่าที่โื้น คุณสามารถบันทึกบนคำสั่งโปรแกรม ทำโปรแกรมทำงานผิด แฮกเกอร์รักใช้ประโยชน์นี้ในโปรแกรมไม่ตรวจสอบถ้กำหลังเก็บไว้มูลค่าภายในหรือนอกตัวแปรชุด&nbsp;</p>
+
+  <p><br /></p>
+
+  <p><b>ระวัง 2:</b> อย่าลืมกำหนดมูลค่าตัวแปรชุดก่อนเอาไปช้ &nbsp;เมื่อคอมไพลร์เอาความจำเพื่อสร้างตัวแปรชุดมันไม่กำหนดมูลค่า ไม่สามารถทราบว่ามีมูลค่าอะไรบ้าง</p>
+
+  <p><br /></p>
+
+  <p>พวกตัวแปรชุดที่เราเห็นแล้วข้างบนเป็นตัวแปรชุดหนึ่งมิติ ก็มีดัวแปรชุดหลายมิติด้วย:</p>
+
+  <p><code>&nbsp; &nbsp;&lt;ชนิดข้อมูล&gt; &lt;ชื่อตัวแปรชุด&gt; [&lt;ความยาว 0&gt;] [&lt;ความยาว 1&gt;] ...</code></p>
+
+  <p><code>&nbsp; &nbsp;&lt;ชนิดข้อมูล&gt; &lt;ชื่อตัวแปรชุด&gt; [] = {{&lt;มูลค่า 00&gt;, &lt;มูลค่า 01&gt; ... }, {&lt;มูลค่า 10&gt;, &lt;มูลค่า 11&gt; ... }};</code></p>
+
+  <p><br /></p>
+
+  <p>ตัวอย่างเช่น:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned char leik[5][2] = {{0xff, 0x05, 0x34, 0x4e, 0x1f}, {0x00, 0x47, 0xa0, 0x20, 0x8f}}; /* เลข */</code></p>
+
+  <p><code>&nbsp; &nbsp;float phiKat[256][256][256]; /* พิกัด, ตัวเรียงสามมิติ */</code></p>
+
+  <p><br /></p>
+
+  <p>ปรกติตัวแปรชุดได้สร้างขึ้โดยหนึ่งหน่วยความจำต่อเนื่อง ไม่เกรยวเ)็นหนี่งหรือหลายมิติ คุณสามารถสร้างตัวแปรชุดหลายมิติโดยตัวแปรชุดหนึ่งมิติ ตัวอย่างเช่นมีรูปภาพขนาด <i>k</i> × <i>s</i> พิกเซล (ความกว้างและความสูง) คุณสามารถกำหนดำตัวแปรชุดมีข้อมูลเช่น:</p>
+
+  <p><code>&nbsp; &nbsp;int rupPhap[r][c]; /* ตัวแปรชุดสองมิติ */</code></p>
+
+  <p>หรือ</p>
+
+  <p><code>&nbsp; &nbsp;int rupPhap[r*c]; /* ตัวแปรชุดหนึ่งมิติ */</code></p>
+
+  <p>ทันทีที่คุณน่าจะคิดว่าใช้วิธีไหนได้ติดต่อพิกเซล คอลัมน์ x และแถว y ในภาพตัวแปรชุดหนึ่งแถว หากภาพได้จัดระเบียบแถว (ส่วนใหญ่รูปแบบภาพเช่น JPEG, PNG, EXR&nbsp;จัดระเบียบแถว), คูณความกว้างกับจำนวนแถวและบวกหมายเลขคอลัมน์ ให้ดูรหัสข้างล้าง:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned int pixel = [x + r*y]; &nbsp; /* พิกเซลอยู่ที่คอลัมน์ x แถว y */</code></p>
+
+  <p><br /></p>
+
+  <p>• สายอักขระเป็นตัวแปรชุดที่มีประเภท char และได้ยกเลิกโดยตูลค่า '<code>0x00</code>' เรียกว่าตัวสัญลักษณ์ศูนย์ แต่ไม่มีข้อมูลเกี่ยวกับความยาว (สายอักขระของภาษาอื่นๆ อ่าจเก็บไว้ข้อมูลความยาว) แต่ความยาวถูกจำกัดโดยความจำและสถาปัตยกรรมคอมพิวเตอร์ที่กำลังใช้ยู่&nbsp;ตัวสัญลักษณ์ศูนย์สำคัญมากเพราะมันแสดงให้ทราบว่าสายอักขระจบที่ไหน:</p>
+
+  <p><code>&nbsp; &nbsp;char &lt;ชื่อสายอักขระ&gt; = "&lt;ตัวเรียงอักษร/ตัวสัญลักษณ์&gt;";</code></p>
+
+  <p><br /></p>
+
+  <p>เมื่อกำหนดสายอักขระไม่จำเป็นตั้งใจตัวสัญลักษณ์ศูนย์มาก คอมไพเลอร์จะเพิ่มมันให้ แต่ถ้าคุณกำหนดสายอักขระเช่นนี้คุณต้องการว่างสุดถ้ายเอ็ง:</p>
+
+  <p><code>&nbsp; &nbsp;char sawadi[] = "Sawdi"; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* สวัสดี ไม่ต้องการว่าง */</code></p>
+
+  <p><code>&nbsp; &nbsp;char sawadi[] = { 'S', 'a', 'w ', 'd', 'i', 0}; &nbsp;/* สวัสดี ต้องการว่างตัวสัญลักษณ์ศูนย์สุดถ้าย */</code></p>
+
+  <p><br /></p>
+
+  <p>คุณสามารถรับสายอักขระอย่างนี้:</p>
+
+  <p><code>&nbsp; &nbsp;#include "stdio.h" /* ห้งสมุดรับฝาก */</code></p>
+
+  <p><code>&nbsp; &nbsp;...</code></p>
+
+  <p><code>&nbsp; &nbsp;char namSakun[255]; /* นามสกุล */</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char ayu; &nbsp;/* อายุ */</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* ข้อมูล */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf ( "กรุณาพิมพ์</code><span style="font-family: monospace;">นามสกุล</span>:");</p>
+
+  <p><code>&nbsp; &nbsp;scanf ( "%s" namSakun );</code></p>
+
+  <p><code>&nbsp; &nbsp;printf ( "กรุณาพิมพ์อายุ:");</code></p>
+
+  <p><code>&nbsp; &nbsp;scanf ( "%d", &amp;ayu );</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* พิมพ์บนหน้าจอ */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf ( "นามสกุล: %s อายุ: %d\n" namSakun, ayu );</code></p>
+
+  <p><br /></p>
+
+  <p><b>เรียนรู้เพิ่มเติม</b></p>
+
+  <p>สำหรับสายอักขระโดยใช้ตัวอักษรเช่น "#dr^6" ตัวอักษรละรหัสเลข แต่ถ้าคุณมีตัวอักษรเช่น "อีดиすណ" ไม่ได้ตัวอักษรละรหัสเลข บางมีถึง 2-4 รหัสเลขตอ่ตัวอักษร! ระบบรหัสเลข UTF8 ดูรหัสสำหรับตัวอักษรของสองสายอักขระด้านล่าง:<br /></p>
+
+  <p>"<code>dr^6</code>" → <code>0x23 0x64 0x52 0x36 0x5e</code></p>
+
+  <p>"<code>อีดиすណ</code>" → <code>0xe1 0xbb 0xd0 0x94 0x81 0xb8 0xe0 0xe3 0xb8 0x99 0x81 0x8e 09e 0xe1</code></p>
+
+  <h4>3.7 ฟังก์ชัน scanf ()</h4>
+
+  <p>มีฟังก์ชั่น <code>printf()</code> เพื่อฝากข้อมูลบนหน้าจอและมีฟังก์ชั่น <code>scanf()</code> (ฟังก์ชั่นสแกน) สำหรับรับข้อมูล หลังจากได้เรียนรู้เกี่ยวกับตัวแปรฉันสามารถอธิบายวิธีการใช้ฟังก์ชั่นนี้ มันใช้หัสควบคุมเช่นเดียวกับ <code>printf()</code> และช่วยให้แป่ลสายอักขระรับ มันก็อยู่ในห้องสมุด &lt;stdio.h&gt; ดูอย่างสำหรับมัน</p>
+
+  <p><code>&nbsp; &nbsp;scanf ( "&lt;อักขระควบคุม&gt;", &lt;ที่อยู่ตัวแปร&gt;);</code></p>
+
+  <p><br /></p>
+
+  <p>เพื่อรับข้อมูลใช้ตัวสัญลักษณ์ '<code>&amp;</code>' ก่อนชื่อตัวแปร มันหมายความว่าที่อยู่ของตัวแปร ฉันจะอธิบายเพิ่มเติมเกี่ยวกับเรืองในบทที่ 6 เวลาเรียนเกี่ยวกับตัวชี้ ฉันแนะนำฟังก์ชั่น <code>scan()</code> เพื่อช่วยคุณสามารถเขียนโปรแกรมได้รับข้อมูล ฟังก์ชั่น <code>scanf()</code> ต้องมีอย่างน้อยหนึ่งตัวแปรสำหรับรับข้อมูล ตัวอย่าง<br /></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char leik0; /* หมายเลข 0 */</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char leik1; /* หมายเลข 1 */</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>&nbsp; &nbsp;/* รับข้อมูล */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf ( "กรุณาพิมพ์ตัวเลข 0:");</code></p>
+
+  <p><code>&nbsp; &nbsp;scanf ( "% s", &amp;leik0 );</code></p>
+
+  <p><code>&nbsp; &nbsp;printf ( "กรุณาพิมพ์หมายเลข 1:");</code></p>
+
+  <p><code>&nbsp; &nbsp;scanf ( "% d", &amp;leik1 );</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;/* ฝากบนหน้าจอ */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf ( "% d x% d =% d \ n", so0, number1, so0 * ครั้งที่ 1);</code></p>
+
+  <p><br /></p>
+
+  <p>จำไว้ว่ากดปุ่ม Enter หรือปุ่ม Return เมื่อพิมพ์เสร็จแล้ว คุณสามารถพิมพ์ข้อมูลทั้งหมดใช้แถวหนึ่ง:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned char leik0; &nbsp; /* หมายเลข 0 */</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned char leik1; &nbsp; /* หมายเลข 1 */</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;/* ข้อมูล */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "กรุณาพิมพ์หมายเลข 0 และ 1 (ใช้ช่องว่างระหว่างหมายเลข):");</code></p>
+
+  <p><code>&nbsp; &nbsp;scanf( "%s %d", &amp;leik0 &amp;leik1);</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;/ * ใส่ขึ้นหน้าจอ * / การ</code></p>
+
+  <p><code>&nbsp; &nbsp;printf ( "% d x% d =% d \ n", so0, number1, so0 * ครั้งที่ 1);</code></p>
+
+  <p>ฉันออกจากช่องว่างระหว่างสองรหัสตัวละครแต่ละตัว</p>
+
+  <h3>บทที่เรียน<br /></h3>
+
+  <p>บทที่3.1 ค่าคงและตัวแปรต่างกันอย่างไร เมื่อควรใช้ค่าคง&nbsp;เมื่อควรตัวแปร?</p>
+
+  <p><br /></p>
+
+  <p>บทที่3.2 ชื่อกำหนดไหนถูกต้อง หากไม่ถูกอธิบายว่าทำไม:</p>
+
+  <p><code>&nbsp; &nbsp;char akson = 0x20; &nbsp; &nbsp;unsigned char phasa Thai;</code></p>
+
+  <p><code>&nbsp; &nbsp;short jamnuan___45; &nbsp; int &amp;e;</code></p>
+
+  <p><code>&nbsp; &nbsp;char ไทย; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; long long WELA;</code></p>
+
+  <p><code>&nbsp; &nbsp;int __ssfgh; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;unsigned float rayaThang;</code></p>
+
+  <p><br /></p>
+
+  <p>บทที่B3.3 กำหนดตัวแปรเหมื่อนด้านล่างและใช้ <code>printf()</code> เพื่อตรวจสอบมูลค่าของพวกมัน</p>
+
+  <p><code>&nbsp; &nbsp;int khuamYao = 3.14f; &nbsp;/* ความยาว */</code></p>
+
+  <p><code>&nbsp; &nbsp;short jamnuanKhon = 233; &nbsp;/*&nbsp;</code><span style="font-family: monospace;">จำนวณคน</span>&nbsp;*/</p>
+
+  <p><code>&nbsp; &nbsp;unsigned char jamnuanKhon = 1555; &nbsp;/* จำนวณคน */</code></p>
+
+  <p>อธิบายผล</p>
+
+  <p><br /></p>
+
+  <p>บทที่3.4 มูลค่าของตัวแปร so_f &nbsp;เป็นเท่าไรหลังงานปฏิบัติ:</p>
+
+  <p>a.<code>&nbsp; so_i int = 455;</code></p>
+
+  <p><code>&nbsp; &nbsp;float so_f = นาที</code></p>
+
+  <p><br /></p>
+
+  <p>b.<code>&nbsp;int so_i = 455.123f;</code></p>
+
+  <p><code>&nbsp; &nbsp;float so_f = so_i;</code></p>
+
+  <p><br /></p>
+
+  <p>c. <code>&nbsp;int so_i = -455.123f;</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned so_c = so_i;</code></p>
+
+  <p><code>&nbsp; &nbsp;float so_f = so_c;</code></p>
+
+  <p><br /></p>
+
+  <p>บทที่3.5 มูลค่าของตัวแปร so_i เป็นเท่าไร หลังจากงานปฏิบัติ:</p>
+
+  <p>a. <code>&nbsp;float so_f = 6723;</code></p>
+
+  <p><code>&nbsp; &nbsp;int so_i = so_f;</code></p>
+
+  <p><br /></p>
+
+  <p>b. <code>float so_f = 6723.56f;</code>;</p>
+
+  <p><code>&nbsp; &nbsp;int so_i = so_f;</code>;</p>
+
+  <p><br /></p>
+
+  <p>c. <code>float so_f = 6723.56f;</code>;</p>
+
+  <p><code>&nbsp; &nbsp;ถunsigned char so_c = so_f;</code>;</p>
+
+  <p><code>&nbsp; &nbsp;int so_i = so_c;</code></p>
+
+  <p><br /></p>
+
+  <p>บทที่3.6 ทำทดสอบ <code>sizeof( long double )</code>&nbsp;สำหรับทราบมันใช้กี่ไบต์ อาจว่ายาวกว่า 10 ไบต์ คอมพิวเตอร์ทันสมัยชอบเก็บข้อมูลทรงกับสี่หรือแปดไบต์</p>
+
+  <p><br /></p>
+
+  <p>บทที่3.7 ดูรหัสแหล่งด้านล่างสำหรับคำนวณอัตราส่วนของผู้ชายและผู้หญิง:</p>
+
+  <p><code>&nbsp; &nbsp;unsigned short jamnuanPhuYing = 45; &nbsp;/* จำนวนของผู้หญิง &nbsp;*/</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned short jamnuanPhuChai = 56; &nbsp;/* จำนวนคนของผู้ชาย */</code></p>
+
+  <p><code>&nbsp; &nbsp;unsigned short ruam =&nbsp;jamnuanPhuYing&nbsp;+&nbsp;jamnuanPhuChai; /* รวม */</code></p>
+
+  <p><code>&nbsp; &nbsp;float suanPhuYing =&nbsp;jamnuanPhuYing&nbsp;/ ruam; &nbsp; &nbsp;/* ส่วนผู้หญิง */</code></p>
+
+  <p><code>&nbsp; &nbsp;float suanSoPhuChai =&nbsp;jamnuanPhuChai&nbsp;/ ruam; &nbsp;/* ส่วนผู้ชาย */</code></p>
+
+  <p><br /></p>
+
+  <p><code>&nbsp; &nbsp;/* อ้างอิงผล */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "คนคะแนน: %5.3f\n");</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "ผู้หญิงคะแนน: %5.3f\n");</code></p>
+
+  <p>รหัสแหล่งนี้คำนวณอัตราส่วนถูกหรือผิด? ถ้าผิดควรซ้อมมันอย่างไง</p>
+
+  <p><br /></p>
+
+  <p>บทที่3.8 สมมติว่าคุณกำลังออกแบบเกมขับยานอวกาศยิงศัตรูคว้าจากต่างดาวเคราะห์ คุณต้องเขียนฟังก์ชั่นเก็บข้อมูลและอัพเกรดอินเตอร์เฟซฝากข้อมูลนี้:</p>
+
+  <p>• คะแนน</p>
+
+  <p>• จำนวนชีวิด</p>
+
+  <p>• หมายเลขปึนกำลังใช้อยู่</p>
+
+  <p>• แรงปึน</p>
+
+  <p>• ตำแหน่งของยานอวกาศ</p>
+
+  <p>• ระยะห่างจากโลก</p>
+
+  <p>คุณจะเลือกประเภทข้อมูลไหนและอธิบายว่าทำไมเลือกประเภทนั้น</p>
+
+  <p><br /></p>
+
+  <p>บทที่3.9 ลองหาความผิดพลาดในตัวแปรชุดด้านล่าง</p>
+
+  <p><code>unsigned char akson[5] = { 'a' 'e' 'ฉัน', 'o', 'U', 'Y'};</code></p>
+
+  <p><code>unsigned char akson[] [] = { 'A' 'e' 'ฉัน', 'o', 'U', 'Y'};</code></p>
+
+  <p><code>unsigned char akson[] [] = {{ 'a'}, { 'e'}, { 'i'} 'O', 'U', 'Y'};</code></p>
+
+  <p><code>unsigned char akson[3] [3] = {{ 'a'}, { 'e'}, { 'i'}}, { 'O'}, { 'U'}, {{ 'Y'}, { x}, {Z}};</code></p>
+
+  <p><br /></p>
+
+  <p>บทที่3.10 สร้างฟังก์ชั่นหนึ่งสำหรบคูณสองเมทริกซ์ 4 × 4 และฝากผลในเมทริกซ์ที่สาม ใช้ตัวแปรชุดสองมิติ</p>
+
+  <p><br /></p>
+
+  <p>บทที่3.11&nbsp;สร้างฟังก์ชั่นหนึ่งสำหรบคูณสองเมทริกซ์ 4 × 4 และฝากผลในเมทริกซ์ที่สาม&nbsp;ใช้ตัวแปรชุดหนึ่งมิติ</p>
+</body>
+</html>
