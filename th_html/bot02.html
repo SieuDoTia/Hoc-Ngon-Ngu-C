@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="../Styles/Style0001.css" rel="stylesheet" type="text/css" />
+
+  <title></title>
+</head>
+
+<body>
+  <h2>บทที่ ๒: เกี่ยวกับภาษาซี</h2>
+
+  <p><br /></p>
+
+  <p>ในบทนี้คุณจะเริ่มเรียนรู้เกี่ยวกับภาษาซี เริ่มต้นคือคำหลักและสัญลักษณ์ที่ใช้ในการเขียนโปรแกรม C ต่อไปเขียนโปรแกรม C ครั้งแรก เรียนเกี่ยวกับฟังก์ชั่นใช้เพิ่อวางข้อมูลบนจอ เลขคณิตของภาษา C และจุดสิ้นสุดเรียนรู้เกี่ยวกับทฤษฎีที่ใช้กันทั่วไปในอาชีพเขียนโปรแกรม<br /></p>
+
+  <h4>2.1 คำหลักภาษา<span style="font-family: 'Times New Roman', Times, serif;">ซี</span></h4>
+
+  <p>พวกเขาเป็นคำที่เราใช้ในการ 'พูดคุย' กับคอมพิวเตอร์ ประกาศตัวแปร สร้างคำสั่งควบคุม ฯลฯ ในโปรแกรมของเขา แตกต่างจากภาษามนุษย์ภาษา C ที่มีคำไม่กี่คำ แต่สามารถรับการอธิบายขั้นตอนวิธีอย่างมากมาย รายกายคำหลักภาษา C:</p>
+
+  <p><code>auto &nbsp; &nbsp; break &nbsp; &nbsp; case &nbsp; &nbsp; char &nbsp; &nbsp; const</code></p>
+
+  <p><code>continue &nbsp; &nbsp; default &nbsp; &nbsp;do&nbsp; &nbsp; double &nbsp; &nbsp; else</code></p>
+
+  <p><code>entry &nbsp; &nbsp; enum &nbsp; &nbsp; extern &nbsp; &nbsp;float &nbsp;for &nbsp;goto &nbsp;if</code></p>
+
+  <p><code>int &nbsp; &nbsp; long &nbsp; &nbsp; register &nbsp; &nbsp; return &nbsp; &nbsp; short</code></p>
+
+  <p><code>signed &nbsp; &nbsp; sizeof &nbsp; &nbsp; static &nbsp; &nbsp; struct &nbsp; &nbsp; switch</code></p>
+
+  <p><code>typedef &nbsp; &nbsp;union &nbsp; &nbsp; &nbsp;unsigned &nbsp; &nbsp; void &nbsp; &nbsp; volatile &nbsp; &nbsp; while</code></p>
+
+  <p><br /></p>
+
+  <p>คุณจะได้เห็นคำหลักทั้งหมดได้ใช้แต่ตัวอักษรเล็กเท่านั้น เล้วก็คุณไม่สามาถรใช้คำนี้เพื่อตั้งชื่อค่าคง ตัวแปร ฟังก์ชั่น อื่นๆ ในเขียนโปรแกรมภาษา C เพราะพวกคำนี้โดนระบุไว้แล้ว</p>
+
+  <h4>2.2&nbsp;<span style="font-family: 'Times New Roman', Times, serif;">สัญลักษณ์</span></h4>
+
+  <p>โปรแกรม C สามารถเขียนโดยพวกตัวสัญลักษณ์นี้:</p>
+
+  <p>ตัวอักษรละตินเล็ก: <code>a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z</code></p>
+
+  <p>ตัวอักษรละตินเล็กใหญ่: <code>A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z</code></p>
+
+  <p>หมายเลข: <code>0, 1, 2, 3, 4, 5, 6, 7, 8, 9</code></p>
+
+  <p>ตัวสัญลักษณ์อื่นๆ: <code>!, @, #, %, ^, &amp;, *, (, ), ' &nbsp;', -, +, ;, :, ?, &lt;, &gt;, = _, /, \, {, }, [, ], ', "</code></p>
+
+  <p><br /></p>
+
+  <p>คำบรรยายภาพและสายอักขระไม่ได้ถูกจำกัดนี้ และคุณสามารถใช้ตัวละครมากขึ้น</p>
+
+  <h4>2.3: ตัวโปรแกรมหนึ่งง่ายๆ</h4>
+
+  <p>ด้านล่างนี้มีโปรแกรมแรกเขียนเมื่อการเรียนรู้ภาษา C เบื้องต้น</p>
+
+  <ol>
+    <li><code>#include &lt;stdio.h&gt; &nbsp;/* ใช้ฟังก์ชั่นจาก stdio.h */</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>int main( int argc, char **argv ) {</code></li>
+
+    <li><code>&nbsp; &nbsp;/* พิมพ์บนจอ */</code></li>
+
+    <li><code>&nbsp; &nbsp;printf( "สวัสดีโลก\n" );</code></li>
+
+    <li><code><br /></code></li>
+
+    <li><code>&nbsp; &nbsp;return 1;</code></li>
+
+    <li><code>}</code></li>
+  </ol>
+
+  <p>จากโปรแกรมง่ายนี้คุณสามารถมองเห็นพวกส่วนสำคัญของโปรแกรม C ข้างบนมีคำ #include เหล่าโปรงแกรมนี้ได้ใช้ฟังก์ชั่นจากห้องสมุดและไม่อยู่ไว้ในแฟ้มนี้ ภาษา C มีห้องสมุดหลายอย่างพร้อมเพื่อช่วยคุณทำงานพื้นฐานเช่น ฝากตัวอักษรบนจอ รับตัวอักษนจากแผนกด เปิด อ่าน เขียน ปิดแฟ้มจากฮาร์ดไดรฟ์ ฟังก์ชั่นทางคณิตศาสตร์ ฯลฯ บทนี้ใช้ห้องสมุด stdio.h &nbsp;(ห้องสมุดมาตรฐานรับส่ง) เพิ่อใช้ฟังก์ชั่น printf () ตีลงโปรแกรมนี้ในเครื่องคอมพิวเตอร์ บนทึกไว้ใช้ชื่อ sawadi.c&nbsp;เสร็จแล้วคอมไพล์มัน</p>
+
+  <p><code>&nbsp; &nbsp;clang sawadi.c -o sawadi</code></p>
+
+  <p><br /></p>
+
+  <p>และวิ่งมันใช้</p>
+
+  <p><code>&nbsp; &nbsp;./sawadi</code></p>
+
+  <p><br /></p>
+
+  <p>คุณควรเห็นคำบนหน้าจออย่างนี้</p>
+
+  <p><code>&nbsp; &nbsp;สวัสดีโลก</code></p>
+
+  <p>&nbsp;</p>
+
+  <p>ถัดไปคุณจะเห็นปาล์มฟังก์ชั่นที่มีชื่อว่า main () โปรแกรม C ใด ๆ ต้องมีหนึ่งฟังก์ชัน main() มันเป็นที่คอมพิวเตอร์จะเริ่มต้นวิ่งโปรแกรมการ มันได้รับสองพารามิเตอร์:</p>
+
+  <p>1. argc - จำนวนพารามิเตอร์</p>
+
+  <p>2. argv - สายอักขระระบุไว้พารามิเตอร์</p>
+
+  <p><br /></p>
+
+  <p>คุณสามารแต่งป้อนพารามิเตอร์เมื่อคุณวิ่งโปรแกรม โปรแกรมง่ายข้างบนไม่ใช้พารามิเตอร์แต่ข้างล้างมีโปรงแกรมตัวอย่างแสดงการใช้พารามิเตอร์:</p>
+
+  <p><code>./doTia -c -p 4096 2160 0.0015</code></p>
+
+  <p><br /></p>
+
+  <p>คำสั่งนี้ในส่งหกตัวพารามิเตอร์ให้โปรแกรม doTia เอาไปใช้:</p>
+
+  <p><code>&nbsp; &nbsp;argc = 6</code></p>
+
+  <p><code>&nbsp; &nbsp;argv = { "./doTia", "P", "4096", "2160", "-c", "0.0015"}</code></p>
+
+  <h4>2.4 ฟังก์ชัน <code>printf()</code></h4>
+
+  <p>เราจะต้องมีวิธีฝากข้อมูลบนหน้าจอเพื่อดูกิจกรรมของโปรแกรมเรา มีหลายๆ ฟังก์ชั่นอยู่ในห้องสมุด &lt;stdio.h&gt; ดังนั้นเมื่อคุณต้องการใช้พวกฟังก์ชั่นนั้นคุณต้องดีชื่อห้องสมุดนี้ข้างบนแพ้งรหัสโปรแกรม เราจะใช้ printf () (ฟังก์ชั่นพิมพ์) สำหรับเรื่องนี้ แบบสำหรับมันคือ:</p>
+
+  <p><code>&nbsp; &nbsp;printf( "&lt;สายอักขระ&gt;" ); &nbsp; /* ง่ายที่สุด เพื่อฝากสายอักขระบนหน่าจอ ไม่มีพารามิเตอร์อะไร */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "&lt;สายอักขระและรหัสควบคุมวิธีพิมพ์ตัวแปรบนหน่าจอ&gt;", &lt;พวกตัวแปร&gt; );</code></p>
+
+  <p><br /></p>
+
+  <p>ตอนนี้คุณก็จำเป็นรู้ว่าสายอักขระเป็นเรียงตัวอักษรและสัญลักษณ์ (ฉันจะอธิบายรายละเอีอดเพิ่มในบทที่ 3) รหัสการควบคุมของ printf () ได้จัดการรูปแบบฝากข้อมูลบนหน้าจอ ดูรายการดังต่อไปนี้:</p>
+
+  <p>&nbsp; ตัวอย่างรูปแบบรหัส</p>
+
+  <p><code>&nbsp; รหัส &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;แบบ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ตัวอย่างฝาก</code></p>
+
+  <p><code>&nbsp; %c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; สัญลักษณ์ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;q</code></p>
+
+  <p><code>&nbsp; %d &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; จำนวนเด็ม &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -3345</code></p>
+
+  <p><code>&nbsp; %e หมายเลขอย่างวิทยาสาตร์ &lt;จำนวนจริง&gt;e&lt;<span style="font-size: 11px;">กำลัง</span>&gt; (&lt;จำนวนจริง&gt; × 10<sup>&lt;กำลัง&gt;</sup>) &nbsp; 1.2e+56</code></p>
+
+  <p><code>&nbsp; %E&nbsp;หมายเลขอย่างวิทยาสาตร์&nbsp;&lt;จำนวนจริง&gt;E&lt;<span style="font-size: 11px;">กำลัง</span>&gt; (&lt;จำนวนจริง&gt; × 10<sup>&lt;กำลัง&gt;</sup>) &nbsp; 1.2E+56</code></p>
+
+  <p><code>&nbsp; %f &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; จำนวนจริง &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2.78</code></p>
+
+  <p><code>&nbsp; %g &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; เล็กที่ของ %e หรือ&nbsp;%f</code></p>
+
+  <p><code>&nbsp; %G &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; เล็กที่ของ %E หรือ %f</code></p>
+
+  <p><code>&nbsp; %i &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;จำนวนเด็ม &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -3345</code></p>
+
+  <p><code>&nbsp; %ld &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;จำนวนเด็ม&nbsp;(แบบ long) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -488750966487</code></p>
+
+  <p><code>&nbsp; %o &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;เลขฐานแปด &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0564</code></p>
+
+  <p><code>&nbsp; %p &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ที่อยตัวชีู้่ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0x7fff6c084bab</code></p>
+
+  <p><code>&nbsp; %s &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; สายอักขระ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;สวัสดีพวกคุณ</code></p>
+
+  <p><code>&nbsp; %u &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;จำนวนเต็มไม่มีเครื่องหมาย &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 254</code></p>
+
+  <p><code>&nbsp; %x &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; เลขฐานสิบหก &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;effc9</code></p>
+
+  <p><br /></p>
+
+  <p>รูปแบบ <code>%f</code> มีสองพารามิเตอร์:</p>
+
+  <p><code>&nbsp; &nbsp;%&lt;จำนวนเงินรวมของ&gt;. &lt;จำนวน&gt;f</code></p>
+
+  <p><code>&nbsp; &nbsp;printf ( "%7.3f\n", 3.4f ); /* &nbsp; 3.400 (สองช่องว่างก่อน) */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf ( "%.3f\n", 3.4f ); &nbsp;/* 3.400 */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf ( "%3.f\n", 3.4f ); &nbsp;/* &nbsp; 3 (สองช่องว่างก่อน) */</code></p>
+
+  <p><br /></p>
+
+  <p>รูปแบบ <code>%e</code> และ <code>%E</code> คล้ายกับ <code>%f</code></p>
+
+  <p><code>&nbsp; &nbsp;printf ( "%7.3e \n", 370.0f ); /* 3.720e + 02 */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf ( "%.3e \n", 370.0f ); /* 3.720e + 02 */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf ( "%3.e \n", 370.0f ); /* 4e0e + 2 */</code></p>
+
+  <p>&nbsp; &nbsp;</p>
+
+  <p>รูปแบบ <code>%d %i %u</code>&nbsp;มีเพียงหนึ่งพารามิเตอร์</p>
+
+  <p><code>&nbsp; &nbsp;printf( "%7d\n", 1881); &nbsp;/* &nbsp; &nbsp;1881 (สามช่องว่างก่อน) */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "%07d\n", 1881); /* 0001881 */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf( "%d\n", 1881); &nbsp; /* 1881 */</code></p>
+
+  <p><br /></p>
+
+  <p>รูปแบบ <code>%c</code> มีเพียงหนึ่งพารามิเตอร์์</p>
+
+  <p><code>&nbsp; &nbsp;printf ( "%7c\n", 89); /* &nbsp; &nbsp; &nbsp; Y (หกช่องว่างก่อน) */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf ( "%c\n", 89); &nbsp;/* Y */</code></p>
+
+  <p><code><br /></code></p>
+
+  <p>รูปแบบ <code>%x %o</code> เมีเพียงหนึ่งพารามิเตอร์์</p>
+
+  <p><code>&nbsp; &nbsp;printf ( "%7x\n", 0xfe34); &nbsp;/* &nbsp; &nbsp;fe34 (สามช่องว่างก่อน) */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf ( "%07x\n", 0xfe34); /* 000fe34 */</code></p>
+
+  <p><code>&nbsp; &nbsp;printf ( "%x\n", 0xfe34); &nbsp; /* fe34 */</code></p>
+
+  <p><br /></p>
+
+  <p>คุณสามารถใช้หลายรูปแบบพร้อมกันเช่น:</p>
+
+  <p><code>&nbsp; &nbsp;printf ( "%d&nbsp;ชื่อ: %s &nbsp;เพศ: %c\n", 20, "นก", 'Y'); /* 20 ชื่อ: นก &nbsp;เพศ: Y */</code></p>
+
+  <p><br /></p>
+
+  <p>สัญลักษณ์พิเศษ:</p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;บวกกับ &nbsp; ชื่อ &nbsp; &nbsp; &nbsp; &nbsp;</code> <span style="font-family: monospace;">การปลูก</span></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;\n &nbsp; &nbsp;เส้นผล &nbsp; &nbsp; &nbsp; &nbsp;กลับแถว</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;\t &nbsp; &nbsp;แท็บ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;มี 5 ช่องว่าง</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;\O &nbsp; &nbsp;สูน (0x00) &nbsp; &nbsp;ใช้บอกจบสายอักขระ</code></p>
+
+  <p><code>&nbsp; &nbsp; &nbsp;\" &nbsp; &nbsp;ฟันหนู &nbsp; &nbsp; &nbsp; &nbsp; เพื่อไดเใช้"ในสายอักขระ</code></p>
+
+  <p><br /></p>
+
+  <p>ยกตัวอย่างเช่นพวกมันพร้อมกัน</p>
+
+  <p><code>&nbsp; &nbsp;printf( "\"Chào Qúy Khách\ "\n\n%c\t%c\t%c\n", 'C', 'Q', 'K');</code></p>
+
+  <p><br /></p>
+
+  <p>จะฝากบนหน้าจอ:</p>
+
+  <p><code>"Chào Qúy Khách"</code></p>
+
+  <p><code><br /></code></p>
+
+  <p><code>C &nbsp; &nbsp; &nbsp; Q &nbsp; &nbsp; &nbsp;K</code></p>
+
+  <h4>2.5 เลขคณิต</h4>
+
+  <p>มีวิธีการชำระจำนวนมากในภาษา C</p>
+
+  <p>• เลขคณิตพื้นฐาน:</p>
+
+  <p><code>&nbsp; &nbsp;a + b &nbsp; &nbsp;บวก</code></p>
+
+  <p><code>&nbsp; &nbsp;a - b &nbsp; &nbsp;ลบ</code></p>
+
+  <p><code>&nbsp; &nbsp;a * b &nbsp; &nbsp;คูณ</code></p>
+
+  <p><code>&nbsp; &nbsp;a / b &nbsp; &nbsp;หาร</code></p>
+
+  <p><code>&nbsp; &nbsp;a % b &nbsp; &nbsp;เกินดุล</code></p>
+
+  <p><br /></p>
+
+  <p>• ตั้งจำนวน</p>
+
+  <p><code>&nbsp; &nbsp;a = b &nbsp; &nbsp;กำหนดจำนวน</code></p>
+
+  <p><br /></p>
+
+  <p>• เหตุผลการอนุมัติ</p>
+
+  <p><code>&nbsp; &nbsp;a &amp;&amp; B &nbsp; &nbsp; และ</code></p>
+
+  <p><code>&nbsp; &nbsp;a || b &nbsp; &nbsp; หรือ</code></p>
+
+  <p><code>&nbsp; &nbsp;a! &nbsp; &nbsp; &nbsp; &nbsp; ไม่</code></p>
+
+  <p>&nbsp;จำไว้: การอนุญาตให้เหตุผลพบเพียงสองค่าเป็น 0 (เท็จ) หรือ 1 (จริง)</p>
+
+  <p><br /></p>
+
+  <p>• การเปรียบเทียบ</p>
+
+  <p><code>&nbsp; &nbsp;a == b เท่ากับ</code></p>
+
+  <p><code>&nbsp; &nbsp;a = b ไม่เท่ากัน</code></p>
+
+  <p><code>&nbsp; &nbsp;a &lt; b&nbsp;น้อยกว่า</code></p>
+
+  <p><code>&nbsp; &nbsp;a &lt; b = น้อยกว่าหรือเท่ากับ</code></p>
+
+  <p><code>&nbsp; &nbsp;a &gt; b มากก่วา</code></p>
+
+  <p><code>&nbsp; &nbsp;a &gt; b = มากกว่าหรือเท่ากับ</code></p>
+
+  <p><br /></p>
+
+  <p>• จัดการบิต</p>
+
+  <p><code>&nbsp; &nbsp;a &amp; b &nbsp; &nbsp; และ</code></p>
+
+  <p><code>&nbsp; &nbsp;a | b &nbsp; &nbsp; หรือ</code></p>
+
+  <p><code>&nbsp; &nbsp;~a &nbsp; &nbsp; &nbsp; &nbsp;เปลี่ยนบิต ๑→๐ และ ๐→๑</code></p>
+
+  <p><code>&nbsp; &nbsp;a ^ b &nbsp; &nbsp; ไม่ได้หรือ</code></p>
+
+  <p><code>&nbsp; &nbsp;a &gt;&gt; b &nbsp; &nbsp;เลื่อนขวา (หาร 2<sup>b</sup>&nbsp;)</code></p>
+
+  <p><code>&nbsp; &nbsp;a &lt;&lt; b &nbsp; &nbsp;เลื่อนช้าย (คูณ 2<sup>b</sup>)</code></p>
+
+  <p><br /></p>
+
+  <p>• บวกหรือลบหนึ่ง</p>
+
+  <p><code>&nbsp; &nbsp;a++ บวกหนึ่งหลัง</code></p>
+
+  <p><code>&nbsp; &nbsp;++a บวกหนึ่งก่อน</code></p>
+
+  <p><code>&nbsp; &nbsp;a--&nbsp;ลบหนึ่งหลัง</code></p>
+
+  <p><code>&nbsp; &nbsp;--a ลบหนึ่งก่อน</code></p>
+
+  <p><br /></p>
+
+  <p>• การคำนวณเลขคณิตกับจำนวนมีอยู่</p>
+
+  <p><code>&nbsp; &nbsp;a += b &nbsp; &nbsp;(a = a + b)</code></p>
+
+  <p><code>&nbsp; &nbsp;a -= b &nbsp; &nbsp;(a = a - b)</code></p>
+
+  <p><code>&nbsp; &nbsp;a *= b &nbsp; &nbsp;(a = a * b)</code></p>
+
+  <p><code>&nbsp; &nbsp;a /= &nbsp; &nbsp; &nbsp;(a = a / b)</code></p>
+
+  <p><code>&nbsp; &nbsp;a %= b &nbsp; &nbsp;(a = a% b)</code></p>
+
+  <p><code>&nbsp; &nbsp;a &amp;= b &nbsp; &nbsp;(a = a &amp; b)</code></p>
+
+  <p><code>&nbsp; &nbsp;a |= b &nbsp; &nbsp;(a = a | b)</code></p>
+
+  <p><code>&nbsp; &nbsp;a ^= b &nbsp; &nbsp;(a = a ^ b)</code></p>
+
+  <p><code>&nbsp; &nbsp;a &gt;&gt;= b &nbsp; (a = a &gt;&gt; b)</code></p>
+
+  <p><code>&nbsp; &nbsp;a &lt;&lt;= b &nbsp; (a = a &lt;&lt; b)</code></p>
+
+  <p><br /></p>
+
+  <h4>2.6.2 รดับของการดำเนินงาน</h4>
+
+  <p>การคำนวณค่าตามเลขคณิตปกติ:</p>
+
+  <p><code>&nbsp; a = a + b * 9/2 - c + (c + 1);</code></p>
+
+  <p><br /></p>
+
+  <p>ในสูตรการข้างบนเครื่องคอมคอมพิวเตอร์จะคำนวณค่าระหว่าง '(' และ ')' ก่อน แล้วคูณหาร สุดทายบวกและลบ ภาษา C มีการดำเนินงานใหม่เป็นจำนวนมาก ดูด้านล่างระดับตาราง:</p>
+
+  <p><code>&nbsp; &nbsp;ระดับ &nbsp; &nbsp; &nbsp; &nbsp; การจัดการ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</code><span style="font-family: monospace;">ทิศทาง</span></p>
+
+  <p><code>&nbsp; &nbsp; 1: &nbsp; &nbsp;++&lt;ตัวแปร&gt; &nbsp;--&lt;ตัวแปร&gt; &nbsp;() &nbsp;[] &nbsp;. &nbsp;-&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ซ้าย→ขวา</code></p>
+
+  <p><code>&nbsp; &nbsp; 2: &nbsp; &nbsp;&lt;ตัวแปร&gt;++ &nbsp;&lt;ตัวแปร&gt;-- &nbsp;! &nbsp;~ &nbsp;(ชนิด) &nbsp;*&lt;ตัวแปร&gt; &nbsp;&amp;&lt;ตัวแปร&gt; &nbsp; &nbsp; ขวา→ซ้าย</code></p>
+
+  <p><code>&nbsp; &nbsp; 3: &nbsp; &nbsp;.*&lt;ฟิลด์&gt; &nbsp;-&gt;*&lt;ฟิลด์&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ซ้าย→ขวา</code></p>
+
+  <p><code>&nbsp; &nbsp; 4: &nbsp; &nbsp;* &nbsp;/ &nbsp;% &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ซ้าย→ขวา</code></p>
+
+  <p><code>&nbsp; &nbsp; 5: &nbsp; &nbsp;+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ซ้าย→ขวา</code></p>
+
+  <p><code>&nbsp; &nbsp; 6: &nbsp; &nbsp;&lt;&lt; &nbsp;&gt;&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ซ้าย→ขวา</code></p>
+
+  <p><code>&nbsp; &nbsp; 7: &nbsp; &nbsp;&lt;&lt; &nbsp;=&gt; &nbsp;=&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ซ้าย→ขวา</code></p>
+
+  <p><code>&nbsp; &nbsp; 8: &nbsp; &nbsp;== &nbsp;!= &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ซ้าย→ขวา</code></p>
+
+  <p><code>&nbsp; &nbsp; 9: &nbsp; &nbsp;&amp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ซ้าย→ขวา</code></p>
+
+  <p><code>&nbsp; &nbsp;10: &nbsp; &nbsp;^ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ซ้าย→ขวา</code></p>
+
+  <p><code>&nbsp; &nbsp;11: &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ซ้าย→ขวา</code></p>
+
+  <p><code>&nbsp; &nbsp;12: &nbsp; &nbsp;&amp;&amp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ซ้าย→ขวา</code></p>
+
+  <p><code>&nbsp; &nbsp;13: &nbsp; &nbsp;|| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ซ้าย→ขวา</code></p>
+
+  <p><code>&nbsp; &nbsp;14: &nbsp; &nbsp;? : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ขวา→ซ้าย</code></p>
+
+  <p><code>&nbsp; &nbsp;15: &nbsp; &nbsp;= &nbsp;+= &nbsp;-= &nbsp;*= &nbsp;/= &nbsp;%= &nbsp;&lt;&lt;= &nbsp;&gt;&gt;= &nbsp;&amp;= &nbsp;^= &nbsp;|= &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ขวา→ซ้าย</code></p>
+
+  <p><code>&nbsp; &nbsp;16: &nbsp; &nbsp;, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ซ้าย→ขวา</code></p>
+
+  <p><br /></p>
+
+  <p>การดำเนินงานตามระดับ ข้างบนก่อนข้างล้าง ดูสตูรการตัวอย่างเช่นนี้:</p>
+
+  <p><code>&nbsp; &nbsp;a + b == c || d++ &amp; ++ 0xf</code></p>
+
+  <p><br /></p>
+
+  <p>ในสตูการนี้ระดับคำนวณค่าคือ '++', '+', '==', '&amp;' อาจว่าไม่ใช่ตามความต้องการของคุณ อาจว่าคุณอยากคำนวณค่าอย่างนี้ไหม:</p>
+
+  <p><code>&nbsp; &nbsp;(a + b == c) || (d++ &amp; ++ 0xf)</code></p>
+
+  <p><br /></p>
+
+  <p>บทเรียนว่าภาษา C มีความสามารถมาก แต่ความสามารถมากก็มีความรับคิดชอบมากไปด้วย</p>
+
+  <h4>2.6 ฐานเลข</h4>
+
+  <p>ในเทคโนโลยีคอมพิวเตอร์คุณจะพบ'ฐานเลข'แตกต่างกัน ข้อมูลทั้งหมดในคอมพิวเตอร์เป็นจำนวนเลข มันเป็นเพียงเครื่องคิดเลฃสุดยอดเท่านั้น อีกเวลานี้เครื่องคอมพิวเตอร์ใช้เลขฐานสอง ไม่ได้ใช้ฐานสิบที่มนุษย์ใช้ประจำ ทำไมใช้เลขฐานสอง เพราะออกแบบเครื่องแบบนี้ง่ายก่วามาก สามารถใช้สวิตซ์เปิดและปิดทำจำนวนเลขฐานสอง แต่สำหรับนักเขียนโปรแกรมเขียนเลขฐานสองยาวและไม่สดวก มีเลขฐานฐานอื่นสามารถย่อเลขฐานสอง ดูรายชื่อดังต่อไปนี้:</p>
+
+  <p>ฐานสอง: <sub><i>b</i></sub>{0; 1}</p>
+
+  <p>ฐานแปด: <sub><i>o</i></sub>{0; 1; 2; 3; 4; 5; 6; 7}</p>
+
+  <p>ฐานสิบ: <sub><i>d</i></sub>{0; 1; 2; 3; 4; 5; 6; 7; 8; 9}</p>
+
+  <p>ฐานสิบหก: <sub><i>x</i></sub>{0; 1; 2; 3; 4; 5; 6; 7; 8; 9; a; b; c; d; e; f}</p>
+
+  <p><br /></p>
+
+  <p>รูปร่างของมูลค่าจะเปลี่ยนแปลงตามเลขฐาน</p>
+
+  <p><sub><i>b</i></sub>10 = <sub><i>o</i></sub>2 = <sub><i>d</i></sub>2 = <sub><i>x</i></sub>2</p>
+
+  <p><sub><i>b</i></sub>1000 = <sub><i>o</i></sub>10 = <sub><i>d</i></sub>8 = <sub><i>x</i></sub>8</p>
+
+  <p><sub><i>b</i></sub>1010 = <sub><i>o</i></sub>12 = <sub><i>d</i></sub>10 = <sub><i>x</i></sub>a</p>
+
+  <p><sub><i>b</i></sub>1 0000 = <sub><i>o</i></sub>20 = <sub><i>d</i></sub>16 = <sub><i>x</i></sub>10</p>
+
+  <p><br /></p>
+
+  <p>สูตรการสำหรับเปลี่ยนแปลงเลขฐานสอง แปด สิบหกเป็นเลขฐานสิบ</p>
+
+  <p><sub><i>b</i></sub><i>n</i> ... <sub><i>b</i></sub>3 <sub><i>b</i></sub>2 <sub><i>b</i></sub>1 <sub><i>b</i></sub>0 → (<sub><i>b</i></sub><i>n</i> × 2<sup><i>n</i></sup>) + ... + (<sub><i>b</i></sub>3 × 2<sup>3</sup>) + (<sub><i>b</i></sub>2 × 2<sup>2</sup>) + (<sub><i>b</i></sub>1 × 2<sup>1</sup>) + (<sub><i>b</i></sub>0 × 2<sup>0</sup>) = เลขฐานสิบ</p>
+
+  <p><sub><i>o</i></sub><i>n</i> ... <sub><i>o</i></sub>3 <sub><i>o</i></sub>2 <sub><i>o</i></sub>1 <sub><i>o</i></sub>0 → (<sub><i>b</i></sub><i>n</i> × 8<sup><i>n</i></sup>) + ... + (<sub><i>o</i></sub>3 × 8<sup>3</sup>) + (<sub><i>o</i></sub>2 × 8<sup>2</sup>) + (<sub><i>o</i></sub>1 × 8<sup>1</sup>) + (<sub><i>o</i></sub>0 × 8<sup>0</sup>) = เลขฐานสิบ</p>
+
+  <p><sub><i>x</i></sub><i>n</i> ... <sub><i>x</i></sub>3 <sub><i>x</i></sub>2 <sub><i>x</i></sub>1 <sub><i>x</i></sub>0 → (<sub><i>x</i></sub><i>n</i> × 16<sup><i>n</i></sup>) + ... + (<sub><i>x</i></sub>3 × 16<sup>3</sup>) + (<sub><i>x</i></sub>2 × 16<sup>2</sup>) + (<sub><i>x</i></sub>1 × 16<sup>1</sup>) + (<sub><i>x</i></sub>0 × 16<sup>0</sup>) = เลขฐานสิบ</p>
+
+  <p>ตัวอย่างเช่น:</p>
+
+  <p><sub><i>b</i></sub>10110 = (1 × 2<sup>4</sup>) + (0 × 2<sup>3</sup>) + (1 × 2<sup>2</sup>) + (1 × 2<sup>1</sup>) + (0 × 2<sup>0</sup>) = 16 + 4 + 2 = <sub><i>d</i></sub>22</p>
+
+  <p><sub><i>o</i></sub>770 = (7 × 8<sup>2</sup>) + (7 × 8<sup>1</sup>) + (0 × 8<sup>0</sup>) = 448 + 56 = <sub><i>d</i></sub>504</p>
+
+  <p><sub><i>x</i></sub>1b43 = (1 × 16<sup>3</sup>) + (11 × 16<sup>2</sup>) + (4 × 16<sup>1</sup>) + (3 × 16<sup>0</sup>) = 4096 + 2816 + 64 + 3 = <sub><i>d</i></sub>6979</p>
+
+  <p><br /></p>
+
+  <p>ภาษา C สนับสนุนเขียนโดยตรงเฉพาะเลขค่าเลขฐานแปด สิบ และสิบหก</p>
+
+  <p>• เลขฐานแปด (ใช้ <code>'0'</code> ก่อน):</p>
+
+  <p><code>&nbsp; &nbsp;011</code></p>
+
+  <p><code>&nbsp; &nbsp;07623</code></p>
+
+  <p><code>&nbsp; &nbsp;0275</code></p>
+
+  <p><br /></p>
+
+  <p>• เลขฐานสิบ:</p>
+
+  <p><code>&nbsp; &nbsp;12345</code></p>
+
+  <p><code>&nbsp; &nbsp;1000</code></p>
+
+  <p><code>&nbsp; &nbsp;88</code></p>
+
+  <p><br /></p>
+
+  <p>• เลขฐานสิบหก (ใช้ '<code>0x</code>' ก่อน):</p>
+
+  <p><code>&nbsp; &nbsp;0x12</code></p>
+
+  <p><code>&nbsp; &nbsp;0x3c00</code></p>
+
+  <p><code>&nbsp; &nbsp;0x7fff</code></p>
+
+  <p><br /></p>
+
+  <p>เรียนรู้เพิ่มเติม</p>
+
+  <p>คุณสามารถตั้งค่าตัวแปรตัวอักษรหรือตัวสัญลักษณ์เช่น:</p>
+
+  <p><code>&nbsp; &nbsp;char akson0 = '#';</code></p>
+
+  <p><code>&nbsp; &nbsp;int akson1 = 'a';</code></p>
+
+  <p><code>&nbsp; &nbsp;short akson2 = 'C';</code></p>
+
+  <p>ค่านี้ถูกตั้งรหัสโดย Unicode 8 (UTF8) ของตัวสัญลักษณ์&nbsp;ระวังรหัสตัวอักษรไม่มีค่าเท่ากับหมายเลขเช่น <code>'0'</code> ≠ <code>0</code>, <code>'1'</code> ≠ <code>1</code> ฯลฯ</p>
+
+  <p><br /></p>
+
+  <h3><b>บทเรียน</b></h3>
+
+  <p>บทที่2.1 เปลี่ยนโปรแกรมตัวอย่างฝากคำอื่นบนหน้าจอ</p>
+
+  <p><br /></p>
+
+  <p>บทที่2.2 ทำรหัสควบคุมให้ฟังก์ชั่น <code>printf()</code> เพื่อพิมพ์ตัวเลขฐานสิบหกบนหน่าจออย่างนี้:</p>
+
+  <p><code>&nbsp; &nbsp;0xff 0x00 0x45 ...</code></p>
+
+  <p>&nbsp; &nbsp;ให้ข้อมูลเป็น <code>unsigned char</code></p>
+
+  <p><br /></p>
+
+  <p>บทที่2.3 สมมติว่า <code>a = 5</code> และ <code>b = 6 ตัวแปร a</code> จะมีค่าเท่าไรหลังจากทำเลขคณิตนี้:</p>
+
+  <p><code>&nbsp; &nbsp;a = b;</code></p>
+
+  <p><code>&nbsp; &nbsp;a = a + a + a;</code></p>
+
+  <p><code>&nbsp; &nbsp;b *= a;</code></p>
+
+  <p><code>&nbsp; &nbsp;a -= b;</code></p>
+
+  <p><code>&nbsp; &nbsp;a = ++b;</code></p>
+
+  <p><code>&nbsp; &nbsp;a = b--;</code></p>
+
+  <p><br /></p>
+
+  <p>บทที่2.4 ถ้า <code>a = 1, b = 2, c = 3, d = 0</code> คำนวณผลของพวกสูตรการ:</p>
+
+  <p>&nbsp; ก. <code>b / a + b | 0xf</code></p>
+
+  <p>&nbsp; ข. <code>(a &lt;&lt; 2) | 7</code></p>
+
+  <p>&nbsp; ค. <code>c &gt;&gt; d++</code></p>
+
+  <p>&nbsp; ฆ. <code>++aa + cc++ &gt;&gt; b</code></p>
+
+  <p>&nbsp; ง. <code>a+b == || d++ &amp; 0xf</code></p>
+
+  <p>&nbsp; จ. <code>c ^ c</code></p>
+
+  <p>&nbsp; ฉ. <code>~c &amp; c</code></p>
+
+  <p><br /></p>
+
+  <p>บทที่2.5 เปลี่ยนสูตรการเป็นรหัสภาษา C</p>
+
+  <p>&nbsp; ก. <i>a</i> ÷ 3 + <i>b</i> × (<i>c</i> + 2)</p>
+
+  <p>&nbsp; ข. <i>x</i><sup>3</sup> + 45 ≥ 17</p>
+
+  <p>&nbsp; ค. 1/<i>z</i><sup>2</sup> + 1/<i>y</i><sup>5</sup></p>
+
+  <p><br /></p>
+
+  <p>บทที่2.6 เปลี่ยน <sub><i>d</i></sub>4096 เป็นเลขฐานสิบหก</p>
+
+  <p><br /></p>
+
+  <p>บทที่2.7 เปลี่ยน <sub><i>o</i></sub>2555 เป็นเลขฐานสิบ</p>
+
+  <p><br /></p>
+
+  <p>บทที่2.8 เปลี่ยน <sub><i>b</i></sub>0110 0101 เป็นเลขฐานสิบหก</p>
+
+  <p><br /></p>
+
+  <p>บทที่2.9 สร้างตารางเปลี่ยนกลับค่าเลขฐานสองกับเลขฐานแปด</p>
+
+  <p><br /></p>
+
+  <p>บทที่2.10&nbsp;สร้างตารางเปลี่ยนกลับค่าเลขฐานสองกับเลขฐานสิบหก</p>
+
+  <p><br /></p>
+
+  <p>บทที่2.11&nbsp;สร้างตารางเปลี่ยนกลับค่าเลขฐานแปดกับเลขฐานสิบหก</p>
+
+  <p><br /></p>
+
+  <p>บทที่2.12 ในรหัสภาษา C ด้านล่าง <code>c</code> เป็นตัวอักษรอะไร?</p>
+
+  <p><code>&nbsp; &nbsp;c = 'A' + 0x20;</code></p>
+</body>
+</html>
